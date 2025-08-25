@@ -20,6 +20,12 @@ export async function getLaunches() {
 export async function submitApplication(payload: {
   full_name: string; phone: string; company_name: string; agents_count: number; has_papers: boolean;
 }) {
+  // Check if user is authenticated
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    throw new Error('You must be signed in to submit an application. Please sign in or create an account.');
+  }
+
   const { data, error } = await supabase.from("partner_applications").insert(payload).select().single();
   if (error) throw error;
   
@@ -46,6 +52,12 @@ export async function submitApplication(payload: {
 }
 
 export async function uploadDealFile(file: File) {
+  // Check if user is authenticated
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    throw new Error('You must be signed in to upload files. Please sign in or create an account.');
+  }
+
   const path = `deals/${crypto.randomUUID()}-${file.name}`;
   const { error } = await supabase.storage.from("deal-attachments").upload(path, file);
   if (error) throw error;
@@ -56,6 +68,12 @@ export async function submitClosedDeal(payload: {
   developer_name: string; project_name: string; client_name: string; unit_code: string;
   dev_sales_name: string; dev_phone: string; deal_value: number; attachmentPaths: string[];
 }) {
+  // Check if user is authenticated
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    throw new Error('You must be signed in to submit a deal. Please sign in or create an account.');
+  }
+
   const attachments = payload.attachmentPaths.map((p) => ({ path: p }));
   const dealData = {
     developer_name: payload.developer_name,

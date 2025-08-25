@@ -1,22 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useAuthStore } from '../store/auth';
 import { useSidebar } from '../contexts/SidebarContext';
 import { useNotificationStore } from '../store/notifications';
+import { UserMenu } from './UserMenu';
 import { Bell } from 'lucide-react';
 
 export default function Nav() {
-  const { user, login, logout } = useAuthStore();
   const { isExpanded } = useSidebar();
   const { unreadCount } = useNotificationStore();
   const location = useLocation();
-
-  const handleAuthToggle = () => {
-    if (user) {
-      logout();
-    } else {
-      login({ name: 'Demo User' });
-    }
-  };
 
   return (
     <>
@@ -76,18 +67,8 @@ export default function Nav() {
                   )}
                 </Link>
 
-                {/* Auth Button Mobile Only */}
-                <div className="lg:hidden">
-                  <button
-                    onClick={handleAuthToggle}
-                    className={`btn btn-sm ${
-                      user ? 'btn-secondary' : 'btn-primary'
-                    }`}
-                    aria-label={user ? 'Sign out' : 'Sign in'}
-                  >
-                    {user ? 'Logout' : 'Login'}
-                  </button>
-                </div>
+                {/* User Menu */}
+                <UserMenu />
               </div>
             </div>
           </div>
