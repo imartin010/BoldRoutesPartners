@@ -10,13 +10,40 @@ A comprehensive React + Vite web application for Bold Routes Partners, enabling 
    npm install
    ```
 
-2. **Start development server**
+2. **Environment setup**
+   ```bash
+   # Create .env from .env.example
+   cp .env.example .env
+   
+   # Fill in your Supabase credentials:
+   # VITE_SUPABASE_URL=your_supabase_project_url
+   # VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+3. **Start development server**
    ```bash
    npm run dev
    ```
 
-3. **Open your browser**
+4. **Open your browser**
    - Navigate to the URL shown in your terminal (typically `http://localhost:5173`)
+
+## 🏗️ Supabase Integration
+
+This application integrates with Supabase for backend services:
+
+- **Authentication**: Magic link sign-in for admin users
+- **Database**: Partner applications, closed deals, commission rates, etc.
+- **Storage**: File uploads for deal attachments
+- **Real-time**: Live data updates across the application
+
+### Required Supabase Tables
+- `developers`, `projects`, `commission_rates`, `launches`, `inventory_items`
+- `partner_applications`, `closed_deals`
+- `profiles` (with role column for admin access)
+
+### Storage Buckets
+- `deal-attachments` (private bucket for file uploads)
 
 ## 📋 Features
 

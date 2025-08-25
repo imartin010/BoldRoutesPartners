@@ -36,6 +36,7 @@ const Settings = lazy(() => import('./pages/Settings'));
 const LanguageSelection = lazy(() => import('./pages/LanguageSelection'));
 const MyCompany = lazy(() => import('./pages/MyCompany'));
 const Profile = lazy(() => import('./pages/Profile'));
+const Admin = lazy(() => import('./pages/Admin'));
 
 function AppContent() {
   const { loadFromLocalStorage } = useDataStore();
@@ -78,6 +79,7 @@ function AppContent() {
                   <Route path="deals/:id/edit" element={<EditDeal />} />
                   <Route path="signup" element={<SignUp />} />
                   <Route path="signin" element={<SignIn />} />
+                  <Route path="admin" element={<Admin />} />
                 </Routes>
               </Suspense>
             <NotificationPopup />
