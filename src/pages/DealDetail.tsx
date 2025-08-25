@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, MoreHorizontal, Edit, Trash2, RefreshCw, Download, Eye, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, MoreHorizontal, Edit, Trash2, RefreshCw, Download, Eye, AlertTriangle, Building, Home, Ruler, Palette } from 'lucide-react';
 import { useDeals } from '../contexts/DealsContext';
 import { useToastTriggers } from '../hooks/useToastTriggers';
 import CommissionTracking from '../components/deals/CommissionTracking';
@@ -118,7 +118,7 @@ export default function DealDetail() {
           <div className="flex items-center justify-between py-2">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-gray-600 text-sm">🏢</span>
+                <Building className="w-4 h-4 text-gray-600" />
               </div>
               <span className="text-gray-700">Developer</span>
             </div>
@@ -128,7 +128,7 @@ export default function DealDetail() {
           <div className="flex items-center justify-between py-2">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-gray-600 text-sm">🏘️</span>
+                <Home className="w-4 h-4 text-gray-600" />
               </div>
               <span className="text-gray-700">Project</span>
             </div>
@@ -148,7 +148,7 @@ export default function DealDetail() {
           <div className="flex items-center justify-between py-2">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-gray-600 text-sm">📐</span>
+                <Ruler className="w-4 h-4 text-gray-600" />
               </div>
               <span className="text-gray-700">Unit Area</span>
             </div>
@@ -158,7 +158,7 @@ export default function DealDetail() {
           <div className="flex items-center justify-between py-2">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-gray-600 text-sm">🏠</span>
+                <Home className="w-4 h-4 text-gray-600" />
               </div>
               <span className="text-gray-700">Unit Type</span>
             </div>
@@ -168,7 +168,7 @@ export default function DealDetail() {
           <div className="flex items-center justify-between py-2">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-gray-600 text-sm">🎨</span>
+                <Palette className="w-4 h-4 text-gray-600" />
               </div>
               <span className="text-gray-700">Finishing Type</span>
             </div>

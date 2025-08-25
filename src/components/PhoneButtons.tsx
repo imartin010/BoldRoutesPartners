@@ -28,7 +28,6 @@ export default function PhoneButtons({ phone, whatsappMessage, size = 'md' }: Ph
       >
         <Phone size={iconSizes[size]} />
         <span className="hidden xs:inline">Call</span>
-        <span className="xs:hidden">📞</span>
       </a>
       <a
         href={getWhatsAppLink(phone, whatsappMessage)}
@@ -38,7 +37,6 @@ export default function PhoneButtons({ phone, whatsappMessage, size = 'md' }: Ph
       >
         <MessageCircle size={iconSizes[size]} />
         <span className="hidden xs:inline">WhatsApp</span>
-        <span className="xs:hidden">💬</span>
       </a>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { X } from 'lucide-react';
+import { X, HandWave, Megaphone, TrendingUp, Handshake, Rocket } from 'lucide-react';
 import { useNotificationPopup } from '../contexts/NotificationPopupContext';
 import { Link } from 'react-router-dom';
 
@@ -56,7 +56,11 @@ export default function NotificationPopup() {
           <div className="flex items-start space-x-3">
             {/* Icon */}
             <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center ${currentPopup.iconBgColor}`}>
-              <span className="text-2xl">{currentPopup.icon}</span>
+              {currentPopup.icon === 'HandWave' && <HandWave className="w-6 h-6 text-gray-700" />}
+              {currentPopup.icon === 'Megaphone' && <Megaphone className="w-6 h-6 text-gray-700" />}
+              {currentPopup.icon === 'TrendingUp' && <TrendingUp className="w-6 h-6 text-gray-700" />}
+              {currentPopup.icon === 'Handshake' && <Handshake className="w-6 h-6 text-gray-700" />}
+              {currentPopup.icon === 'Rocket' && <Rocket className="w-6 h-6 text-gray-700" />}
             </div>
 
             {/* Content */}

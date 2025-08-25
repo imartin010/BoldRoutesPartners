@@ -3,7 +3,7 @@ import { NotificationPopup } from '../contexts/NotificationPopupContext';
 // Predefined notification popup templates
 export const createWelcomePopup = (userName: string): Omit<NotificationPopup, 'id'> => ({
   type: 'welcome',
-  icon: '👋',
+  icon: 'HandWave',
   iconBgColor: 'bg-yellow-100',
   title: `Welcome, ${userName}!`,
   message: 'Welcome to Bold Routes Partners! Start exploring your dashboard.',
@@ -16,7 +16,7 @@ export const createCommissionIncreasePopup = (
   commissionRate: number
 ): Omit<NotificationPopup, 'id'> => ({
   type: 'commission',
-  icon: '📢',
+  icon: 'Megaphone',
   iconBgColor: 'bg-red-100',
   title: 'Commission Increased!',
   message: `Project ${projectName} now offers ${commissionRate}% commission`,
@@ -31,10 +31,10 @@ export const createCommissionMilestonePopup = (
   dealId: string
 ): Omit<NotificationPopup, 'id'> => ({
   type: 'commission',
-  icon: '💹',
+  icon: 'TrendingUp',
   iconBgColor: 'bg-green-100',
   title: 'Commission Milestone',
-  message: `You've collected ${percentage}% of your commission for Deal #${dealId} 🎉`,
+  message: `You've collected ${percentage}% of your commission for Deal #${dealId}`,
   actionText: 'View Commission',
   actionUrl: '/commissions',
   duration: 6000,
@@ -46,7 +46,7 @@ export const createDealApprovalPopup = (
   status: 'approved' | 'waiting'
 ): Omit<NotificationPopup, 'id'> => ({
   type: 'deal',
-  icon: '🤝',
+  icon: 'Handshake',
   iconBgColor: 'bg-blue-100',
   title: 'Deal Approval',
   message: status === 'approved' 
@@ -63,7 +63,7 @@ export const createNewLaunchPopup = (
   developerName: string
 ): Omit<NotificationPopup, 'id'> => ({
   type: 'general',
-  icon: '🚀',
+  icon: 'Rocket',
   iconBgColor: 'bg-purple-100',
   title: 'New Project Launch!',
   message: `${projectName} by ${developerName} is now available. High commission rates!`,
@@ -80,7 +80,7 @@ export const createGeneralAnnouncementPopup = (
   actionUrl?: string
 ): Omit<NotificationPopup, 'id'> => ({
   type: 'general',
-  icon: '📢',
+  icon: 'Megaphone',
   iconBgColor: 'bg-gray-100',
   title,
   message,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '../store/auth';
-import { ChevronDown, ChevronRight, ArrowLeft } from 'lucide-react';
+import { ChevronDown, ChevronRight, ArrowLeft, DollarSign } from 'lucide-react';
 import { formatCurrencyEGP } from '../utils/format';
 import CommissionErrorModal from '../components/CommissionErrorModal';
 
@@ -95,7 +95,7 @@ export default function MyCommissions() {
     <div className="flex flex-col items-center justify-center py-20 px-6 text-center">
       <div className="mb-8">
         <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-          <span className="text-2xl">💰</span>
+          <DollarSign className="w-10 h-10 text-gray-700" />
         </div>
       </div>
       <h3 className="text-xl font-semibold text-gray-900 mb-4">
