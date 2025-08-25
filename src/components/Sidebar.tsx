@@ -34,7 +34,7 @@ export default function Sidebar() {
   // Add conditional navigation items based on auth state
   const navLinks = [
     ...baseNavLinks,
-    ...(user ? [{ path: '/submissions', label: 'Submissions', icon: FileCheck }] : [{ path: '/apply', label: 'Apply', icon: UserPlus }]),
+    ...(user ? [] : [{ path: '/apply', label: 'Apply', icon: UserPlus }]),
     { path: '/about', label: 'About', icon: Info },
   ];
 

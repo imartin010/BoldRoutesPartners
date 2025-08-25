@@ -53,7 +53,7 @@ export const createDealApprovalPopup = (
     ? `Deal #${dealId} has been approved by Sales operation, waiting for Collection approval`
     : `Deal #${dealId} is waiting for approval`,
   actionText: 'View Deal',
-  actionUrl: '/submissions',
+  actionUrl: '/deals',
   duration: 6000,
   dismissible: true,
 });

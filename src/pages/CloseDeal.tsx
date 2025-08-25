@@ -95,8 +95,8 @@ export default function CloseDeal() {
             >
               Submit Another Deal
             </button>
-            <Link to="/submissions" className="btn-secondary">
-              View Submissions
+            <Link to="/deals" className="btn-secondary">
+              View Deals
             </Link>
           </div>
         </Card>

@@ -22,7 +22,7 @@ const Launches = lazy(() => import('./pages/Launches'));
 const Commissions = lazy(() => import('./pages/Commissions'));
 const CloseDeal = lazy(() => import('./pages/CloseDeal'));
 const Apply = lazy(() => import('./pages/Apply'));
-const Submissions = lazy(() => import('./pages/Submissions'));
+
 const About = lazy(() => import('./pages/About'));
 const Notifications = lazy(() => import('./pages/Notifications'));
 const SignUp = lazy(() => import('./pages/SignUp'));
@@ -62,7 +62,7 @@ function AppContent() {
                     <Route path="commissions" element={<Commissions />} />
                     <Route path="close-deal" element={<CloseDeal />} />
                     <Route path="apply" element={<Apply />} />
-                    <Route path="submissions" element={<Submissions />} />
+
                     <Route path="about" element={<About />} />
                     <Route path="notifications" element={<Notifications />} />
                     <Route path="deals" element={<Deals />} />
