@@ -1,3 +1,4 @@
+
 # Bold Routes Partners
 
 A comprehensive React + Vite web application for Bold Routes Partners, enabling small & medium brokerages to close deals under Bold Routes' name for bigger commissions.
@@ -351,3 +352,4 @@ This project is proprietary software for Bold Routes Partners.
 ---
 
 Built with ❤️ using React, TypeScript, and Tailwind CSS
+
