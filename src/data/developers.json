@@ -1,0 +1,554 @@
+[
+  {
+    "id": "dev-1",
+    "name": "Taj Misr",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-2", 
+    "name": "Reportage Properties",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-3",
+    "name": "V Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-4",
+    "name": "Maven",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-5",
+    "name": "PRE",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-6",
+    "name": "The Land Developer - TLD",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-7",
+    "name": "Radix Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-8",
+    "name": "GT Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-9",
+    "name": "Al-Marasem",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-10",
+    "name": "Mountain View",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-11",
+    "name": "Misr Italia",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-12",
+    "name": "Morshedy Group",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-13",
+    "name": "Roya",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-14",
+    "name": "Tameer",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-15",
+    "name": "Royal",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-16",
+    "name": "Al-Marasam",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-17",
+    "name": "Naia Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-18",
+    "name": "M squared",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-19",
+    "name": "Mardev Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-20",
+    "name": "Marseilia Group",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-21",
+    "name": "Royal Developments",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-22",
+    "name": "El Masria Group",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-23",
+    "name": "A Capital Holding",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-24",
+    "name": "Alahly Sabbour",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-25",
+    "name": "Gates Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-26",
+    "name": "LMD",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-27",
+    "name": "Mabany Edris",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-28",
+    "name": "Tatweer Misr",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-29",
+    "name": "Centrada Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-30",
+    "name": "Hyde Park - HPD",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-31",
+    "name": "Palm Hills Development - PHD",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-32",
+    "name": "Reedy",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-33",
+    "name": "Hassan Allam Properties",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-34",
+    "name": "Marakez",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-35",
+    "name": "Inertia",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-36",
+    "name": "Horizon Developments",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-37",
+    "name": "Melee Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-38",
+    "name": "IGI Developments",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-39",
+    "name": "Arabia Holding",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-40",
+    "name": "IL Cazar Developments",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-41",
+    "name": "Aldawlia Developments",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-42",
+    "name": "La Vista Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-43",
+    "name": "Madinet Masr - MNHD",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-44",
+    "name": "Qatar Diar",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-45",
+    "name": "WaterWay Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-46",
+    "name": "Ora Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-47",
+    "name": "Soma Bay",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-48",
+    "name": "Memaar Al Ashraaf",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-49",
+    "name": "SODIC",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-50",
+    "name": "TBK",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-51",
+    "name": "Arabella Group Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-52",
+    "name": "City Edge",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-53",
+    "name": "Vivienda Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-54",
+    "name": "UrbenLine",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-55",
+    "name": "El Attal",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-56",
+    "name": "Locations Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-57",
+    "name": "The Ark Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-58",
+    "name": "Orascom Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-59",
+    "name": "Golden Gated",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-60",
+    "name": "SAMCO",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-61",
+    "name": "Upwyde",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-62",
+    "name": "Memaar El Morshedy",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-63",
+    "name": "Rayn Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-64",
+    "name": "Golden View",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-65",
+    "name": "Arab Developers",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-66",
+    "name": "JD Holding",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-67",
+    "name": "Sky AD. Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-68",
+    "name": "Jadeer Group",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-69",
+    "name": "Akam Al Rajhi",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-70",
+    "name": "Dunes",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-71",
+    "name": "EGYGAB",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-72",
+    "name": "Lasirena Group",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-73",
+    "name": "El Amar Group",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-74",
+    "name": "Arkan Palm",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-75",
+    "name": "Nawassy",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-76",
+    "name": "People and Places",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-77",
+    "name": "Time Development",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-78",
+    "name": "AlQamzi Developments",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-79",
+    "name": "Main Marks",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-80",
+    "name": "Shehab Mazhar",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-81",
+    "name": "Samco Holding",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-82",
+    "name": "Aspect",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-83",
+    "name": "Amer Group",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-84",
+    "name": "Salam Properties",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-85",
+    "name": "Dar El Alamia",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-86",
+    "name": "Concrete Developments",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-87",
+    "name": "Mercon Developments",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-88",
+    "name": "Redcon Properties",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-89",
+    "name": "Pyramids",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-90",
+    "name": "Wujha Development - Oman",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-91",
+    "name": "Kleek Developments",
+    "logo": null,
+    "primaryPhone": null
+  },
+  {
+    "id": "dev-92",
+    "name": "Khaled Sabry Developments",
+    "logo": null,
+    "primaryPhone": null
+  }
+]

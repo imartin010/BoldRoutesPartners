@@ -1,0 +1,47 @@
+[
+  {
+    "id": "launch-1",
+    "developerId": "dev-1",
+    "projectName": "Palm Hills October",
+    "area": "6th of October",
+    "minPrice": 2500000,
+    "launchDateISO": "2024-03-15T00:00:00Z",
+    "phone": "+201234567890"
+  },
+  {
+    "id": "launch-2",
+    "developerId": "dev-2", 
+    "projectName": "Cairo Gate",
+    "area": "Sheikh Zayed",
+    "minPrice": 3800000,
+    "launchDateISO": "2024-04-20T00:00:00Z",
+    "phone": "+201098765432"
+  },
+  {
+    "id": "launch-3",
+    "developerId": "dev-3",
+    "projectName": "Eastown Residence",
+    "area": "New Cairo",
+    "minPrice": 4200000,
+    "launchDateISO": "2024-02-10T00:00:00Z",
+    "phone": "+201555444333"
+  },
+  {
+    "id": "launch-4",
+    "developerId": "dev-4",
+    "projectName": "Swan Lake Residences",
+    "area": "New Administrative Capital",
+    "minPrice": 2800000,
+    "launchDateISO": "2024-05-01T00:00:00Z",
+    "phone": "+201222333444"
+  },
+  {
+    "id": "launch-5",
+    "developerId": "dev-5",
+    "projectName": "Monorail City",
+    "area": "New Administrative Capital",
+    "minPrice": 3200000,
+    "launchDateISO": "2024-06-15T00:00:00Z",
+    "phone": "+201777888999"
+  }
+]

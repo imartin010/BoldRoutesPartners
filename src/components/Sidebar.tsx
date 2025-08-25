@@ -1,0 +1,133 @@
+import { Link, useLocation } from 'react-router-dom';
+import { useAuthStore } from '../store/auth';
+import { useSidebar } from '../contexts/SidebarContext';
+import { Home, Rocket, Building, Calculator, FileText, UserPlus, FileCheck, Info, Briefcase, TrendingUp, MoreHorizontal } from 'lucide-react';
+
+export default function Sidebar() {
+  const { user, login, logout } = useAuthStore();
+  const { isExpanded, setIsExpanded } = useSidebar();
+  const location = useLocation();
+
+  const handleAuthToggle = () => {
+    if (user) {
+      logout();
+    } else {
+      login({ name: 'Demo User' });
+    }
+  };
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
+  const baseNavLinks = [
+    { path: '/', label: 'Home', icon: Home },
+    { path: '/deals', label: 'Deals', icon: Briefcase },
+    { path: '/launches', label: 'New Launches', icon: Rocket },
+    { path: '/inventory', label: 'Inventory', icon: Building },
+    { path: '/my-commissions', label: 'My Commission', icon: TrendingUp },
+    { path: '/commissions', label: 'Commission Rates', icon: Calculator },
+    { path: '/close-deal', label: 'Close a Deal', icon: FileText },
+    { path: '/more', label: 'More', icon: MoreHorizontal },
+  ];
+
+  // Add conditional navigation items based on auth state
+  const navLinks = [
+    ...baseNavLinks,
+    ...(user ? [{ path: '/submissions', label: 'Submissions', icon: FileCheck }] : [{ path: '/apply', label: 'Apply', icon: UserPlus }]),
+    { path: '/about', label: 'About', icon: Info },
+  ];
+
+  return (
+    <aside 
+      className={`hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0 lg:bg-brand-card lg:border-r lg:border-brand-border lg:shadow-elegant lg:transition-all lg:duration-300 lg:ease-in-out lg:z-50 ${
+        isExpanded ? 'lg:w-64' : 'lg:w-16'
+      }`}
+      onMouseEnter={() => setIsExpanded(true)}
+      onMouseLeave={() => setIsExpanded(false)}
+      role="navigation"
+      aria-label="Desktop navigation"
+    >
+      {/* Sidebar Content */}
+      <div className="flex flex-col flex-1 min-h-0 pt-20">
+        {/* Logo Section - Only show when expanded */}
+        {isExpanded && (
+          <div className="flex items-center justify-center py-6 px-4 transition-all duration-300">
+            <Link 
+              to="/" 
+              className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-fg rounded-lg"
+              aria-label="Bold Routes Partners home"
+            >
+              <img 
+                src="/images/logo.png" 
+                alt="Bold Routes Partners logo" 
+                className="h-12 w-auto transition-all duration-300"
+              />
+            </Link>
+          </div>
+        )}
+
+        {/* Navigation */}
+        <nav className={`flex-1 pb-4 space-y-1 transition-all duration-300 ${isExpanded ? 'px-4' : 'px-2'}`}>
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            const active = isActive(link.path);
+            
+            return (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`nav-link group/item flex items-center px-3 py-3 text-sm font-medium rounded-lg transition-all duration-200 ${
+                  active
+                    ? 'bg-brand-fg text-brand-bg'
+                    : 'text-brand-fg opacity-60 hover:opacity-100 hover:bg-brand-overlay'
+                }`}
+                title={!isExpanded ? link.label : undefined}
+                aria-label={`Navigate to ${link.label} ${active ? '(current page)' : ''}`}
+              >
+                <Icon
+                  className={`h-5 w-5 transition-colors duration-200 flex-shrink-0 ${
+                    active ? 'text-brand-bg' : 'text-brand-fg opacity-40 group-hover/item:opacity-100'
+                  }`}
+                  aria-hidden="true"
+                />
+                <span className={`ml-3 transition-all duration-300 whitespace-nowrap overflow-hidden ${
+                  isExpanded ? 'opacity-100' : 'opacity-0'
+                }`}>
+                  {link.label}
+                </span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Auth Section */}
+        <div className={`pb-4 border-t border-brand-border pt-4 transition-all duration-300 ${isExpanded ? 'px-4' : 'px-2'}`}>
+          {user && (
+            <div className={`mb-3 px-3 py-2 text-sm text-brand-fg opacity-60 transition-all duration-300 whitespace-nowrap overflow-hidden ${
+              isExpanded ? 'opacity-100' : 'opacity-0'
+            }`}>
+              Welcome, {user.name}
+            </div>
+          )}
+          <button
+            onClick={handleAuthToggle}
+            className={`w-full text-left px-3 py-3 text-sm font-medium rounded-lg transition-all duration-200 flex items-center min-h-[44px] ${
+              user
+                ? 'text-brand-fg opacity-60 hover:opacity-100 hover:bg-brand-overlay'
+                : 'bg-brand-fg text-brand-bg hover:opacity-90'
+            }`}
+            title={!isExpanded ? (user ? 'Logout' : 'Login') : undefined}
+            aria-label={user ? 'Sign out' : 'Sign in'}
+          >
+            <span className={`transition-all duration-300 whitespace-nowrap overflow-hidden ${
+              isExpanded ? 'opacity-100' : 'opacity-0'
+            }`}>
+              {user ? 'Logout' : 'Login'}
+            </span>
+          </button>
+        </div>
+      </div>
+    </aside>
+  );
+}

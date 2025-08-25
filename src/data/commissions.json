@@ -1,0 +1,554 @@
+[
+  {
+    "developerId": "dev-1",
+    "developerName": "Taj Misr",
+    "commissionPercent": 6.00,
+    "projects": "Bold Routes Community"
+  },
+  {
+    "developerId": "dev-2",
+    "developerName": "Reportage Properties",
+    "commissionPercent": 5.50,
+    "projects": "Montenapoleone"
+  },
+  {
+    "developerId": "dev-3",
+    "developerName": "V Development",
+    "commissionPercent": 5.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-4",
+    "developerName": "Maven",
+    "commissionPercent": 5.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-5",
+    "developerName": "PRE",
+    "commissionPercent": 5.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-6",
+    "developerName": "The Land Developer - TLD",
+    "commissionPercent": 5.00,
+    "projects": "Kukun Mostakba City"
+  },
+  {
+    "developerId": "dev-7",
+    "developerName": "Radix Development",
+    "commissionPercent": 5.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-8",
+    "developerName": "GT Development",
+    "commissionPercent": 5.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-9",
+    "developerName": "Al-Marasem",
+    "commissionPercent": 4.50,
+    "projects": "Mar Ville / Mar Bay"
+  },
+  {
+    "developerId": "dev-10",
+    "developerName": "Mountain View",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-11",
+    "developerName": "Misr Italia",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-12",
+    "developerName": "Morshedy Group",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-13",
+    "developerName": "Roya",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-14",
+    "developerName": "Tameer",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-15",
+    "developerName": "Royal",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-16",
+    "developerName": "Al-Marasam",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-17",
+    "developerName": "Naia Development",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-18",
+    "developerName": "M squared",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-19",
+    "developerName": "Mardev Development",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-20",
+    "developerName": "Marseilia Group",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-21",
+    "developerName": "Royal Developments",
+    "commissionPercent": 4.25,
+    "projects": "Monark Residence Mostakbal City"
+  },
+  {
+    "developerId": "dev-22",
+    "developerName": "El Masria Group",
+    "commissionPercent": 4.25,
+    "projects": "ISOLA"
+  },
+  {
+    "developerId": "dev-23",
+    "developerName": "A Capital Holding",
+    "commissionPercent": 4.25,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-24",
+    "developerName": "Alahly Sabbour",
+    "commissionPercent": 4.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-25",
+    "developerName": "Gates Development",
+    "commissionPercent": 4.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-26",
+    "developerName": "LMD",
+    "commissionPercent": 4.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-27",
+    "developerName": "Mabany Edris",
+    "commissionPercent": 4.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-28",
+    "developerName": "Tatweer Misr",
+    "commissionPercent": 4.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-29",
+    "developerName": "Centrada Development",
+    "commissionPercent": 3.75,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-30",
+    "developerName": "Hyde Park - HPD",
+    "commissionPercent": 3.75,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-31",
+    "developerName": "Palm Hills Development - PHD",
+    "commissionPercent": 2.50,
+    "projects": "Badya (2.5%), Other projects (3.75%)"
+  },
+  {
+    "developerId": "dev-32",
+    "developerName": "Reedy",
+    "commissionPercent": 3.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-33",
+    "developerName": "Hassan Allam Properties",
+    "commissionPercent": 3.50,
+    "projects": "Park Central"
+  },
+  {
+    "developerId": "dev-34",
+    "developerName": "Marakez",
+    "commissionPercent": 3.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-35",
+    "developerName": "Inertia",
+    "commissionPercent": 3.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-36",
+    "developerName": "Horizon Developments",
+    "commissionPercent": 3.75,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-37",
+    "developerName": "Melee Development",
+    "commissionPercent": 3.75,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-38",
+    "developerName": "IGI Developments",
+    "commissionPercent": 3.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-39",
+    "developerName": "Arabia Holding",
+    "commissionPercent": 3.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-40",
+    "developerName": "IL Cazar Developments",
+    "commissionPercent": 4.00,
+    "projects": "Excloud MS Properties and Stoda"
+  },
+  {
+    "developerId": "dev-41",
+    "developerName": "Aldawlia Developments",
+    "commissionPercent": 3.30,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-42",
+    "developerName": "La Vista Development",
+    "commissionPercent": 3.25,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-43",
+    "developerName": "Madinet Masr - MNHD",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-44",
+    "developerName": "Qatar Diar",
+    "commissionPercent": 2.75,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-45",
+    "developerName": "WaterWay Development",
+    "commissionPercent": 2.75,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-46",
+    "developerName": "Ora Development",
+    "commissionPercent": 4.50,
+    "projects": "Silver Sand"
+  },
+  {
+    "developerId": "dev-47",
+    "developerName": "Soma Bay",
+    "commissionPercent": 2.75,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-48",
+    "developerName": "Memaar Al Ashraaf",
+    "commissionPercent": 2.75,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-49",
+    "developerName": "SODIC",
+    "commissionPercent": 3.75,
+    "projects": "All Projects"
+  },
+  {
+    "developerId": "dev-50",
+    "developerName": "TBK",
+    "commissionPercent": 2.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-51",
+    "developerName": "Arabella Group Development",
+    "commissionPercent": 2.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-52",
+    "developerName": "City Edge",
+    "commissionPercent": 2.25,
+    "projects": "All except Latin District and Downtown"
+  },
+  {
+    "developerId": "dev-53",
+    "developerName": "Vivienda Development",
+    "commissionPercent": 2.50,
+    "projects": "New Cairo"
+  },
+  {
+    "developerId": "dev-54",
+    "developerName": "UrbenLine",
+    "commissionPercent": 0.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-55",
+    "developerName": "El Attal",
+    "commissionPercent": 0.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-56",
+    "developerName": "Locations Development",
+    "commissionPercent": 0.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-57",
+    "developerName": "The Ark Development",
+    "commissionPercent": 0.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-58",
+    "developerName": "Orascom Development",
+    "commissionPercent": 3.75,
+    "projects": "Makadi Heights"
+  },
+  {
+    "developerId": "dev-59",
+    "developerName": "Golden Gated",
+    "commissionPercent": 0.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-60",
+    "developerName": "SAMCO",
+    "commissionPercent": 4.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-61",
+    "developerName": "Upwyde",
+    "commissionPercent": 4.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-62",
+    "developerName": "Memaar El Morshedy",
+    "commissionPercent": 4.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-63",
+    "developerName": "Rayn Development",
+    "commissionPercent": 6.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-64",
+    "developerName": "Golden View",
+    "commissionPercent": 6.00,
+    "projects": "Golden Hub / To-Gather"
+  },
+  {
+    "developerId": "dev-65",
+    "developerName": "Arab Developers",
+    "commissionPercent": 2.75,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-66",
+    "developerName": "JD Holding",
+    "commissionPercent": 6.50,
+    "projects": "New Capital / London"
+  },
+  {
+    "developerId": "dev-67",
+    "developerName": "Sky AD. Development",
+    "commissionPercent": 4.50,
+    "projects": "Sky North"
+  },
+  {
+    "developerId": "dev-68",
+    "developerName": "Jadeer Group",
+    "commissionPercent": 5.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-69",
+    "developerName": "Akam Al Rajhi",
+    "commissionPercent": 4.00,
+    "projects": "D.O.S.E"
+  },
+  {
+    "developerId": "dev-70",
+    "developerName": "Dunes",
+    "commissionPercent": 2.75,
+    "projects": "V Levels"
+  },
+  {
+    "developerId": "dev-71",
+    "developerName": "EGYGAB",
+    "commissionPercent": 3.50,
+    "projects": "Masaya & The Median"
+  },
+  {
+    "developerId": "dev-72",
+    "developerName": "Lasirena Group",
+    "commissionPercent": 3.50,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-73",
+    "developerName": "El Amar Group",
+    "commissionPercent": 2.75,
+    "projects": "Shores North Coast"
+  },
+  {
+    "developerId": "dev-74",
+    "developerName": "Arkan Palm",
+    "commissionPercent": 2.75,
+    "projects": "205"
+  },
+  {
+    "developerId": "dev-75",
+    "developerName": "Nawassy",
+    "commissionPercent": 4.25,
+    "projects": "Nest / 3 Side"
+  },
+  {
+    "developerId": "dev-76",
+    "developerName": "People and Places",
+    "commissionPercent": 3.25,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-77",
+    "developerName": "Time Development",
+    "commissionPercent": 0.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-78",
+    "developerName": "AlQamzi Developments",
+    "commissionPercent": 3.75,
+    "projects": "Seazen / Eastshire"
+  },
+  {
+    "developerId": "dev-79",
+    "developerName": "Main Marks",
+    "commissionPercent": 4.25,
+    "projects": "Moray"
+  },
+  {
+    "developerId": "dev-80",
+    "developerName": "Shehab Mazhar",
+    "commissionPercent": 3.25,
+    "projects": "Marsa Baghush"
+  },
+  {
+    "developerId": "dev-81",
+    "developerName": "Samco Holding",
+    "commissionPercent": 4.00,
+    "projects": "New Cairo"
+  },
+  {
+    "developerId": "dev-82",
+    "developerName": "Aspect",
+    "commissionPercent": 3.50,
+    "projects": "Jade and Blue"
+  },
+  {
+    "developerId": "dev-83",
+    "developerName": "Amer Group",
+    "commissionPercent": 2.75,
+    "projects": "Celebration & Porto / Central Capital"
+  },
+  {
+    "developerId": "dev-84",
+    "developerName": "Salam Properties",
+    "commissionPercent": 3.75,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-85",
+    "developerName": "Dar El Alamia",
+    "commissionPercent": 4.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-86",
+    "developerName": "Concrete Developments",
+    "commissionPercent": 5.25,
+    "projects": "New Cairo / New Capital"
+  },
+  {
+    "developerId": "dev-87",
+    "developerName": "Mercon Developments",
+    "commissionPercent": 0.00,
+    "projects": "Riverton"
+  },
+  {
+    "developerId": "dev-88",
+    "developerName": "Redcon Properties",
+    "commissionPercent": 3.25,
+    "projects": "Golden Gate"
+  },
+  {
+    "developerId": "dev-89",
+    "developerName": "Pyramids",
+    "commissionPercent": 3.75,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-90",
+    "developerName": "Wujha Development - Oman",
+    "commissionPercent": 5.00,
+    "projects": ""
+  },
+  {
+    "developerId": "dev-91",
+    "developerName": "Kleek Developments",
+    "commissionPercent": 5.50,
+    "projects": "NoLL New Cairo"
+  },
+  {
+    "developerId": "dev-92",
+    "developerName": "Khaled Sabry Developments",
+    "commissionPercent": 3.75,
+    "projects": ""
+  }
+]

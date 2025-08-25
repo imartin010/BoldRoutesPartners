@@ -1,0 +1,44 @@
+[
+  {
+    "id": "inv-1",
+    "projectName": "Palm Hills October",
+    "area": "6th of October",
+    "developerName": "Palm Hills Developments",
+    "devSalesPhone": "+201234567890"
+  },
+  {
+    "id": "inv-2",
+    "projectName": "Cairo Gate",
+    "area": "Sheikh Zayed", 
+    "developerName": "Emaar Misr",
+    "devSalesPhone": "+201098765432"
+  },
+  {
+    "id": "inv-3",
+    "projectName": "Eastown Residence",
+    "area": "New Cairo",
+    "developerName": "Sodic",
+    "devSalesPhone": "+201555444333"
+  },
+  {
+    "id": "inv-4",
+    "projectName": "Swan Lake Residences", 
+    "area": "New Administrative Capital",
+    "developerName": "Hassan Allam Properties",
+    "devSalesPhone": "+201222333444"
+  },
+  {
+    "id": "inv-5",
+    "projectName": "Monorail City",
+    "area": "New Administrative Capital",
+    "developerName": "Capital Group Properties", 
+    "devSalesPhone": "+201777888999"
+  },
+  {
+    "id": "inv-6",
+    "projectName": "Downtown Business District",
+    "area": "New Administrative Capital",
+    "developerName": "Cityscape",
+    "devSalesPhone": "+201666555444"
+  }
+]
