@@ -20,8 +20,28 @@ export async function getLaunches() {
 export async function submitApplication(payload: {
   full_name: string; phone: string; company_name: string; agents_count: number; has_papers: boolean;
 }) {
-  const { error } = await supabase.from("partner_applications").insert(payload);
+  const { data, error } = await supabase.from("partner_applications").insert(payload).select().single();
   if (error) throw error;
+  
+  // Send email notification as backup (in case database trigger fails)
+  try {
+    const { error: emailError } = await supabase.functions.invoke('send-notification-email', {
+      body: {
+        type: 'application',
+        data: data,
+        submitted_at: new Date().toISOString()
+      }
+    });
+    
+    if (emailError) {
+      console.warn('Email notification failed:', emailError);
+      // Don't throw error - form submission should still succeed
+    }
+  } catch (emailError) {
+    console.warn('Email notification request failed:', emailError);
+    // Don't throw error - form submission should still succeed
+  }
+  
   return true;
 }
 
@@ -37,7 +57,7 @@ export async function submitClosedDeal(payload: {
   dev_sales_name: string; dev_phone: string; deal_value: number; attachmentPaths: string[];
 }) {
   const attachments = payload.attachmentPaths.map((p) => ({ path: p }));
-  const { error } = await supabase.from("closed_deals").insert({
+  const dealData = {
     developer_name: payload.developer_name,
     project_name: payload.project_name,
     client_name: payload.client_name,
@@ -46,7 +66,29 @@ export async function submitClosedDeal(payload: {
     dev_phone: payload.dev_phone,
     deal_value: payload.deal_value,
     attachments,
-  });
+  };
+  
+  const { data, error } = await supabase.from("closed_deals").insert(dealData).select().single();
   if (error) throw error;
+  
+  // Send email notification as backup (in case database trigger fails)
+  try {
+    const { error: emailError } = await supabase.functions.invoke('send-notification-email', {
+      body: {
+        type: 'deal',
+        data: data,
+        submitted_at: new Date().toISOString()
+      }
+    });
+    
+    if (emailError) {
+      console.warn('Email notification failed:', emailError);
+      // Don't throw error - form submission should still succeed
+    }
+  } catch (emailError) {
+    console.warn('Email notification request failed:', emailError);
+    // Don't throw error - form submission should still succeed
+  }
+  
   return true;
 }
