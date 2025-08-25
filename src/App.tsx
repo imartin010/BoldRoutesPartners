@@ -36,7 +36,7 @@ const Settings = lazy(() => import('./pages/Settings'));
 const LanguageSelection = lazy(() => import('./pages/LanguageSelection'));
 const MyCompany = lazy(() => import('./pages/MyCompany'));
 const Profile = lazy(() => import('./pages/Profile'));
-const Admin = lazy(() => import('./pages/Admin'));
+const Admin = lazy(() => import('./pages/AdminEnhanced'));
 
 function AppContent() {
   const { loadFromLocalStorage } = useDataStore();

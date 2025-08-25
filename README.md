@@ -45,6 +45,111 @@ This application integrates with Supabase for backend services:
 ### Storage Buckets
 - `deal-attachments` (private bucket for file uploads)
 
+## 🔐 Security & Operations
+
+### Setting Up Admin Access
+
+1. **Create Admin User:**
+   ```sql
+   -- In Supabase SQL Editor
+   INSERT INTO auth.users (email, email_confirmed_at, created_at, updated_at)
+   VALUES ('admin@yourcompany.com', now(), now(), now());
+   
+   -- Get the user ID and create admin profile
+   INSERT INTO profiles (id, role, email, created_at)
+   VALUES ('USER_ID_FROM_ABOVE', 'admin', 'admin@yourcompany.com', now());
+   ```
+
+2. **Test Admin Access:**
+   - Visit `/admin` route
+   - Enter admin email for magic link
+   - Verify admin dashboard access
+
+### Running Database Migrations
+
+```bash
+# Apply security migrations (run in Supabase SQL Editor)
+# 1. Run: supabase/migrations/001_add_timestamps_indexes.sql
+# 2. Run: supabase/migrations/002_setup_rls_policies.sql
+
+# Verify RLS policies
+# Run: tests/security/rls-test.sql
+```
+
+### Security Testing
+
+```bash
+# Run security checklist
+open tests/security/security-checklist.md
+
+# Test file upload limits
+# Test form validation
+# Test admin access controls
+```
+
+### Environment Variables
+
+Required for production:
+```bash
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Optional for enhanced features:
+VITE_CAPTCHA_SITE_KEY=your_recaptcha_site_key
+VITE_SENTRY_DSN=your_sentry_dsn
+```
+
+### Deploying Edge Functions
+
+```bash
+# Install Supabase CLI
+npm install -g supabase
+
+# Deploy phone normalization function
+supabase functions deploy normalize-phone
+
+# Test function
+curl -X POST 'https://YOUR_PROJECT.supabase.co/functions/v1/normalize-phone' \
+  -H 'Authorization: Bearer YOUR_ANON_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{"phone": "01234567890", "country": "EG"}'
+```
+
+### Monitoring & Alerts
+
+1. **Error Tracking:** Set up Sentry or similar service
+2. **Performance:** Monitor Supabase dashboard for query performance
+3. **Storage:** Monitor file upload volumes and storage usage
+4. **Security:** Set up alerts for failed login attempts
+
+### Data Backup & Recovery
+
+1. **Automated Backups:** Configure in Supabase dashboard
+2. **Manual Export:**
+   ```sql
+   -- Export applications
+   COPY (SELECT * FROM partner_applications) TO '/tmp/applications.csv' CSV HEADER;
+   
+   -- Export deals
+   COPY (SELECT * FROM closed_deals) TO '/tmp/deals.csv' CSV HEADER;
+   ```
+
+### Rate Limiting Setup
+
+For production, implement server-side rate limiting:
+
+1. **Configure Supabase Edge Function** with rate limiting
+2. **Add CAPTCHA** to public forms
+3. **Monitor abuse** in Supabase logs
+
+### Key Rotation
+
+Rotate API keys quarterly:
+1. Generate new anon key in Supabase dashboard
+2. Update environment variables
+3. Deploy updated application
+4. Revoke old keys after successful deployment
+
 ## 📋 Features
 
 ### 🏠 Home Page
