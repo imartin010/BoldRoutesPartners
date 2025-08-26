@@ -1,20 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useAuthStore } from '../store/auth';
 import { useSidebar } from '../contexts/SidebarContext';
+import { UserMenu } from './UserMenu';
 import { Home, Rocket, Building, Calculator, FileText, UserPlus, FileCheck, Info, Briefcase, TrendingUp, MoreHorizontal } from 'lucide-react';
 
 export default function Sidebar() {
-  const { user, login, logout } = useAuthStore();
   const { isExpanded, setIsExpanded } = useSidebar();
   const location = useLocation();
-
-  const handleAuthToggle = () => {
-    if (user) {
-      logout();
-    } else {
-      login({ name: 'Demo User' });
-    }
-  };
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -31,10 +22,10 @@ export default function Sidebar() {
     { path: '/more', label: 'More', icon: MoreHorizontal },
   ];
 
-  // Add conditional navigation items based on auth state
+  // Navigation items - no conditional items since all users are authenticated
   const navLinks = [
     ...baseNavLinks,
-    ...(user ? [] : [{ path: '/apply', label: 'Apply', icon: UserPlus }]),
+    { path: '/apply', label: 'Apply', icon: UserPlus },
     { path: '/about', label: 'About', icon: Info },
   ];
 
@@ -101,31 +92,9 @@ export default function Sidebar() {
           })}
         </nav>
 
-        {/* Auth Section */}
+        {/* User Section */}
         <div className={`pb-4 border-t border-brand-border pt-4 transition-all duration-300 ${isExpanded ? 'px-4' : 'px-2'}`}>
-          {user && (
-            <div className={`mb-3 px-3 py-2 text-sm text-brand-fg opacity-60 transition-all duration-300 whitespace-nowrap overflow-hidden ${
-              isExpanded ? 'opacity-100' : 'opacity-0'
-            }`}>
-              Welcome, {user.name}
-            </div>
-          )}
-          <button
-            onClick={handleAuthToggle}
-            className={`w-full text-left px-3 py-3 text-sm font-medium rounded-lg transition-all duration-200 flex items-center min-h-[44px] ${
-              user
-                ? 'text-brand-fg opacity-60 hover:opacity-100 hover:bg-brand-overlay'
-                : 'bg-brand-fg text-brand-bg hover:opacity-90'
-            }`}
-            title={!isExpanded ? (user ? 'Logout' : 'Login') : undefined}
-            aria-label={user ? 'Sign out' : 'Sign in'}
-          >
-            <span className={`transition-all duration-300 whitespace-nowrap overflow-hidden ${
-              isExpanded ? 'opacity-100' : 'opacity-0'
-            }`}>
-              {user ? 'Logout' : 'Login'}
-            </span>
-          </button>
+          <UserMenu />
         </div>
       </div>
     </aside>

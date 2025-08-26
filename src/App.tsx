@@ -11,6 +11,8 @@ import NotificationPopup from './components/NotificationPopup';
 import ToastContainer from './components/ToastContainer';
 import ScrollToTop from './components/ScrollToTop';
 import LoadingSpinner from './components/LoadingSpinner';
+import { RequireAuth, RequireGuest } from './components/AuthGuard';
+import AuthLanding from './pages/AuthLanding';
 
 // Critical pages loaded immediately
 import Home from './pages/Home';
@@ -25,8 +27,7 @@ const Apply = lazy(() => import('./pages/Apply'));
 
 const About = lazy(() => import('./pages/About'));
 const Notifications = lazy(() => import('./pages/Notifications'));
-const SignUp = lazy(() => import('./pages/SignUp'));
-const SignIn = lazy(() => import('./pages/SignIn'));
+// Removed unused SignUp and SignIn imports - now using AuthLanding for both
 const Deals = lazy(() => import('./pages/Deals'));
 const CreateDeal = lazy(() => import('./pages/CreateDeal'));
 const DealDetail = lazy(() => import('./pages/DealDetail'));
@@ -56,14 +57,35 @@ function AppContent() {
               <ScrollToTop />
               <Suspense fallback={<LoadingSpinner />}>
                 <Routes>
-                  <Route path="/" element={<Layout />}>
+                  {/* Public authentication routes - only accessible when NOT logged in */}
+                  <Route path="/signin" element={
+                    <RequireGuest>
+                      <AuthLanding />
+                    </RequireGuest>
+                  } />
+                  <Route path="/signup" element={
+                    <RequireGuest>
+                      <AuthLanding />
+                    </RequireGuest>
+                  } />
+                  <Route path="/auth" element={
+                    <RequireGuest>
+                      <AuthLanding />
+                    </RequireGuest>
+                  } />
+
+                  {/* Protected application routes - only accessible when logged in */}
+                  <Route path="/" element={
+                    <RequireAuth>
+                      <Layout />
+                    </RequireAuth>
+                  }>
                     <Route index element={<Home />} />
                     <Route path="inventory" element={<Inventory />} />
                     <Route path="launches" element={<Launches />} />
                     <Route path="commissions" element={<Commissions />} />
                     <Route path="close-deal" element={<CloseDeal />} />
                     <Route path="apply" element={<Apply />} />
-
                     <Route path="about" element={<About />} />
                     <Route path="notifications" element={<Notifications />} />
                     <Route path="deals" element={<Deals />} />
@@ -74,12 +96,35 @@ function AppContent() {
                     <Route path="my-company" element={<MyCompany />} />
                     <Route path="profile" element={<Profile />} />
                   </Route>
-                  <Route path="deals/create" element={<CreateDeal />} />
-                  <Route path="deals/:id" element={<DealDetail />} />
-                  <Route path="deals/:id/edit" element={<EditDeal />} />
-                  <Route path="signup" element={<SignUp />} />
-                  <Route path="signin" element={<SignIn />} />
-                  <Route path="admin" element={<Admin />} />
+                  
+                  {/* Protected standalone routes */}
+                  <Route path="deals/create" element={
+                    <RequireAuth>
+                      <CreateDeal />
+                    </RequireAuth>
+                  } />
+                  <Route path="deals/:id" element={
+                    <RequireAuth>
+                      <DealDetail />
+                    </RequireAuth>
+                  } />
+                  <Route path="deals/:id/edit" element={
+                    <RequireAuth>
+                      <EditDeal />
+                    </RequireAuth>
+                  } />
+                  <Route path="admin" element={
+                    <RequireAuth>
+                      <Admin />
+                    </RequireAuth>
+                  } />
+
+                  {/* Fallback route - redirect to auth if not authenticated, home if authenticated */}
+                  <Route path="*" element={
+                    <RequireAuth>
+                      <Home />
+                    </RequireAuth>
+                  } />
                 </Routes>
               </Suspense>
             <NotificationPopup />
