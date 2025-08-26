@@ -180,14 +180,9 @@ export async function getActiveProperties(
       query = query.lt('ready_by', `${filters.ready_by_year + 1}-01-01`);
     }
     
-    if (filters.search) {
-      query = query.or(`
-        compound->>name.ilike.%${filters.search}%,
-        area->>name.ilike.%${filters.search}%,
-        developer->>name.ilike.%${filters.search}%,
-        unit_id.ilike.%${filters.search}%,
-        unit_number.ilike.%${filters.search}%
-      `);
+    if (filters.search && filters.search.trim()) {
+      const searchTerm = filters.search.trim();
+      query = query.or(`compound->>name.ilike.%${searchTerm}%,area->>name.ilike.%${searchTerm}%,developer->>name.ilike.%${searchTerm}%,unit_id.ilike.%${searchTerm}%,unit_number.ilike.%${searchTerm}%`);
     }
 
     // Add pagination
@@ -200,16 +195,18 @@ export async function getActiveProperties(
     const { data, error, count } = await query;
 
     console.log('Query result:', { data: data?.length || 0, error, count });
-
+    
     if (error) {
-      console.error('Supabase error:', error);
-      return { 
-        properties: [], 
-        totalCount: 0, 
-        totalPages: 0, 
-        error 
+      console.error('Database query error:', error);
+      return {
+        properties: [],
+        totalCount: 0,
+        totalPages: 0,
+        error: error.message || 'Database query failed'
       };
     }
+
+
 
     const totalPages = count ? Math.ceil(count / pageSize) : 0;
 
