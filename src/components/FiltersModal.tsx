@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { PropertyFilter } from '../lib/supabaseQueries';
 
@@ -15,7 +15,8 @@ interface FiltersModalProps {
     bedroomOptions: number[];
     bathroomOptions: number[];
     finishingOptions: string[];
-    readyByYearOptions: number[];
+    readyByYearOptions: string[];
+    developerCompounds: { [developer: string]: string[] };
   };
   onApplyFilters: () => void;
   onClearAll: () => void;
@@ -32,13 +33,37 @@ export default function FiltersModal({
 }: FiltersModalProps) {
   const [localFilters, setLocalFilters] = useState<PropertyFilter>(filters);
 
+  // Update local filters when props.filters change
+  useEffect(() => {
+    setLocalFilters(filters);
+  }, [filters]);
+
   if (!isOpen) return null;
 
   const handleFilterChange = (key: keyof PropertyFilter, value: any) => {
-    setLocalFilters(prev => ({
-      ...prev,
-      [key]: value || undefined
-    }));
+    setLocalFilters(prev => {
+      const newFilters = {
+        ...prev,
+        [key]: value || undefined
+      };
+
+      // If developer changes, clear compound if it doesn't belong to the new developer
+      if (key === 'developer') {
+        const newDeveloper = value;
+        const currentCompound = prev.compound;
+        
+        if (currentCompound && newDeveloper) {
+          const developerCompounds = filterOptions.developerCompounds[newDeveloper] || [];
+          if (!developerCompounds.includes(currentCompound)) {
+            newFilters.compound = undefined;
+          }
+        } else if (!newDeveloper) {
+          // If developer is cleared, keep compound as is (show all compounds)
+        }
+      }
+
+      return newFilters;
+    });
   };
 
   const handleApply = () => {
@@ -68,7 +93,7 @@ export default function FiltersModal({
   const bathroomOptions = [1, 2, 3, 4, 5, 6];
   const floorOptions = [1, 2, 3, 4, 5, 6];
 
-  const deliveryYears = ['Ready', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034'];
+  const deliveryYears = ['Ready', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'];
 
   const finishingTypes = [
     { key: 'not_finished', label: 'Not Finished' },
@@ -99,40 +124,88 @@ export default function FiltersModal({
               className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
               <option value="">Any developers</option>
-              {filterOptions.developers.map(developer => (
-                <option key={developer} value={developer}>{developer}</option>
-              ))}
+              {filterOptions.developers && filterOptions.developers.length > 0 ? (
+                filterOptions.developers.map(developer => (
+                  <option key={developer} value={developer}>{developer}</option>
+                ))
+              ) : (
+                <option value="" disabled>Loading developers...</option>
+              )}
             </select>
           </div>
 
-          {/* Compound */}
+          {/* Compound/Project */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Compound</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Project
+              {localFilters.developer && (
+                <span className="text-xs text-gray-500 ml-1">
+                  (showing projects by {localFilters.developer})
+                </span>
+              )}
+            </label>
             <select
               value={localFilters.compound || ''}
               onChange={(e) => handleFilterChange('compound', e.target.value)}
               className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
-              <option value="">Any compounds</option>
-              {filterOptions.compounds.map(compound => (
-                <option key={compound} value={compound}>{compound}</option>
-              ))}
+              <option value="">
+                {localFilters.developer 
+                  ? `Any ${localFilters.developer} projects` 
+                  : 'Any projects'
+                }
+              </option>
+              {filterOptions.compounds && filterOptions.compounds.length > 0 ? (
+                (localFilters.developer 
+                  ? filterOptions.developerCompounds[localFilters.developer] || []
+                  : filterOptions.compounds
+                ).map(compound => (
+                  <option key={compound} value={compound}>{compound}</option>
+                ))
+              ) : (
+                <option value="" disabled>Loading projects...</option>
+              )}
             </select>
           </div>
 
           {/* Location */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
-            <select
-              value={localFilters.area || ''}
-              onChange={(e) => handleFilterChange('area', e.target.value)}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-            >
-              <option value="">Any areas</option>
-              {filterOptions.areas.map(area => (
-                <option key={area} value={area}>{area}</option>
-              ))}
-            </select>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Location (Multi-select)</label>
+            <div className="max-h-48 overflow-y-auto border border-gray-300 rounded-md p-2">
+              {filterOptions.areas && filterOptions.areas.length > 0 ? (
+                filterOptions.areas.map(area => (
+                  <label key={area} className="flex items-center space-x-2 py-1 hover:bg-gray-50 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={(localFilters.areas || []).includes(area)}
+                      onChange={(e) => {
+                        const currentAreas = localFilters.areas || [];
+                        if (e.target.checked) {
+                          handleFilterChange('areas', [...currentAreas, area]);
+                        } else {
+                          handleFilterChange('areas', currentAreas.filter(a => a !== area));
+                        }
+                      }}
+                      className="rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+                    />
+                    <span className="text-sm">{area}</span>
+                  </label>
+                ))
+              ) : (
+                <div className="text-sm text-gray-500 py-2">Loading locations...</div>
+              )}
+            </div>
+            {localFilters.areas && localFilters.areas.length > 0 && (
+              <div className="mt-2">
+                <span className="text-xs text-gray-500">Selected: {localFilters.areas.length} area(s)</span>
+                <button
+                  onClick={() => handleFilterChange('areas', [])}
+                  className="ml-2 text-xs text-red-600 hover:text-red-800"
+                >
+                  Clear all
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Price Range */}
@@ -213,13 +286,59 @@ export default function FiltersModal({
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Unit Type</label>
             <div className="space-y-4">
+              {/* Category Buttons */}
+              <div>
+                <label className="block text-xs text-gray-500 mb-2">Category</label>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <button
+                    onClick={() => {
+                      if (localFilters.property_category === 'residential') {
+                        handleFilterChange('property_category', '');
+                        handleFilterChange('property_type', '');
+                      } else {
+                        handleFilterChange('property_category', 'residential');
+                        handleFilterChange('property_type', '');
+                      }
+                    }}
+                    className={`px-4 py-2 border rounded text-sm font-medium ${
+                      localFilters.property_category === 'residential'
+                        ? 'bg-blue-100 border-blue-300 text-blue-800' 
+                        : 'border-gray-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    All Residential
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (localFilters.property_category === 'commercial') {
+                        handleFilterChange('property_category', '');
+                        handleFilterChange('property_type', '');
+                      } else {
+                        handleFilterChange('property_category', 'commercial');
+                        handleFilterChange('property_type', '');
+                      }
+                    }}
+                    className={`px-4 py-2 border rounded text-sm font-medium ${
+                      localFilters.property_category === 'commercial'
+                        ? 'bg-green-100 border-green-300 text-green-800' 
+                        : 'border-gray-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    All Commercial
+                  </button>
+                </div>
+              </div>
+
               <div>
                 <label className="block text-xs text-gray-500 mb-2">Residential</label>
                 <div className="flex flex-wrap gap-2">
                   {propertyTypeButtons.map(type => (
                     <button
                       key={type}
-                      onClick={() => handleFilterChange('property_type', localFilters.property_type === type ? '' : type)}
+                      onClick={() => {
+                        handleFilterChange('property_category', '');
+                        handleFilterChange('property_type', localFilters.property_type === type ? '' : type);
+                      }}
                       className={`px-3 py-1 border rounded text-sm ${
                         localFilters.property_type === type 
                           ? 'bg-orange-100 border-orange-300 text-orange-800' 
@@ -237,7 +356,10 @@ export default function FiltersModal({
                   {commercialTypes.map(type => (
                     <button
                       key={type}
-                      onClick={() => handleFilterChange('property_type', localFilters.property_type === type ? '' : type)}
+                      onClick={() => {
+                        handleFilterChange('property_category', '');
+                        handleFilterChange('property_type', localFilters.property_type === type ? '' : type);
+                      }}
                       className={`px-3 py-1 border rounded text-sm ${
                         localFilters.property_type === type 
                           ? 'bg-orange-100 border-orange-300 text-orange-800' 
@@ -339,18 +461,18 @@ export default function FiltersModal({
             <label className="block text-sm font-medium text-gray-700 mb-2">Delivery</label>
             <div className="flex flex-wrap gap-2">
               {deliveryYears.map(year => (
-                <button
-                  key={year}
-                  onClick={() => handleFilterChange('ready_by_year', localFilters.ready_by_year === (year === 'Ready' ? 2024 : Number(year)) ? undefined : (year === 'Ready' ? 2024 : Number(year)))}
-                  className={`px-3 py-1 border rounded text-sm ${
-                    localFilters.ready_by_year === (year === 'Ready' ? 2024 : Number(year))
-                      ? 'bg-orange-100 border-orange-300 text-orange-800' 
-                      : 'border-gray-300 hover:bg-gray-50'
-                  }`}
-                >
-                  {year}
-                </button>
-              ))}
+              <button
+                key={year}
+                onClick={() => handleFilterChange('ready_by_year', localFilters.ready_by_year === year ? '' : year)}
+                className={`px-3 py-1 border rounded text-sm ${
+                  localFilters.ready_by_year === year 
+                    ? 'bg-orange-100 border-orange-300 text-orange-800' 
+                    : 'border-gray-300 hover:bg-gray-50'
+                }`}
+              >
+                {year}
+              </button>
+            ))}
             </div>
           </div>
 
