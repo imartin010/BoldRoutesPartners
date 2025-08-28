@@ -400,17 +400,66 @@ export async function getActiveProperties(
     // Order by id descending to get newest first, then we'll sort client-side
     query = query.order('id', { ascending: false });
 
-    const { data, error, count } = await query;
-    
-    // Also get the actual total count from the database to verify
-    const { count: actualCount } = await supabase
+    // Supabase has a default limit of 1000 rows, so we need to fetch in chunks
+    // First, get the total count
+    const { count: totalCount } = await supabase
       .from('brdata_properties')
       .select('*', { count: 'exact', head: true });
+
+    console.log('Total properties in database:', totalCount);
+
+    // If we have more than 1000 properties, we need to fetch in chunks
+    let allData: any[] = [];
+    if (totalCount && totalCount > 1000) {
+      console.log('Fetching properties in chunks due to large dataset...');
+      
+      const chunkSize = 1000;
+      const totalChunks = Math.ceil(totalCount / chunkSize);
+      
+      for (let chunk = 0; chunk < totalChunks; chunk++) {
+        const from = chunk * chunkSize;
+        const to = Math.min(from + chunkSize - 1, totalCount - 1);
+        
+        console.log(`Fetching chunk ${chunk + 1}/${totalChunks}: rows ${from}-${to}`);
+        
+        const { data: chunkData, error: chunkError } = await supabase
+          .from('brdata_properties')
+          .select(`
+             id, unit_id, unit_number, unit_area,
+            number_of_bedrooms, number_of_bathrooms, price_per_meter, price_in_egp,
+            currency, finishing, is_launch, image,
+            compound, area, developer, property_type,
+             payment_plans, ready_by
+          `)
+          .order('id', { ascending: false })
+          .range(from, to);
+        
+        if (chunkError) {
+          console.error(`Error fetching chunk ${chunk + 1}:`, chunkError);
+          break;
+        }
+        
+        if (chunkData) {
+          allData = allData.concat(chunkData);
+          console.log(`Chunk ${chunk + 1} fetched: ${chunkData.length} properties`);
+        }
+      }
+      
+      console.log(`Total properties fetched in chunks: ${allData.length}`);
+    } else {
+      // For smaller datasets, fetch normally
+      const { data: normalData, error: normalError } = await query;
+      if (normalError) {
+        throw normalError;
+      }
+      allData = normalData || [];
+    }
+
+    const { data, error, count } = { data: allData, error: null, count: totalCount };
     
     console.log('=== DATABASE COUNT VERIFICATION ===');
-    console.log('Query count:', count);
-    console.log('Actual database count:', actualCount);
-    console.log('Count difference:', (actualCount || 0) - (count || 0));
+    console.log('Total count from database:', count);
+    console.log('Data fetched:', data?.length || 0);
 
     console.log('Query result:', { data: data?.length || 0, error, count });
     console.log('=== COUNT DEBUG ===');
@@ -748,6 +797,7 @@ export async function getActiveProperties(
     console.log('Filtered count:', clientTotalCount);
     console.log('Count difference:', totalCount - clientTotalCount);
     console.log('Expected total properties: ~23,000');
+    console.log('Total pages available:', Math.ceil(totalCount / pageSize));
     
     // Apply pagination to filtered results
     const start = (page - 1) * pageSize;
