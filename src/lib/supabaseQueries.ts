@@ -402,23 +402,23 @@ export async function getActiveProperties(
 
     // Supabase has a default limit of 1000 rows, so we need to fetch in chunks
     // First, get the total count
-    const { count: totalCount } = await supabase
+    const { count: databaseTotalCount } = await supabase
       .from('brdata_properties')
       .select('*', { count: 'exact', head: true });
 
-    console.log('Total properties in database:', totalCount);
+    console.log('Total properties in database:', databaseTotalCount);
 
     // If we have more than 1000 properties, we need to fetch in chunks
     let allData: any[] = [];
-    if (totalCount && totalCount > 1000) {
+    if (databaseTotalCount && databaseTotalCount > 1000) {
       console.log('Fetching properties in chunks due to large dataset...');
       
       const chunkSize = 1000;
-      const totalChunks = Math.ceil(totalCount / chunkSize);
+      const totalChunks = Math.ceil(databaseTotalCount / chunkSize);
       
       for (let chunk = 0; chunk < totalChunks; chunk++) {
         const from = chunk * chunkSize;
-        const to = Math.min(from + chunkSize - 1, totalCount - 1);
+        const to = Math.min(from + chunkSize - 1, databaseTotalCount - 1);
         
         console.log(`Fetching chunk ${chunk + 1}/${totalChunks}: rows ${from}-${to}`);
         
@@ -455,7 +455,7 @@ export async function getActiveProperties(
       allData = normalData || [];
     }
 
-    const { data, error, count } = { data: allData, error: null, count: totalCount };
+    const { data, error, count } = { data: allData, error: null, count: databaseTotalCount };
     
     console.log('=== DATABASE COUNT VERIFICATION ===');
     console.log('Total count from database:', count);
@@ -476,7 +476,7 @@ export async function getActiveProperties(
         properties: [],
         totalCount: 0,
         totalPages: 0,
-        error: error.message || 'Database query failed'
+        error: (error as any)?.message || 'Database query failed'
       };
     }
 
@@ -875,7 +875,7 @@ export async function getFilterOptions() {
     allProperties?.forEach((prop, index) => {
       // Debug first few records
       if (index < 5) {
-        console.log(`=== SAMPLE RECORD ${index + 1} (ID: ${prop.id}) ===`);
+        console.log(`=== SAMPLE RECORD ${index + 1} ===`);
         console.log('Raw compound:', typeof prop.compound, prop.compound);
         console.log('Raw developer:', typeof prop.developer, prop.developer);
         console.log('Raw area:', typeof prop.area, prop.area);
