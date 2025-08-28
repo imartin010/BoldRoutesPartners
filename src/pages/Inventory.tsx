@@ -52,13 +52,17 @@ import { useState, useEffect } from 'react';
     useEffect(() => {
       const timeoutId = setTimeout(() => {
         if (searchTerm !== (filters.search || '')) {
+          console.log('=== SEARCH TRIGGERED ===');
+          console.log('Search term:', searchTerm);
+          console.log('Previous search:', filters.search);
+          
           setFilters(prev => ({
             ...prev,
             search: searchTerm || undefined
           }));
           setCurrentPage(1);
         }
-      }, 500);
+      }, 300); // Reduced from 500ms to 300ms for better responsiveness
 
       return () => clearTimeout(timeoutId);
     }, [searchTerm]);
@@ -278,14 +282,23 @@ import { useState, useEffect } from 'react';
         <div className="mb-6">
           <div className="flex flex-wrap items-center gap-3 p-4 bg-white rounded-lg border">
             {/* Search Input */}
-            <div className="flex-1 min-w-[200px]">
+            <div className="flex-1 min-w-[200px] relative">
               <input
                 type="text"
                 placeholder="Project, Location, Unit ID"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 pr-8"
               />
+              {searchTerm && (
+                <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                  {loading ? (
+                    <div className="w-4 h-4 border-2 border-teal-500 border-t-transparent rounded-full animate-spin"></div>
+                  ) : (
+                    <div className="w-4 h-4 text-teal-500">🔍</div>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Types Filter */}
@@ -510,12 +523,23 @@ import { useState, useEffect } from 'react';
             </table>
           </div>
 
+          {/* Search Status */}
+          {filters.search && (
+            <div className="px-6 py-3 border-t border-gray-200 bg-blue-50">
+              <div className="text-sm text-blue-700">
+                🔍 Searching for: <span className="font-semibold">"{filters.search}"</span>
+                {loading && <span className="ml-2">(Searching...)</span>}
+              </div>
+            </div>
+          )}
+
           {/* Pagination */}
           {totalPages > 1 && (
             <div className="px-6 py-4 border-t border-gray-200">
               <div className="flex items-center justify-between">
                 <div className="text-sm text-gray-700">
                   Showing {((currentPage - 1) * pageSize) + 1} to {Math.min(currentPage * pageSize, totalCount)} of {totalCount.toLocaleString()} PRIMARY properties
+                  {filters.search && <span className="text-blue-600"> (filtered results)</span>}
                 </div>
                 <div className="flex space-x-2">
                   <button
