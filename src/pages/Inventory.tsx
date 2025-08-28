@@ -38,11 +38,10 @@ import { useState, useEffect } from 'react';
       finishing: ''
     });
 
-      // Load filter options on component mount
-  useEffect(() => {
-    console.log("=== INVENTORY PAGE LOADED - LOADING FILTER OPTIONS ===");
-    loadFilterOptions();
-  }, []);
+    // Load filter options on component mount
+    useEffect(() => {
+      loadFilterOptions();
+    }, []);
 
     // Load properties when filters or page changes
     useEffect(() => {

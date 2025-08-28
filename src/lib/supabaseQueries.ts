@@ -18,8 +18,8 @@ export interface Property {
   area?: { id: number; name: string };
   developer?: { id: number; name: string; phone?: string };
   property_type?: { id: number; name: string };
-     // Payment fields
-   payment_plans?: any[];
+  // Payment fields
+  payment_plans?: any[];
    paymentData?: {
      downPayment: number | null;
      monthlyPayment: number | null;
@@ -42,8 +42,8 @@ export interface PropertyFilter {
   max_area?: number;
   min_price?: number;
   max_price?: number;
-     finishing?: string;
-   search?: string;
+  finishing?: string;
+  search?: string;
    ready_by_year?: string;
 }
 
@@ -324,15 +324,15 @@ export async function getActiveProperties(
     console.log('=== FUNCTION STARTED ===');
     console.log('Fetching properties with filters:', filters);
     
-         let query = supabase
+    let query = supabase
        .from('brdata_properties')
-       .select(`
+      .select(`
          id, unit_id, unit_number, unit_area,
-         number_of_bedrooms, number_of_bathrooms, price_per_meter, price_in_egp,
-         currency, finishing, is_launch, image,
-         compound, area, developer, property_type,
+        number_of_bedrooms, number_of_bathrooms, price_per_meter, price_in_egp,
+        currency, finishing, is_launch, image,
+        compound, area, developer, property_type,
          payment_plans, ready_by
-       `, { count: 'exact' });
+      `, { count: 'exact' });
 
     // Apply numeric filters (these work server-side)
     if (filters.bedrooms) {
@@ -359,11 +359,11 @@ export async function getActiveProperties(
       query = query.lte('price_in_egp', filters.max_price);
     }
     
-         if (filters.finishing) {
-       query = query.ilike('finishing', `%${filters.finishing}%`);
-     }
-     
-     if (filters.ready_by_year) {
+    if (filters.finishing) {
+      query = query.ilike('finishing', `%${filters.finishing}%`);
+    }
+    
+    if (filters.ready_by_year) {
        // Filter by year - ready_by is a timestamp column
        if (filters.ready_by_year === 'Ready') {
          // For "Ready" properties, we'll handle this in client-side filtering
@@ -970,7 +970,7 @@ export async function getFilterOptions() {
     console.log('Areas:', areas);
     console.log('Property Types:', propertyTypes);
     console.log('Developer Compounds:', developerCompounds);
-    
+
     return {
       compounds,
       areas,
@@ -985,17 +985,17 @@ export async function getFilterOptions() {
     };
   } catch (err) {
     console.error('Filter options error:', err);
-         return {
-       compounds: [],
-       areas: [],
-       developers: [],
-       propertyTypes: [],
-       bedroomOptions: [],
-       bathroomOptions: [],
-       finishingOptions: [],
-       readyByYearOptions: [],
+    return {
+      compounds: [],
+      areas: [],
+      developers: [],
+      propertyTypes: [],
+      bedroomOptions: [],
+      bathroomOptions: [],
+      finishingOptions: [],
+      readyByYearOptions: [],
        developerCompounds: {},
-       error: err
-     };
+      error: err
+    };
   }
 }
