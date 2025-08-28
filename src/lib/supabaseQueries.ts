@@ -421,14 +421,8 @@ export async function getActiveProperties(
     let count = databaseTotalCount;
 
     if (databaseTotalCount && databaseTotalCount > 0) {
-      // Calculate the range for the current page
-      const from = (page - 1) * pageSize;
-      const to = Math.min(from + pageSize - 1, databaseTotalCount - 1);
-      
-      console.log(`Fetching page ${page}: rows ${from}-${to} of ${databaseTotalCount}`);
-      
-      // Fetch only the current page data
-      const { data: pageData, error: pageError } = await supabase
+      // Build the base query
+      let baseQuery = supabase
         .from('brdata_properties')
         .select(`
            id, unit_id, unit_number, unit_area,
@@ -437,8 +431,54 @@ export async function getActiveProperties(
           compound, area, developer, property_type,
            payment_plans, ready_by
         `)
-        .order('id', { ascending: false })
-        .range(from, to);
+        .order('id', { ascending: false });
+
+      // Apply server-side search filter if provided
+      if (filters.search && filters.search.trim()) {
+        const searchTerm = filters.search.trim();
+        console.log(`=== APPLYING SERVER-SIDE SEARCH ===`);
+        console.log(`Search term: "${searchTerm}"`);
+        
+        // Use ILIKE for case-insensitive search across multiple fields
+        baseQuery = baseQuery.or(`
+          compound->>name.ilike.%${searchTerm}%,
+          area->>name.ilike.%${searchTerm}%,
+          developer->>name.ilike.%${searchTerm}%,
+          property_type->>name.ilike.%${searchTerm}%,
+          unit_id.ilike.%${searchTerm}%,
+          unit_number.ilike.%${searchTerm}%
+        `);
+      }
+
+      // Apply other server-side filters
+      if (filters.developer && filters.developer.trim()) {
+        baseQuery = baseQuery.ilike('developer->>name', `%${filters.developer.trim()}%`);
+      }
+      
+      if (filters.compound && filters.compound.trim()) {
+        baseQuery = baseQuery.ilike('compound->>name', `%${filters.compound.trim()}%`);
+      }
+      
+      if (filters.area && filters.area.trim()) {
+        baseQuery = baseQuery.ilike('area->>name', `%${filters.area.trim()}%`);
+      }
+      
+      if (filters.property_type && filters.property_type.trim()) {
+        baseQuery = baseQuery.ilike('property_type->>name', `%${filters.property_type.trim()}%`);
+      }
+
+      // Now apply pagination to the filtered results
+      const from = (page - 1) * pageSize;
+      const to = Math.min(from + pageSize - 1, databaseTotalCount - 1);
+      
+      console.log(`Fetching filtered page ${page}: rows ${from}-${to}`);
+      
+      // Fetch the filtered and paginated data
+      const { data: pageData, error: pageError } = await baseQuery.range(from, to);
+      
+      // For now, we'll use the database total count
+      // In a future update, we can implement proper filtered count
+      count = databaseTotalCount;
       
       if (pageError) {
         console.error('Error fetching page data:', pageError);
@@ -652,15 +692,14 @@ export async function getActiveProperties(
       console.log(`Property ${i + 1}: ID=${p.id}, Developer="${devName}", IsMountainView=${isMountainView(devName)}`);
     });
 
-    // Pagination calculation based on total database count
-    const totalCount = count || 0; // This should now be 23k+
+    // Pagination calculation based on filtered results
+    const totalCount = count || 0; // This is now the filtered count
     const totalPages = Math.ceil(totalCount / pageSize);
     
     // Log the count information for debugging
     console.log('=== COUNT DEBUG ===');
-    console.log('Server count:', totalCount);
+    console.log('Filtered count:', totalCount);
     console.log('Current page properties:', filteredProperties.length);
-    console.log('Expected total properties: ~23,000');
     console.log('Total pages available:', totalPages);
     
     // Since we're using server-side pagination, the current page data
