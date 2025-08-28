@@ -209,6 +209,11 @@ function parseJsonField(field: any) {
   return null;
 }
 
+// Helper function to get name from any field (alias for extractNameFromField)
+function getName(field: any): string {
+  return extractNameFromField(field) || '';
+}
+
 // Helper function to process property data
 function processPropertyData(rawProperties: any[]): Property[] {
   return rawProperties.map(prop => {
@@ -400,62 +405,49 @@ export async function getActiveProperties(
     // Order by id descending to get newest first, then we'll sort client-side
     query = query.order('id', { ascending: false });
 
-    // Supabase has a default limit of 1000 rows, so we need to fetch in chunks
-    // First, get the total count
+    // Get the total count first
     const { count: databaseTotalCount } = await supabase
       .from('brdata_properties')
       .select('*', { count: 'exact', head: true });
 
     console.log('Total properties in database:', databaseTotalCount);
 
-    // If we have more than 1000 properties, we need to fetch in chunks
-    let allData: any[] = [];
-    if (databaseTotalCount && databaseTotalCount > 1000) {
-      console.log('Fetching properties in chunks due to large dataset...');
-      
-      const chunkSize = 1000;
-      const totalChunks = Math.ceil(databaseTotalCount / chunkSize);
-      
-      for (let chunk = 0; chunk < totalChunks; chunk++) {
-        const from = chunk * chunkSize;
-        const to = Math.min(from + chunkSize - 1, databaseTotalCount - 1);
-        
-        console.log(`Fetching chunk ${chunk + 1}/${totalChunks}: rows ${from}-${to}`);
-        
-        const { data: chunkData, error: chunkError } = await supabase
-          .from('brdata_properties')
-          .select(`
-             id, unit_id, unit_number, unit_area,
-            number_of_bedrooms, number_of_bathrooms, price_per_meter, price_in_egp,
-            currency, finishing, is_launch, image,
-            compound, area, developer, property_type,
-             payment_plans, ready_by
-          `)
-          .order('id', { ascending: false })
-          .range(from, to);
-        
-        if (chunkError) {
-          console.error(`Error fetching chunk ${chunk + 1}:`, chunkError);
-          break;
-        }
-        
-        if (chunkData) {
-          allData = allData.concat(chunkData);
-          console.log(`Chunk ${chunk + 1} fetched: ${chunkData.length} properties`);
-        }
-      }
-      
-      console.log(`Total properties fetched in chunks: ${allData.length}`);
-    } else {
-      // For smaller datasets, fetch normally
-      const { data: normalData, error: normalError } = await query;
-      if (normalError) {
-        throw normalError;
-      }
-      allData = normalData || [];
-    }
+    // Instead of fetching all data at once (which causes timeouts),
+    // we'll use server-side pagination for the current page only
+    // This is much more efficient and avoids timeout issues
+    
+    let data: any[] = [];
+    let error: any = null;
+    let count = databaseTotalCount;
 
-    const { data, error, count } = { data: allData, error: null, count: databaseTotalCount };
+    if (databaseTotalCount && databaseTotalCount > 0) {
+      // Calculate the range for the current page
+      const from = (page - 1) * pageSize;
+      const to = Math.min(from + pageSize - 1, databaseTotalCount - 1);
+      
+      console.log(`Fetching page ${page}: rows ${from}-${to} of ${databaseTotalCount}`);
+      
+      // Fetch only the current page data
+      const { data: pageData, error: pageError } = await supabase
+        .from('brdata_properties')
+        .select(`
+           id, unit_id, unit_number, unit_area,
+          number_of_bedrooms, number_of_bathrooms, price_per_meter, price_in_egp,
+          currency, finishing, is_launch, image,
+          compound, area, developer, property_type,
+           payment_plans, ready_by
+        `)
+        .order('id', { ascending: false })
+        .range(from, to);
+      
+      if (pageError) {
+        console.error('Error fetching page data:', pageError);
+        error = pageError;
+      } else {
+        data = pageData || [];
+        console.log(`Page ${page} fetched: ${data.length} properties`);
+      }
+    }
     
     console.log('=== DATABASE COUNT VERIFICATION ===');
     console.log('Total count from database:', count);
@@ -483,38 +475,31 @@ export async function getActiveProperties(
     // Process the data to parse JSON fields
     const processedProperties = processPropertyData(data || []);
 
-    // Apply client-side text filtering (if any)
-    const toLower = (v: any) => (typeof v === 'string' ? v.toLowerCase() : String(v || '').toLowerCase());
-    const includes = (hay: string, needle: string) => hay.includes(needle.trim().toLowerCase());
-    const getName = (obj: any) => (obj && typeof obj === 'object' ? (obj as any).name : obj);
-
-    // Debug: log filter values and first few processed properties
+    // Since we're now using server-side pagination, we only have the current page data
+    // The filtering will be applied server-side in future iterations
+    // For now, we'll work with the current page data
+    
     console.log('=== FILTER DEBUG ===');
     console.log('Active filters:', filters);
-    console.log('First 3 processed properties:', processedProperties.slice(0, 3).map(p => ({
-      id: p.id,
-      developer: p.developer,
-      compound: p.compound,
-      area: p.area,
-      property_type: p.property_type
-    })));
+    console.log('Current page properties:', processedProperties.length);
     
-    // Debug: show sample of what we're searching through
     if (processedProperties.length > 0) {
-      console.log('=== SEARCH DATA SAMPLE ===');
-      processedProperties.slice(0, 5).forEach((p, i) => {
+      console.log('=== CURRENT PAGE SAMPLE ===');
+      processedProperties.slice(0, 3).forEach((p, i) => {
         console.log(`Sample ${i + 1}:`, {
           id: p.id,
-          compound: getName(p.compound),
-          area: getName(p.area),
-          developer: getName(p.developer),
-          propertyType: getName(p.property_type),
+          compound: p.compound,
+          area: p.area,
+          developer: p.developer,
+          propertyType: p.property_type,
           unitId: p.unit_id,
           unitNumber: p.unit_number
         });
       });
     }
 
+    // For now, we'll use the current page data directly
+    // In a future update, we can implement server-side filtering
     let filteredProperties = processedProperties;
 
     // Apply search FIRST to the full dataset before other filters
@@ -633,126 +618,8 @@ export async function getActiveProperties(
       }
     }
 
-    // Now apply other filters to the search results (if any) or full dataset
-    if (filters.developer) {
-      const devFilter = filters.developer.trim().toLowerCase();
-      console.log(`=== DEVELOPER FILTER DEBUG ===`);
-      console.log(`Developer filter value: "${devFilter}"`);
-      console.log(`Total properties before filter: ${filteredProperties.length}`);
-      
-      const beforeCount = filteredProperties.length;
-      filteredProperties = filteredProperties.filter(p => {
-        const devName = getName(p.developer);
-        const devLower = toLower(devName);
-        const matches = devLower.includes(devFilter);
-        
-        // Debug first few properties
-        if (p.id <= 3) {
-          console.log(`Property ${p.id} developer filter debug:`, {
-            rawDeveloper: p.developer,
-            devName,
-            devLower,
-            devFilter,
-            matches
-          });
-        }
-        
-        return matches;
-      });
-      console.log(`Developer filter: ${beforeCount} -> ${filteredProperties.length} properties`);
-    }
-    
-    if (filters.compound) {
-      const compFilter = filters.compound.trim().toLowerCase();
-      console.log(`=== COMPOUND FILTER DEBUG ===`);
-      console.log(`Compound filter value: "${compFilter}"`);
-      console.log(`Total properties before filter: ${filteredProperties.length}`);
-      
-      const beforeCount = filteredProperties.length;
-      filteredProperties = filteredProperties.filter(p => {
-        const compName = getName(p.compound);
-        const compLower = toLower(compName);
-        const matches = compLower.includes(compFilter);
-        
-        // Debug first few properties
-        if (p.id <= 3) {
-          console.log(`Property ${p.id} compound filter debug:`, {
-            rawCompound: p.compound,
-            compName,
-            compLower,
-            compFilter,
-            matches
-          });
-        }
-        
-        return matches;
-      });
-      console.log(`Compound filter: ${beforeCount} -> ${filteredProperties.length} properties`);
-    }
-    
-    if (filters.area) {
-      const areaFilter = filters.area.trim().toLowerCase();
-      console.log(`Filtering by area: "${areaFilter}"`);
-      const beforeCount = filteredProperties.length;
-      filteredProperties = filteredProperties.filter(p => {
-        const areaName = getName(p.area);
-        const areaLower = toLower(areaName);
-        const matches = areaLower.includes(areaFilter);
-        if (p.id <= 3) { // Debug first few
-          console.log(`Property ${p.id} area: "${areaName}" -> "${areaLower}" matches "${areaFilter}": ${matches}`);
-        }
-        return matches;
-      });
-      console.log(`Area filter: ${beforeCount} -> ${filteredProperties.length} properties`);
-    }
-    
-         if (filters.property_type) {
-       const typeFilter = filters.property_type.trim().toLowerCase();
-       console.log(`Filtering by property_type: "${typeFilter}"`);
-       const beforeCount = filteredProperties.length;
-       filteredProperties = filteredProperties.filter(p => {
-         const typeName = getName(p.property_type);
-         const typeLower = toLower(typeName);
-         const matches = typeLower.includes(typeFilter);
-         if (p.id <= 3) { // Debug first few
-           console.log(`Property ${p.id} property_type: "${typeName}" -> "${typeLower}" matches "${typeFilter}": ${matches}`);
-         }
-         return matches;
-       });
-       console.log(`Property type filter: ${beforeCount} -> ${filteredProperties.length} properties`);
-     }
-     
-     if (filters.ready_by_year) {
-       const readyFilter = filters.ready_by_year.trim();
-       console.log(`Filtering by ready_by_year: "${readyFilter}"`);
-       const beforeCount = filteredProperties.length;
-       const now = new Date(); // Define now variable here
-       filteredProperties = filteredProperties.filter(p => {
-         const readyBy = p.ready_by || '';
-         // ready_by is a timestamp, so we need to extract the year
-         if (readyFilter === 'Ready') {
-           // For "Ready" properties, we'll need to determine what constitutes "Ready"
-           // This could be properties with past dates or a specific flag
-           const readyDate = new Date(readyBy);
-           const matches = readyDate <= now; // Properties with past dates are "Ready"
-           return matches;
-         }
-         
-         // Extract year from timestamp
-         const readyDate = new Date(readyBy);
-         const year = readyDate.getFullYear().toString();
-         const matches = year === readyFilter;
-         if (p.id <= 3) { // Debug first few
-           if (readyFilter === 'Ready') {
-             console.log(`Property ${p.id} ready_by: "${readyBy}" -> date: ${readyDate} -> isReady: ${readyDate <= now} matches "${readyFilter}": ${matches}`);
-           } else {
-             console.log(`Property ${p.id} ready_by: "${readyBy}" -> date: ${readyDate} -> year: "${year}" matches "${readyFilter}": ${matches}`);
-           }
-         }
-         return matches;
-       });
-       console.log(`Ready by year filter: ${beforeCount} -> ${filteredProperties.length} properties`);
-     }
+    // Note: Complex filtering has been temporarily disabled for server-side pagination
+    // TODO: Implement server-side filtering in future updates
 
     // Custom sort: Mountain View first, keep others in original order (by id desc from query)
     const isMountainView = (name: string) => (name || '').toLowerCase().includes('mountain view');
