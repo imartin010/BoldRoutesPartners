@@ -652,31 +652,26 @@ export async function getActiveProperties(
       console.log(`Property ${i + 1}: ID=${p.id}, Developer="${devName}", IsMountainView=${isMountainView(devName)}`);
     });
 
-    // Client-side pagination and counts
-    // Use the server count for total display, but filtered count for pagination
+    // Pagination calculation based on total database count
     const totalCount = count || 0; // This should now be 23k+
-    const clientTotalCount = filteredProperties.length;
-    const clientTotalPages = Math.ceil(clientTotalCount / pageSize);
+    const totalPages = Math.ceil(totalCount / pageSize);
     
-    // Log the count difference for debugging
+    // Log the count information for debugging
     console.log('=== COUNT DEBUG ===');
     console.log('Server count:', totalCount);
-    console.log('Filtered count:', clientTotalCount);
-    console.log('Count difference:', totalCount - clientTotalCount);
+    console.log('Current page properties:', filteredProperties.length);
     console.log('Expected total properties: ~23,000');
-    console.log('Total pages available:', Math.ceil(totalCount / pageSize));
+    console.log('Total pages available:', totalPages);
     
-    // Apply pagination to filtered results
-    const start = (page - 1) * pageSize;
-    const end = start + pageSize;
-    const pageSlice = filteredProperties.slice(start, end);
+    // Since we're using server-side pagination, the current page data
+    // is already the correct slice, no need for additional slicing
+    const pageSlice = filteredProperties;
     
     console.log('=== PAGINATION DEBUG ===');
-    console.log('Total filtered properties:', filteredProperties.length);
+    console.log('Current page properties:', filteredProperties.length);
     console.log('Page:', page, 'PageSize:', pageSize);
-    console.log('Start:', start, 'End:', end);
     console.log('Page slice length:', pageSlice.length);
-    console.log('Total pages:', clientTotalPages);
+    console.log('Total pages:', totalPages);
     
     // Debug: show what properties are in the current page
     console.log('=== CURRENT PAGE PROPERTIES ===');
@@ -698,7 +693,7 @@ export async function getActiveProperties(
     return {
       properties: pageSlice,
       totalCount: totalCount, // Use the real server count (23k+)
-      totalPages: clientTotalPages,
+      totalPages: totalPages, // Use the calculated total pages
       error: null
     };
   } catch (err) {
