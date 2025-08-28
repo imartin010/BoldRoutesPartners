@@ -440,14 +440,7 @@ export async function getActiveProperties(
         console.log(`Search term: "${searchTerm}"`);
         
         // Use ILIKE for case-insensitive search across multiple fields
-        baseQuery = baseQuery.or(`
-          compound->>name.ilike.%${searchTerm}%,
-          area->>name.ilike.%${searchTerm}%,
-          developer->>name.ilike.%${searchTerm}%,
-          property_type->>name.ilike.%${searchTerm}%,
-          unit_id.ilike.%${searchTerm}%,
-          unit_number.ilike.%${searchTerm}%
-        `);
+        baseQuery = baseQuery.or(`compound->>name.ilike.%${searchTerm}%,area->>name.ilike.%${searchTerm}%,developer->>name.ilike.%${searchTerm}%,property_type->>name.ilike.%${searchTerm}%,unit_id.ilike.%${searchTerm}%,unit_number.ilike.%${searchTerm}%`);
       }
 
       // Apply other server-side filters
