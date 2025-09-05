@@ -59,3 +59,6 @@ logs/
 # Temporary files
 *.tmp
 *.temp
+
+# Exclude Python lib but keep src/lib
+!src/lib/
