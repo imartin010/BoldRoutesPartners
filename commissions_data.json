@@ -1,0 +1,4082 @@
+[
+  {
+    "Developer": "ORA",
+    "Compound": "ZED west",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "ORA",
+    "Compound": "ZED east",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "ORA",
+    "Compound": "Silversands",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "ORA",
+    "Compound": "Solana West",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "ORA",
+    "Compound": "Solana East",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "TATWEER MISR",
+    "Compound": "Bloomfields",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "TATWEER MISR",
+    "Compound": "Il monte galala",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "TATWEER MISR",
+    "Compound": "D bay",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "TATWEER MISR",
+    "Compound": "Fouka bay",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "TATWEER MISR",
+    "Compound": "Rivers",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "TATWEER MISR",
+    "Compound": "Salt",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "TATWEER MISR",
+    "Compound": "Coflow",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "TATWEER MISR",
+    "Compound": "Scenes",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "MISR ITALIA",
+    "Compound": "Il bosco",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MISR ITALIA",
+    "Compound": "Il bosco city",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MISR ITALIA",
+    "Compound": "Vinci",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MISR ITALIA",
+    "Compound": "Vinci street",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MISR ITALIA",
+    "Compound": "Kai",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "MISR ITALIA",
+    "Compound": "Cairo business park",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "MISR ITALIA",
+    "Compound": "Solare",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MISR ITALIA",
+    "Compound": "Radical",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "AL AHLY SABBOUR",
+    "Compound": "The city of odyssia",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "AL AHLY SABBOUR",
+    "Compound": "Lavenir",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "AL AHLY SABBOUR",
+    "Compound": "Green square",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "AL AHLY SABBOUR",
+    "Compound": "Rare",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "AL AHLY SABBOUR",
+    "Compound": "Keeva",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "AL AHLY SABBOUR",
+    "Compound": "Gaia",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "AL AHLY SABBOUR",
+    "Compound": "Amwag",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "AL AHLY SABBOUR",
+    "Compound": "The Ridge",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "AL AHLY SABBOUR",
+    "Compound": "At East",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "AL AHLY SABBOUR",
+    "Compound": "Summer",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "AL AHLY SABBOUR",
+    "Compound": "The Mornings",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "AL AHLY SABBOUR",
+    "Compound": "Youd",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Capital gardens",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Palm hills new cairo",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Badya",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Palm parks",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Golf extension",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Golf view",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Hacienda bay",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Hacienda west",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Crown Central",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Palm hills Alexandria",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Golf Views Residence",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "New Alamen",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Village gate",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Palmet",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Hacienda Bay Golf Views",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Hacienda Heneish",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Hacienda Waters",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Px",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Hacienda Blue",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PALM HILLS",
+    "Compound": "Jirian",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "Mountain view 1",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "M. view i city new cairo",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "M. view hyde park",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "October Park",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "M. view i city october",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "Mountain view 4",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "Chillout park",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "M. view el sokhna",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "Mountain View Ras El Hekma",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "Aliva",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "Plage",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "Lvls",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "Kingsway",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "Grand Valleys",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "MOUNTAIN VIEW",
+    "Compound": "Jirian",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "SODIC",
+    "Compound": "Estates Residence",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "SODIC",
+    "Compound": "VYE & Karmell",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "SODIC",
+    "Compound": "October plaza",
+    "BR Percentage": 2.75
+  },
+  {
+    "Developer": "SODIC",
+    "Compound": "The polygon extension",
+    "BR Percentage": 2.75
+  },
+  {
+    "Developer": "SODIC",
+    "Compound": "6 west",
+    "BR Percentage": 2.75
+  },
+  {
+    "Developer": "SODIC",
+    "Compound": "Sodic east new Heliopolis",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "SODIC",
+    "Compound": "Vilette sky condos & v res",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "SODIC",
+    "Compound": "Eastown",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "SODIC",
+    "Compound": "EDNC",
+    "BR Percentage": 2.75
+  },
+  {
+    "Developer": "SODIC",
+    "Compound": "June",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "SODIC",
+    "Compound": "Ogami",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "SODIC",
+    "Compound": "Caesar",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "Hassan Allam",
+    "Compound": "Hap Town",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "Hassan Allam",
+    "Compound": "Swanlake Res",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "Hassan Allam",
+    "Compound": "Swanlake North",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "Hassan Allam",
+    "Compound": "Swanlake Gona",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "Hassan Allam",
+    "Compound": "The Valleys",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "Hassan Allam",
+    "Compound": "Park Central",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "Hassan Allam",
+    "Compound": "Swanlake West",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "Qamzi",
+    "Compound": "Seazen",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Qamzi",
+    "Compound": "Eastshire",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "Marakez",
+    "Compound": "District 5",
+    "BR Percentage": 3.5
+  },
+  {
+    "Developer": "Marakez",
+    "Compound": "District 5 Campus",
+    "BR Percentage": 3.5
+  },
+  {
+    "Developer": "Marakez",
+    "Compound": "Crescent Walk",
+    "BR Percentage": 3.5
+  },
+  {
+    "Developer": "TBK",
+    "Compound": "90 Avenue",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "TBK",
+    "Compound": "Key Stone",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "TBK",
+    "Compound": "Key Of Greens",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Hyde Park",
+    "Compound": "Hyde park New cairo",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Hyde Park",
+    "Compound": "Garden lakes",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Hyde Park",
+    "Compound": "Tawny",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Hyde Park",
+    "Compound": "business District",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Hyde Park",
+    "Compound": "seashore",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Hyde Park",
+    "Compound": "Hyde Park Central",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Upwyde",
+    "Compound": "Prk vie",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Upwyde",
+    "Compound": "it",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Upwyde",
+    "Compound": "Cinco",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Upwyde",
+    "Compound": "White Residence",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Upwyde",
+    "Compound": "Jazebeya",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Upwyde",
+    "Compound": "Sky Ramp",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Upwyde",
+    "Compound": "The Gryd",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Tameer",
+    "Compound": "Azad",
+    "BR Percentage": 3.42
+  },
+  {
+    "Developer": "Tameer",
+    "Compound": "Urban Business Lane",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "Taj Misr",
+    "Compound": "strip mall 1",
+    "BR Percentage": 15.0
+  },
+  {
+    "Developer": "Taj Misr",
+    "Compound": "strip mall 2",
+    "BR Percentage": 15.0
+  },
+  {
+    "Developer": "Taj Misr",
+    "Compound": "strip mall 3",
+    "BR Percentage": 15.0
+  },
+  {
+    "Developer": "Taj Misr",
+    "Compound": "Taj Tower",
+    "BR Percentage": 10.0
+  },
+  {
+    "Developer": "Taj Misr",
+    "Compound": "Dejoya new zayed",
+    "BR Percentage": 10.0
+  },
+  {
+    "Developer": "Taj Misr",
+    "Compound": "ezdan mall",
+    "BR Percentage": 15.0
+  },
+  {
+    "Developer": "Taj Misr",
+    "Compound": "Dejoya plaza ",
+    "BR Percentage": 15.0
+  },
+  {
+    "Developer": "Taj Misr",
+    "Compound": "Dejoya Primero",
+    "BR Percentage": 10.0
+  },
+  {
+    "Developer": "Taj Misr",
+    "Compound": "Dejoya 4",
+    "BR Percentage": 10.0
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "Patio 5 sherok",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "Patio ORO",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "Patio Prime el sherok",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "Lavista city",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "lavista gardens",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "lavista Ray",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "Lavista ras el hekma",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "lavista bay east",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "patio 7",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "lavista topaz",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "patio Casa el sherok",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "LaVista Cascada",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "D line",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "Patio Town",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "Patio vera",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "Patio Sola",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "Patio Vida",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "La Vista",
+    "Compound": "El Patio Hills",
+    "BR Percentage": 3.25
+  },
+  {
+    "Developer": "LMD",
+    "Compound": "Steight",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "LMD",
+    "Compound": "one ninty",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "LMD",
+    "Compound": "3 sixty",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "LMD",
+    "Compound": "Eastside",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "LMD",
+    "Compound": "Zoya",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "LMD",
+    "Compound": "Being ",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "LMD",
+    "Compound": "More ",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "LMD",
+    "Compound": "Eastmed ",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Iwan",
+    "Compound": "Majada",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Iwan",
+    "Compound": "The Axis",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Iwan",
+    "Compound": "The Trin",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Iwan",
+    "Compound": "Beit El Bahr",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "The brooks",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "Stone residence",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "Jebal",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "Ivoire West",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "Ivoire East",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "Telal Soul",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "M Squared",
+    "Compound": "Trio Gardens",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "M Squared",
+    "Compound": "Masyaf",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "M Squared",
+    "Compound": "41 Business District",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "M Squared",
+    "Compound": "31 West",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "M Squared",
+    "Compound": "MIST",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "The Hills",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "Telal Sokhna",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "Telal North Coast",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "OAK",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "Stone park",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "Big business district",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "PRE",
+    "Compound": "Telal East",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "Marasem",
+    "Compound": "Fifth square",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "Marasem",
+    "Compound": "Mar Ville",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "Marasem",
+    "Compound": "Mar Bay",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "SED",
+    "Compound": "Jayed",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "SED",
+    "Compound": "blu vert",
+    "BR Percentage": 2.0
+  },
+  {
+    "Developer": "SED",
+    "Compound": "Alamain",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "SED",
+    "Compound": "Central",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "SED",
+    "Compound": "Mayadin",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "iL Cazar",
+    "Compound": "Creek Town",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "iL Cazar",
+    "Compound": "Creek District",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "iL Cazar",
+    "Compound": "Go Heliopolis",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "iL Cazar",
+    "Compound": "The Crest",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "iL Cazar",
+    "Compound": "Safia",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "iL Cazar",
+    "Compound": "Stoda",
+    "BR Percentage": 1.0
+  },
+  {
+    "Developer": "iL Cazar",
+    "Compound": "Glen",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "iL Cazar",
+    "Compound": "Westdays",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "Orascom",
+    "Compound": "Owest",
+    "BR Percentage": 4.5
+  },
+  {
+    "Developer": "Orascom(Gouna)",
+    "Compound": "Cyan The Range",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "Orascom(Gouna)",
+    "Compound": "Kamaran",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "Orascom(Gouna)",
+    "Compound": "Nines",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "Orascom(Gouna)",
+    "Compound": "Ancient Hill",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "Makadi",
+    "Compound": "Makadi hights",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "MNHD",
+    "Compound": "Taj City",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "MNHD",
+    "Compound": "Sarai",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "MNHD",
+    "Compound": "Butterfly",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "MNHD",
+    "Compound": "Talala",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "SAG",
+    "Compound": "Alca",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "City edge",
+    "Compound": "Al Maqsed",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "City edge",
+    "Compound": "new garden city",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "City edge",
+    "Compound": "Mazarine",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "City edge",
+    "Compound": "Latin City",
+    "BR Percentage": 2.0
+  },
+  {
+    "Developer": "City edge",
+    "Compound": "Downtown Alamein",
+    "BR Percentage": 2.0
+  },
+  {
+    "Developer": "City edge",
+    "Compound": "Alamien Towers",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "City edge",
+    "Compound": "Jade Park",
+    "BR Percentage": 2.5
+  },
+  {
+    "Developer": "Cred",
+    "Compound": "Ever West",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Cred",
+    "Compound": "Castle Land mark",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Cred",
+    "Compound": "Castle Gate Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Cred",
+    "Compound": "Ever New Cairo",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dora",
+    "Compound": "Village west",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dora",
+    "Compound": "Adress East",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Reportage",
+    "Compound": "Montenapoleone",
+    "BR Percentage": 6.0
+  },
+  {
+    "Developer": "Reedy Group",
+    "Compound": "Azzar island",
+    "BR Percentage": 3.5
+  },
+  {
+    "Developer": "Reedy Group",
+    "Compound": "Azzar infinity",
+    "BR Percentage": 3.5
+  },
+  {
+    "Developer": "Reedy Group",
+    "Compound": "Dijar",
+    "BR Percentage": 3.5
+  },
+  {
+    "Developer": "Reedy Group",
+    "Compound": "Azzar Reedy",
+    "BR Percentage": 3.5
+  },
+  {
+    "Developer": "Madaar",
+    "Compound": "Azha North Coast",
+    "BR Percentage": 3.5
+  },
+  {
+    "Developer": "Madaar",
+    "Compound": "Azha Sokhna",
+    "BR Percentage": 3.5
+  },
+  {
+    "Developer": "Madaar",
+    "Compound": "kinz",
+    "BR Percentage": 3.5
+  },
+  {
+    "Developer": "Regency",
+    "Compound": "Regency tower 1",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Regency",
+    "Compound": "Regency tower 2",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Regency",
+    "Compound": "Regency Inn",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Regency",
+    "Compound": "Shifaa Capital Hospital",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dubai",
+    "Compound": "Capital Dubai Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dubai",
+    "Compound": "OBSIDIER TOWER",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dubai",
+    "Compound": "Lumia",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dubai",
+    "Compound": "Lumia Lagoons",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Nile Dev",
+    "Compound": "Nile business City",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Nile Dev",
+    "Compound": "Nile Boulevard",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Manara",
+    "Compound": "Bella vento galala",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Manara",
+    "Compound": "Bella Romance",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Urbanlanes",
+    "Compound": "Business Level’s Tower",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Urbanlanes",
+    "Compound": "Yellow",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Urbanlanes",
+    "Compound": "NOI",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "Urbanlanes",
+    "Compound": "Midlane",
+    "BR Percentage": 4.0
+  },
+  {
+    "Developer": "ERG",
+    "Compound": "Ri8",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "ERG",
+    "Compound": "Moon Real Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "ERG",
+    "Compound": "Eelaf",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "ERG",
+    "Compound": "Linwood",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "AMG",
+    "Compound": "ORO new capital",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "AMG",
+    "Compound": "Oro obour",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "AMG",
+    "Compound": "Oro Obour Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Modon",
+    "Compound": "Green River tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Modon",
+    "Compound": "Boutique Village",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Modon",
+    "Compound": "Lagoons Al Alamin",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Modon",
+    "Compound": "Villagio",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "RNA",
+    "Compound": "TRITON TOWER",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Brouq",
+    "Compound": "Spark Capital insight",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Brouq",
+    "Compound": "Terraside",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Brouq",
+    "Compound": "Bling",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Wadi degla",
+    "Compound": "Neo Lakes",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Wadi degla",
+    "Compound": "Murano",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Wadi degla",
+    "Compound": "Club town",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Town Writers",
+    "Compound": "Revolve mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Town Writers",
+    "Compound": "the strip Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Town Writers",
+    "Compound": "Notion",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "New Plan",
+    "Compound": "Talah",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "New Plan",
+    "Compound": "Serrano",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "New Plan",
+    "Compound": "Atika",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "New Plan",
+    "Compound": "Amara",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "New Plan",
+    "Compound": "Eleven",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Capital link",
+    "Compound": "kardia compound",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Capital link",
+    "Compound": "Dorado Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Capital link",
+    "Compound": "Verona mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Capital link",
+    "Compound": "Solano Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Capital link",
+    "Compound": "Cala",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Elmasria Group",
+    "Compound": "Isola october",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Elmasria Group",
+    "Compound": "isola sheraton",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Elmasria Group",
+    "Compound": "Isola Quattro",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Elmasria Group",
+    "Compound": "Isola Centra",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Elmasria Group",
+    "Compound": "Isola Villa",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "DIG",
+    "Compound": "Track 10",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "DIG",
+    "Compound": "Track 12",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "DIG",
+    "Compound": "Track 14",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "DIG",
+    "Compound": "Track 15",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "DIG",
+    "Compound": "Track 20",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "DIG",
+    "Compound": "Track Rev",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Waren",
+    "Compound": "Solidere",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Waren",
+    "Compound": "Marquee",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "EG Towers",
+    "Compound": "EINS Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Sky ad.",
+    "Compound": "Blue tree",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Sky ad.",
+    "Compound": "One Residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Sky ad.",
+    "Compound": "Capital avenu",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Sky ad.",
+    "Compound": "Sky North",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Nakheel",
+    "Compound": "Double two tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Nakheel",
+    "Compound": "Trio V",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "AFG",
+    "Compound": "Sky Bridge Signature Hub",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "AFG",
+    "Compound": "Helio Eye",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "AFG",
+    "Compound": "Amaz business complex",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Tamayoz",
+    "Compound": "Madar Business Complex",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Tamayoz",
+    "Compound": "ivory plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Tamayoz",
+    "Compound": "5 business hub",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Tamayoz",
+    "Compound": "The Lark",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Tamayoz",
+    "Compound": "The Lark Residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Ramatan",
+    "Compound": "Ramatan",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Fourseasons",
+    "Compound": "Palma Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Fourseasons",
+    "Compound": "Floria",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Fourseasons",
+    "Compound": "Rixoz Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Just",
+    "Compound": "Legacy",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "DM",
+    "Compound": "The Groove so5na",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Captain",
+    "Compound": "Smart Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Captain",
+    "Compound": "Smart Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Captain",
+    "Compound": "Ravie",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "NJD",
+    "Compound": "Green Avenue",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "NJD",
+    "Compound": "Jura Al Glalah",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "NJD",
+    "Compound": "Genesis Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "NJD",
+    "Compound": "Jamila",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "NJD",
+    "Compound": "Green Icon",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Maqam Misr",
+    "Compound": "5East Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Maqam Misr",
+    "Compound": "Q East",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Al Borouj Misr",
+    "Compound": "6ixty Business Park",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Al Borouj Misr",
+    "Compound": "6ixty iconic Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Al Borouj Misr",
+    "Compound": "3 Points",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Al Borouj Misr",
+    "Compound": "Heaven Hills Sokhna",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Al Borouj Misr",
+    "Compound": "Bianchi Ilios",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dolmen",
+    "Compound": "Midway plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dolmen",
+    "Compound": "Avenue Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dolmen",
+    "Compound": "The Pier Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rock Developments",
+    "Compound": "Rock Vera",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rock Developments",
+    "Compound": "Rock Ville",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rock Developments",
+    "Compound": "Eden",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rock Developments",
+    "Compound": "Ville Plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rock Developments",
+    "Compound": "Sheraton",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rock Developments",
+    "Compound": "Vera Plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rock Developments",
+    "Compound": "Eden Plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rock Developments",
+    "Compound": "Rock capital 1",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rock Developments",
+    "Compound": "Rock White",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "UC",
+    "Compound": "East Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "UC",
+    "Compound": "suli golf",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "UC",
+    "Compound": "Tru",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Horaizona",
+    "Compound": "IL Quattro Business Complex",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Horaizona",
+    "Compound": "Stau",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rayn ",
+    "Compound": "Stars Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rayn ",
+    "Compound": "Nabd Complex",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dominar",
+    "Compound": "Three Square",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dominar",
+    "Compound": "Business Yard",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "La serina",
+    "Compound": "Palm Beach",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "La serina",
+    "Compound": "Cape Bay",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "La serina",
+    "Compound": "Majesty bay",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "La serina",
+    "Compound": "la sirena north coast",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "MG",
+    "Compound": "Pro Mark",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "MG",
+    "Compound": "Blue Blue",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "MG",
+    "Compound": "The Mark",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "MG",
+    "Compound": "Premium",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Imkan Misr",
+    "Compound": "AL Burouj",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Mansor",
+    "Compound": "Makany -Katamya",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Mansor",
+    "Compound": "Jodran",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Mansor",
+    "Compound": "9 Yard Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Mansor",
+    "Compound": "Bienestar",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Mansor",
+    "Compound": true,
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Mansor",
+    "Compound": "True Gate",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Mansor",
+    "Compound": "VilleMora",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Mansor",
+    "Compound": "Oxagon",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Serac",
+    "Compound": "City Hall New Capital",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Serac",
+    "Compound": "City hall new cairo",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Serac",
+    "Compound": "Alura",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Serac",
+    "Compound": "Shamasi",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Serac",
+    "Compound": "City Hall 90",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arabella Group",
+    "Compound": "Direction white",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Ezz",
+    "Compound": "Destino Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Ezz",
+    "Compound": "Arena blanca",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Ezz",
+    "Compound": "Okan",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Zaytoun",
+    "Compound": "Inizio",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Zaytoun",
+    "Compound": "Za mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Zaytoun",
+    "Compound": "Mid Z",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Atric",
+    "Compound": "Boho",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Atric",
+    "Compound": "Boardwalk",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Master Group",
+    "Compound": "The city",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Master Group",
+    "Compound": "city oval",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Master Group",
+    "Compound": "Wanas ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Vantage urban dev.",
+    "Compound": "Century City ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "LivingYards",
+    "Compound": "The Loft Plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "LivingYards",
+    "Compound": "Noir Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "LivingYards",
+    "Compound": "The Loft compound",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "LivingYards",
+    "Compound": "Solay",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Magna",
+    "Compound": "Cubes Complex",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Magna",
+    "Compound": "M Plus",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Egy Gab",
+    "Compound": "The Median",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Egy Gab",
+    "Compound": "Masaya",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Egy Gab",
+    "Compound": "The Island",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Value",
+    "Compound": "V Terrace",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Value",
+    "Compound": "The Square Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Value",
+    "Compound": "Value Mall 2",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Value",
+    "Compound": "Value Mall 1",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Value",
+    "Compound": "Maadi V",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Value",
+    "Compound": "V Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "La Verde",
+    "Compound": "La Verde cassette",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "La Verde",
+    "Compound": "la verde new capital",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "La Verde",
+    "Compound": "Praia View",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mardev",
+    "Compound": "Menorca",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mardev",
+    "Compound": "Menorica zayed",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Pyramids",
+    "Compound": "Pyramids city",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Pyramids",
+    "Compound": "Grand Square Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Pyramids",
+    "Compound": "Shanzelize Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Pyramids",
+    "Compound": "Paris Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Pyramids",
+    "Compound": "Pyramids Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Pyramids",
+    "Compound": "La capital sweet lagoon",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "The Ark Dev.",
+    "Compound": "The Ark",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "The Ark Dev.",
+    "Compound": "Rafts",
+    "BR Percentage": 3.0
+  },
+  {
+    "Developer": "Wealth plus ",
+    "Compound": "Wingate mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Wealth plus ",
+    "Compound": "N 90",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Wealth plus ",
+    "Compound": "IV Business Park",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Wealth plus ",
+    "Compound": "Elev8 Business Complex",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Wealth plus ",
+    "Compound": "Kin",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Wealth plus ",
+    "Compound": "South Gate",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Wealth Gate N.C",
+    "Compound": "Jeval",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Maven",
+    "Compound": "Cali coast",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "Maven",
+    "Compound": "Baymount",
+    "BR Percentage": 5.0
+  },
+  {
+    "Developer": "Residence Development",
+    "Compound": "Aroma el so5na",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Corner stone",
+    "Compound": "The Curve",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Corner stone",
+    "Compound": "Red",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Amorada",
+    "Compound": "Amorada",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Edge Holding",
+    "Compound": "OIA",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Edge Holding",
+    "Compound": "Oia towers",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "QONTRAC",
+    "Compound": "Yaru residance",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "West eleven",
+    "Compound": "west 11",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Better Home",
+    "Compound": "Midtown Sky",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Better Home",
+    "Compound": "Midtown Solo",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Better Home",
+    "Compound": "Midtown Condo",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "V dev.",
+    "Compound": "V business tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "V dev.",
+    "Compound": "Mas tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arabia Holding",
+    "Compound": "Galleria moon valley",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arabia Holding",
+    "Compound": "Sun Capital",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arabia Holding",
+    "Compound": "Bungalows",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arabia Holding",
+    "Compound": "Elora",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Valore",
+    "Compound": "Al Jar",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Ajna",
+    "Compound": "Carnelia",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Ajna",
+    "Compound": "EastVille",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Inertia",
+    "Compound": "Jefaira",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Inertia",
+    "Compound": "Joulz",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "The Marq",
+    "Compound": "The Wonder Mark",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "The Marq",
+    "Compound": "Marquette",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "People and Places",
+    "Compound": "The Med",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "People and Places",
+    "Compound": "Hills of one",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "HMD",
+    "Compound": "Golden View",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Attal",
+    "Compound": "Leaves",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Attal",
+    "Compound": "The 101",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Sephora",
+    "Compound": "Sephora Heights",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "N Developments",
+    "Compound": "3 Sides Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "N Developments",
+    "Compound": "Nest",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "LUD",
+    "Compound": "The Rift",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "LUD",
+    "Compound": "Apex Business complex",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Concept",
+    "Compound": "Senet Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Concept",
+    "Compound": "Siela",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "RFCO",
+    "Compound": "il mondo",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "RFCO",
+    "Compound": "Capital Park",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Cleopatra",
+    "Compound": "Cleopatra Square",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Cleopatra",
+    "Compound": "Cleopatra Palace",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Naia",
+    "Compound": "Naia Bay",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Naia",
+    "Compound": "Naia West",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Ibn Sena",
+    "Compound": "Cecilia Lagoon",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Ibn Sena",
+    "Compound": "Capital Gates",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Q Developments",
+    "Compound": "Q North",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Q Developments",
+    "Compound": "Q Hills",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alkarama",
+    "Compound": "Alkarma Gates",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alkarama",
+    "Compound": "Alkarma Novella",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alkarama",
+    "Compound": "Karma Kay",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alkarama",
+    "Compound": "Vaha",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Margins",
+    "Compound": "Zia Business Complex",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Margins",
+    "Compound": "Oaks",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Margins",
+    "Compound": "Sheraton Residences",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Margins",
+    "Compound": "Lusail",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Redcon",
+    "Compound": "Golden Gates",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "The Land (TLD)",
+    "Compound": "Armonia",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "The Land (TLD)",
+    "Compound": "Il Bayou",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "The Land (TLD)",
+    "Compound": "Kukun",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "The Land (TLD)",
+    "Compound": "Parkside",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Marseilia",
+    "Compound": "Marseilia Beach 5",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mirasol",
+    "Compound": "La Mirada Apartments",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mirasol",
+    "Compound": "La Mirada Villas",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Waterway",
+    "Compound": "Capitalway",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Waterway",
+    "Compound": "The Waterway North",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Waterway",
+    "Compound": "The View",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Waterway",
+    "Compound": "Triangle",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "IGI",
+    "Compound": "Ashgar City",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Khaled Sabry",
+    "Compound": "Rosail",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Shehab Mazhar",
+    "Compound": "Marsa Baghush",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "SUD",
+    "Compound": "Capital Heights 2",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "SUD",
+    "Compound": "Financial Hub",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Akam Alraghy",
+    "Compound": "Dose",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Akam ",
+    "Compound": "Scene 7",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Akam ",
+    "Compound": "Scenario",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Golden Town",
+    "Compound": "Cascada",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Golden Town",
+    "Compound": "Dinero Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Golden Town",
+    "Compound": "Ouro Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Merad",
+    "Compound": "villaria",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Roses",
+    "Compound": "roses",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mabany Edrees",
+    "Compound": "Koun",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mabany Edrees",
+    "Compound": "ONS",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "MakePlace",
+    "Compound": "Radium",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "MakePlace",
+    "Compound": "Atom",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Style Home",
+    "Compound": "The Icon",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "prime",
+    "Compound": "harmont",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "prime",
+    "Compound": "mid tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "prime",
+    "Compound": "ion",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "majra",
+    "Compound": "majra",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mangroovy",
+    "Compound": "mangroovy gouna",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Estern",
+    "Compound": "Genova",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "ElBaron",
+    "Compound": "Sky Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "ElBaron",
+    "Compound": "Greya",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "ElBaron",
+    "Compound": "Vigor",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Vai",
+    "Compound": "4T1",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Vai",
+    "Compound": "Gems",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Radix",
+    "Compound": "Agile",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Radix",
+    "Compound": "Ray Residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Radix",
+    "Compound": "Spinner",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "SomaBay",
+    "Compound": "Reef Town",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "SomaBay",
+    "Compound": "Arc Of Soma",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "SomaBay",
+    "Compound": "Blanca Gardens",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "AL Naser ",
+    "Compound": "Golden Tower 2",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Gates",
+    "Compound": "Space",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Gates",
+    "Compound": "West Gate",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Gates",
+    "Compound": "Prive Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Gates",
+    "Compound": "Lugar",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Gates",
+    "Compound": "Lyv",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Sorouh",
+    "Compound": "Entrada ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Sorouh",
+    "Compound": "Entrada Avenue",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Sorouh",
+    "Compound": "Citadel",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Sorouh",
+    "Compound": "Rosevil",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "MBG",
+    "Compound": "Pukka",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "MBG",
+    "Compound": "White 14",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "MBG",
+    "Compound": "Diplo East",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Catalyst",
+    "Compound": "Business Plus",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Catalyst",
+    "Compound": "Ozone",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Catalyst",
+    "Compound": "Elegantry",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Catalyst",
+    "Compound": "Cairo Capital Center",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Royal",
+    "Compound": "Monark",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Royal",
+    "Compound": "Capital Prime",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "NTG",
+    "Compound": "Intown",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "NTG",
+    "Compound": "Evolve",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "NTG",
+    "Compound": "The Node",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alnahal",
+    "Compound": "BN",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alnahal",
+    "Compound": "BN Square Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arkan Palm",
+    "Compound": "Canal Walk",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arkan Palm",
+    "Compound": "The Angle",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arkan Palm",
+    "Compound": "Kayan",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arkan Palm",
+    "Compound": "One 33",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arkan Palm",
+    "Compound": "205 Towers ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "DMP",
+    "Compound": "West Kanyon",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "DMP",
+    "Compound": "East Kanyon",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "DMP",
+    "Compound": "The Boulevard Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arabco",
+    "Compound": "Cattleya",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Areva",
+    "Compound": "Glare",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "First Group",
+    "Compound": "Kazan Plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alrabat",
+    "Compound": "Sway",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alrabat",
+    "Compound": "Sleek",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alrabat",
+    "Compound": "Cuadro Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Orbit",
+    "Compound": "Marina Hills ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Orbit",
+    "Compound": "Midgard",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alashraf",
+    "Compound": "Reveal",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alashraf",
+    "Compound": "Hope",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Retal",
+    "Compound": "Harmony Business Complex",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "EI",
+    "Compound": "West Gravity",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dunes",
+    "Compound": "V levels",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Samco",
+    "Compound": "Rivali",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Samco",
+    "Compound": "The Five",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "NCB",
+    "Compound": "Valencia Valley",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "NCB",
+    "Compound": "Valencia Hub",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "NCB",
+    "Compound": "Innoview ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Centrada",
+    "Compound": "Centrada One ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Centrada",
+    "Compound": "Centrada Hub ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Centrada",
+    "Compound": "Wust ELbalad",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Centrada",
+    "Compound": "Kite",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "KVRD",
+    "Compound": "SideWalk",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "TG",
+    "Compound": "Palm Capital",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "TG",
+    "Compound": "Palm Island",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "TG",
+    "Compound": "Palm East",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "TG",
+    "Compound": "Palm Hub",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "TG",
+    "Compound": "Palm Square ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "TG",
+    "Compound": "Palm District",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Aknan",
+    "Compound": "degla residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Next Home",
+    "Compound": "Next Life",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Malvern",
+    "Compound": "Yamour",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Malvern",
+    "Compound": "Parkdale",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Malvern",
+    "Compound": "Revaa",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dar Alamia dev.",
+    "Compound": "Acasa Mia",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Jumera ",
+    "Compound": "Up West",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Taj",
+    "Compound": "Elite West",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Taj",
+    "Compound": "Pavia",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Times",
+    "Compound": "Aster",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Times",
+    "Compound": "Avelin",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Times",
+    "Compound": "T.Hub",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Novus",
+    "Compound": "Riviera Heights",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Novus",
+    "Compound": "Matarma",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Home Town",
+    "Compound": "Udora",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Home Town",
+    "Compound": "Lafayette",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Home Town",
+    "Compound": "Zaha Park",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Home Town",
+    "Compound": "Home Residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Ws",
+    "Compound": "District People",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Kayan",
+    "Compound": "Twin Plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Kayan",
+    "Compound": "Plaza Vida",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Kayan",
+    "Compound": "Vida Residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Maqam",
+    "Compound": "Optima",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Maadi cons.",
+    "Compound": "Golden Park",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Beta Egypt",
+    "Compound": "Beta Greens",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "EDG",
+    "Compound": "Everest Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "EDG",
+    "Compound": "Trio Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mobco",
+    "Compound": "Eastmain",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Horizon",
+    "Compound": "Saada",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Horizon",
+    "Compound": "Saada North Coast",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Horizon",
+    "Compound": "Saada Boutique",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Al ryiadh misr",
+    "Compound": "Peerage Residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Altameer Arabian",
+    "Compound": "Rivan",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mainlands ",
+    "Compound": "Artea Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mainlands ",
+    "Compound": "London",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mainlands ",
+    "Compound": "Twin Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "HDP",
+    "Compound": "Talda",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "HDP",
+    "Compound": "Terrace",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "HDP",
+    "Compound": "The gray",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "HDP",
+    "Compound": "Club Hills",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "HDP",
+    "Compound": "SQ1",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "HDP",
+    "Compound": "West View",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "new generation (NGD)",
+    "Compound": "Botanica",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Cairo Global",
+    "Compound": "Retan",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Jadeer",
+    "Compound": "Garnet",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Jadeer",
+    "Compound": "Code",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "EFID",
+    "Compound": "park Valley Prime",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "EFID",
+    "Compound": "Efid City",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "A Capital",
+    "Compound": "Marriott",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mena Group",
+    "Compound": "Eko Mena",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Concrete",
+    "Compound": "C yard Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Concrete",
+    "Compound": "Elen Residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Concrete",
+    "Compound": "O Yard Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Concrete",
+    "Compound": "Jadie",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Main Marks",
+    "Compound": "Moray",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rich House",
+    "Compound": "Rich Point",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Contact",
+    "Compound": "Eval tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Contact",
+    "Compound": "Quan tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Contact",
+    "Compound": "Upove",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Contact",
+    "Compound": "Mercury",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Contact",
+    "Compound": "Cayo Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Melee",
+    "Compound": "Nmq",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Melee",
+    "Compound": "Pulse Business",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Melee",
+    "Compound": "Pulse Green",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Modad",
+    "Compound": "Sector",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Manaj",
+    "Compound": "Blanks",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Morshedy Group",
+    "Compound": "Zahra",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Tharaa",
+    "Compound": "Glee",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mass",
+    "Compound": "Olin",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mass",
+    "Compound": "Yardin",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Enwan",
+    "Compound": "Maraya Plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Karnak",
+    "Compound": "Belva",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Aljazi",
+    "Compound": "chess field",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Aljazi",
+    "Compound": "Jw Marriot",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Aljazi",
+    "Compound": "Business Suites",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Jiwa",
+    "Compound": "Aiangle city mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Jiwa",
+    "Compound": "One Plaza Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Jiwa",
+    "Compound": "Z Spot",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Roi",
+    "Compound": "Downtown October Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Eagle",
+    "Compound": "Heaven gardens",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Eagle",
+    "Compound": "Glory Gardens",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "TED",
+    "Compound": "Silvia",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "DID",
+    "Compound": "W gate",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Elsewhere",
+    "Compound": "The One",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Elsewhere",
+    "Compound": "Alex West",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Tasheed",
+    "Compound": "Murouj",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Naeem Developments",
+    "Compound": "V5 Business Hub",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mercon",
+    "Compound": "Nurai",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mercon",
+    "Compound": "Nurai Walk",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Amer Group",
+    "Compound": "Celebration",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Amer Group",
+    "Compound": "Central Capital",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mezyan",
+    "Compound": "Remal",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Symphony",
+    "Compound": "Bahja",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Sakkara Developments",
+    "Compound": "La Mera",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Milestone",
+    "Compound": "The Cord",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mazaya",
+    "Compound": "Norm Spaces",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mazaya",
+    "Compound": "The Rock",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dal Dev",
+    "Compound": "555 Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dal Dev",
+    "Compound": "Thru",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "I Capital",
+    "Compound": "Midly Business Complex ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Code",
+    "Compound": "North Code",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Golden View",
+    "Compound": "Golden Hub",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Golden View",
+    "Compound": "To-Gther",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arqa",
+    "Compound": "I Business Park",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arqa",
+    "Compound": "Annex 26",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Torec",
+    "Compound": "T Square",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Torec",
+    "Compound": "T Pearl",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Torec",
+    "Compound": "Address East (Torec)",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Torec",
+    "Compound": "T Residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Juzur",
+    "Compound": "Neo",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Juzur",
+    "Compound": "J East",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Line",
+    "Compound": "Elysium Square",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Eden",
+    "Compound": "Sequoia",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "CCR",
+    "Compound": "Core Business Hub",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "CCR",
+    "Compound": "Front Gate",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "CCR",
+    "Compound": "Iden",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Edgestone",
+    "Compound": "Moraya",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Scope",
+    "Compound": "Aisle 90 Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Scope",
+    "Compound": "Zoom Plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "EPD",
+    "Compound": "Rovan Views",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "MRS",
+    "Compound": "Boulevard Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Artal",
+    "Compound": "Stride",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Artal",
+    "Compound": "Cellen",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Artal",
+    "Compound": "Wellen",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "UpTown",
+    "Compound": "UpTown Residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Hills",
+    "Compound": "Cloudside",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Novara",
+    "Compound": "Reve Du Nil",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Dahab",
+    "Compound": "ITC Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "CLD",
+    "Compound": "Vasto Plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Voya",
+    "Compound": "Zat",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Voya",
+    "Compound": "Coy",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Ibtkar",
+    "Compound": "Nexus Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rayhana",
+    "Compound": "Ray West",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rejan",
+    "Compound": "Seen",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Yasser Abdallah",
+    "Compound": "Nova Square",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Aldau",
+    "Compound": "Pyramids Heights",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "New Event",
+    "Compound": "Qamari",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Frimo",
+    "Compound": "Bella Vida",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Eliwah Group",
+    "Compound": "Key Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Eliwah Group",
+    "Compound": "Circle Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Eliwah Group",
+    "Compound": "Blue Sky Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "URD",
+    "Compound": "Gbay",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Paragon Dev.",
+    "Compound": "Paragon 2",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Paragon Dev.",
+    "Compound": "Paragon 3",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Menasst",
+    "Compound": "Podia",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Menasst",
+    "Compound": "Valory",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Menasst",
+    "Compound": "Begonia",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "HPD",
+    "Compound": "Voke",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Kleek",
+    "Compound": "Noll",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Methaq",
+    "Compound": "Green Oasis",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Riyad Castle",
+    "Compound": "Sawary (Bonyan)",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Tarek Ismail",
+    "Compound": "Sawary (Tarek Ismail)",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Tarek Ismail",
+    "Compound": "Muruj (Tarek Ismail)",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Orouba Misr",
+    "Compound": "Skyline",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Abha Hayat",
+    "Compound": "Abha Hayat",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alforat ",
+    "Compound": "Alforat Compound",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "GRM",
+    "Compound": "Madar Plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Kulture",
+    "Compound": "Malive",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Plaza Gardens",
+    "Compound": "Rhodes",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "AOG",
+    "Compound": "Lugano",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Golden Pillars",
+    "Compound": "Tadawy Hospital",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Agec",
+    "Compound": "Ivy Residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Business Bay",
+    "Compound": "One Bay",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "RIO",
+    "Compound": "Hillsydz",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "RIO",
+    "Compound": "Rio Capital",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Amazon",
+    "Compound": "Capital Diamond Tower ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "X Estate",
+    "Compound": "X Square",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "X Estate",
+    "Compound": "X Plaza",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Gabry ",
+    "Compound": "The 8 extension",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Gabry ",
+    "Compound": "IRA",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "El Gabry ",
+    "Compound": "One 50",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Jawad",
+    "Compound": "Hayah Residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Emerald",
+    "Compound": "Stone Capital",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Marquee",
+    "Compound": "Shababek",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Convoy",
+    "Compound": "La Luna Azure",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Founders",
+    "Compound": "Granville",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rodic",
+    "Compound": "The Line Mall",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Aspect ",
+    "Compound": "Jade & Blue ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Maged Al Futtiam",
+    "Compound": "Junction",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Al Mirage",
+    "Compound": "Hilton Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Salam",
+    "Compound": "The Residence ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "West Way ",
+    "Compound": "River Residence ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Civilia",
+    "Compound": "Civ West ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "C Developments",
+    "Compound": "Crcl",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Massive",
+    "Compound": "The Oval",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Larz",
+    "Compound": "Klove",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Siac",
+    "Compound": "The central",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Siac",
+    "Compound": "Rewaya",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Al Diwan",
+    "Compound": "Villar",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "GDG",
+    "Compound": "The Novelist",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Red Sea Safari",
+    "Compound": "Viva Coast",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Nations Of Sky",
+    "Compound": "Zomra",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arabian Mark",
+    "Compound": "Rewaq",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Euphoria",
+    "Compound": "Queen Land",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Travco",
+    "Compound": "Ras Soma",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Concrete Group ",
+    "Compound": "La Vida ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Concrete Group ",
+    "Compound": "Al Mostasmeren",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Toledo ",
+    "Compound": "Layana",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Aqar Masr ",
+    "Compound": "Anakaji",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Premium S",
+    "Compound": "1o1",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Premium S",
+    "Compound": "The Point Mall ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "A Plus ",
+    "Compound": "Shadows Business Park ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "A Plus ",
+    "Compound": "Jiran",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "AD Development ",
+    "Compound": "MQR",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "AD Development ",
+    "Compound": "A 9",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alkhalij",
+    "Compound": "Sun Gate",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alkhalij",
+    "Compound": "Alkhalij Residence",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Alkhalij",
+    "Compound": "Park Valley ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Akadia ",
+    "Compound": "Pagoda Business Tower",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Akadia ",
+    "Compound": "Pagoda Business Complex",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Pillarz ",
+    "Compound": "Tiffany ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Golden Key",
+    "Compound": "Key west ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Al amaken ",
+    "Compound": "Rouh Zayed",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "RMD",
+    "Compound": "Actio",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Mint Sabbour",
+    "Compound": "4orty sq",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Arabia",
+    "Compound": "Alashrafeya",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Zaya Development",
+    "Compound": "Crescent",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Zaya Development",
+    "Compound": "One Three One ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Zaya Development",
+    "Compound": "Roudy ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "K Development ",
+    "Compound": "Palencia ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Upshare ",
+    "Compound": "Batter Sea",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Wise ",
+    "Compound": "B Wise ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Zaeem Holding",
+    "Compound": "Lora Compound",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Pledge Development",
+    "Compound": "Mouj",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Zada Development ",
+    "Compound": "Lake Yard ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Ardic Development ",
+    "Compound": "Zizinia",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rekaz Development ",
+    "Compound": "Opal ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Rekaz Development ",
+    "Compound": "Lazuli",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "High Vale ",
+    "Compound": "Hi Lite ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Emerald Zayed ",
+    "Compound": "Lavinora Residences ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "OUD",
+    "Compound": "Jnoub ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Archplan ",
+    "Compound": "IL Coure Verde",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Archplan ",
+    "Compound": "IL Cuore Giallo",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Najma Walk",
+    "Compound": "Najma Walk",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Hamat ",
+    "Compound": "Za Link ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Biscay ",
+    "Compound": "Biscay Soma Bay ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Everest View ",
+    "Compound": "Montania Compound",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Everest View ",
+    "Compound": "Montania Park ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Everest View ",
+    "Compound": "Montania Gardens ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "SGH",
+    "Compound": "Clavo Mall ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "SGH",
+    "Compound": "7 Spot Mall ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Legacy Estates ",
+    "Compound": "Jazal",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Albostany",
+    "Compound": "Ladera Hub ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Albostany",
+    "Compound": "Degla Square ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Zayard ",
+    "Compound": "Zayard Memora ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Elmanara Development",
+    "Compound": "Etala Compound",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Elmanara Development",
+    "Compound": "Tria Mall ",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "AMG Urban Developments",
+    "Compound": "Business One",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Anchor Development ",
+    "Compound": "Le Passage",
+    "BR Percentage": NaN
+  },
+  {
+    "Developer": "Anchor Development ",
+    "Compound": "RDR",
+    "BR Percentage": NaN
+  }
+]

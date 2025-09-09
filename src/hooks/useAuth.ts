@@ -9,8 +9,41 @@ interface AuthState {
   isAuthenticated: boolean;
 }
 
+// 🧪 TESTING MODE: Auto-login with gmrolz account
+// TODO: Remove this when ready to restore real authentication
+const TESTING_MODE = true;
+const TEST_USER: Partial<User> = {
+  id: 'test-gmrolz-user-id',
+  email: 'gmrolz@testing.com',
+  user_metadata: {
+    full_name: 'gmrolz',
+    username: 'gmrolz'
+  },
+  created_at: new Date().toISOString(),
+  updated_at: new Date().toISOString(),
+  email_confirmed_at: new Date().toISOString(),
+  phone_confirmed_at: new Date().toISOString(),
+  confirmed_at: new Date().toISOString(),
+  last_sign_in_at: new Date().toISOString(),
+  app_metadata: {},
+  identities: [],
+  factors: [],
+  aud: 'authenticated',
+  role: 'authenticated'
+};
+
+const TEST_SESSION: Partial<Session> = {
+  access_token: 'test-access-token',
+  refresh_token: 'test-refresh-token',
+  expires_in: 3600,
+  expires_at: Math.floor(Date.now() / 1000) + 3600,
+  token_type: 'bearer',
+  user: TEST_USER as User
+};
+
 /**
  * Hook for managing Supabase authentication state
+ * 🧪 CURRENTLY IN TESTING MODE: Auto-authenticates with gmrolz account
  * Provides real-time auth status and user information
  */
 export function useAuth(): AuthState {
@@ -19,6 +52,22 @@ export function useAuth(): AuthState {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (TESTING_MODE) {
+      // 🧪 TESTING: Auto-login with gmrolz account
+      console.log('🧪 TESTING MODE: Auto-authenticating with gmrolz account');
+      console.log('📝 To restore real auth: Set TESTING_MODE = false in useAuth.ts');
+      
+      setTimeout(() => {
+        setUser(TEST_USER as User);
+        setSession(TEST_SESSION as Session);
+        setLoading(false);
+        console.log('✅ Test user gmrolz logged in successfully');
+      }, 500); // Small delay to simulate loading
+      
+      return; // Skip real auth setup
+    }
+
+    // 🔐 REAL AUTH CODE (currently disabled)
     // Get initial session
     const getInitialSession = async () => {
       try {

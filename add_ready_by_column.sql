@@ -29,3 +29,7 @@ SELECT column_name, data_type, is_nullable
 FROM information_schema.columns 
 WHERE table_name = 'brdata_properties' 
 AND column_name = 'ready_by';
+
+
+
+

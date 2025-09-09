@@ -40,3 +40,7 @@ if (window.properties && window.properties.length > 0) {
   console.log('Properties matching 2025:', filtered.length);
   console.log('Sample matches:', filtered.slice(0, 3).map(p => ({ id: p.id, ready_by: p.ready_by })));
 }
+
+
+
+

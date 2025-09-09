@@ -19,7 +19,9 @@ import Home from './pages/Home';
 import More from './pages/More';
 
 // Lazy load non-critical pages
+const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Inventory = lazy(() => import('./pages/Inventory'));
+const Projects = lazy(() => import('./pages/Projects'));
 const Launches = lazy(() => import('./pages/Launches'));
 const Commissions = lazy(() => import('./pages/Commissions'));
 const CloseDeal = lazy(() => import('./pages/CloseDeal'));
@@ -80,8 +82,11 @@ function AppContent() {
                       <Layout />
                     </RequireAuth>
                   }>
-                    <Route index element={<Home />} />
+                    <Route index element={<Dashboard />} />
+                    <Route path="home" element={<Home />} />
+                    <Route path="dashboard" element={<Dashboard />} />
                     <Route path="inventory" element={<Inventory />} />
+                    <Route path="projects" element={<Projects />} />
                     <Route path="launches" element={<Launches />} />
                     <Route path="commissions" element={<Commissions />} />
                     <Route path="close-deal" element={<CloseDeal />} />

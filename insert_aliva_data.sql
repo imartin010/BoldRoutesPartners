@@ -93,3 +93,7 @@ ORDER BY compound;
 
 -- Check total count after insert
 SELECT COUNT(*) as total_properties FROM brdata_properties;
+
+
+
+

@@ -39,3 +39,7 @@ SELECT 'Ultra simple table created successfully!' as message;
 
 
 
+
+
+
+

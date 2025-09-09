@@ -39,3 +39,7 @@ FROM brdata_properties
 ORDER BY id 
 LIMIT 20;
 
+
+
+
+

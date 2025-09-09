@@ -1,181 +1,565 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Search, Plus, Filter } from 'lucide-react';
-import { useDeals } from '../contexts/DealsContext';
-import { formatCurrencyEGP } from '../utils/format';
-import EmptyState from '../components/EmptyState';
+import React, { useState, useEffect } from 'react';
+import { 
+  Plus, 
+  Search, 
+  Filter, 
+  Edit, 
+  Trash2, 
+  Eye, 
+  Calendar,
+  DollarSign,
+  Building2,
+  User,
+  MapPin,
+  CheckCircle,
+  Clock,
+  XCircle,
+  ArrowRight
+} from 'lucide-react';
 
-export default function Deals() {
-  const { deals } = useDeals();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeFilter, setActiveFilter] = useState<'All' | 'Contract' | 'CIL' | 'Reservation'>('All');
+// Deal interface
+interface Deal {
+  id: string;
+  projectName: string;
+  developer: string;
+  clientName: string;
+  clientPhone: string;
+  clientEmail: string;
+  unitType: string;
+  unitNumber: string;
+  price: number;
+  commissionRate: number;
+  commissionAmount: number;
+  status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
+  date: string;
+  location: string;
+  notes: string;
+  documents: string[];
+}
 
-  // Filter deals based on search and status
-  const filteredDeals = deals.filter(deal => {
-    const matchesSearch = deal.clientName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         deal.project.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         deal.developer.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const matchesFilter = activeFilter === 'All' || deal.status === activeFilter;
-    
-    return matchesSearch && matchesFilter;
-  });
+const Deals: React.FC = () => {
+  const [deals, setDeals] = useState<Deal[]>([]);
+  const [filteredDeals, setFilteredDeals] = useState<Deal[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedStatus, setSelectedStatus] = useState('');
+  const [selectedDeal, setSelectedDeal] = useState<Deal | null>(null);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
-  const filters = ['All', 'Contract', 'CIL', 'Reservation'] as const;
+  // Load deals
+  useEffect(() => {
+    const loadDeals = async () => {
+      setLoading(true);
+      
+      // Mock data - replace with actual API calls
+      const mockDeals: Deal[] = [
+        {
+          id: '1',
+          projectName: 'Mountain View Hyde Park',
+          developer: 'Mountain View',
+          clientName: 'Ahmed Hassan',
+          clientPhone: '+20 123 456 7890',
+          clientEmail: 'ahmed.hassan@email.com',
+          unitType: '3 Bedroom Apartment',
+          unitNumber: 'A-1205',
+          price: 3200000,
+          commissionRate: 4.5,
+          commissionAmount: 144000,
+          status: 'confirmed',
+          date: '2024-01-15',
+          location: 'New Cairo',
+          notes: 'Client interested in high floor units with city view',
+          documents: ['contract.pdf', 'payment_plan.pdf']
+        },
+        {
+          id: '2',
+          projectName: 'Aliva',
+          developer: 'Mountain View',
+          clientName: 'Sarah Mohamed',
+          clientPhone: '+20 987 654 3210',
+          clientEmail: 'sarah.mohamed@email.com',
+          unitType: '2 Bedroom Apartment',
+          unitNumber: 'B-0803',
+          price: 2100000,
+          commissionRate: 4.5,
+          commissionAmount: 94500,
+          status: 'pending',
+          date: '2024-01-20',
+          location: 'New Capital',
+          notes: 'First-time buyer, needs guidance on payment plans',
+          documents: ['brochure.pdf']
+        },
+        {
+          id: '3',
+          projectName: 'ZED West',
+          developer: 'ORA',
+          clientName: 'Omar Ali',
+          clientPhone: '+20 555 123 4567',
+          clientEmail: 'omar.ali@email.com',
+          unitType: '4 Bedroom Villa',
+          unitNumber: 'V-0015',
+          price: 4500000,
+          commissionRate: 3.0,
+          commissionAmount: 135000,
+          status: 'completed',
+          date: '2024-01-10',
+          location: '6th October',
+          notes: 'Investment property, client very satisfied',
+          documents: ['contract.pdf', 'payment_plan.pdf', 'handover_documents.pdf']
+        },
+        {
+          id: '4',
+          projectName: 'Silversands',
+          developer: 'ORA',
+          clientName: 'Fatma Ibrahim',
+          clientPhone: '+20 111 222 3333',
+          clientEmail: 'fatma.ibrahim@email.com',
+          unitType: '2 Bedroom Chalet',
+          unitNumber: 'C-0208',
+          price: 2800000,
+          commissionRate: 2.5,
+          commissionAmount: 70000,
+          status: 'cancelled',
+          date: '2024-01-05',
+          location: 'North Coast',
+          notes: 'Client changed mind due to location',
+          documents: []
+        },
+        {
+          id: '5',
+          projectName: 'Bloomfields',
+          developer: 'TATWEER MISR',
+          clientName: 'Mohamed Farouk',
+          clientPhone: '+20 444 555 6666',
+          clientEmail: 'mohamed.farouk@email.com',
+          unitType: '3 Bedroom Townhouse',
+          unitNumber: 'T-0105',
+          price: 1800000,
+          commissionRate: 4.0,
+          commissionAmount: 72000,
+          status: 'pending',
+          date: '2024-01-25',
+          location: 'New Capital',
+          notes: 'Family with 2 kids, looking for ground floor unit',
+          documents: ['brochure.pdf', 'floor_plan.pdf']
+        }
+      ];
 
-  if (deals.length === 0) {
+      setDeals(mockDeals);
+      setFilteredDeals(mockDeals);
+      setLoading(false);
+    };
+
+    loadDeals();
+  }, []);
+
+  // Filter deals
+  useEffect(() => {
+    let filtered = deals;
+
+    if (searchTerm) {
+      filtered = filtered.filter(deal =>
+        deal.projectName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        deal.clientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        deal.developer.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        deal.location.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (selectedStatus) {
+      filtered = filtered.filter(deal => deal.status === selectedStatus);
+    }
+
+    setFilteredDeals(filtered);
+  }, [deals, searchTerm, selectedStatus]);
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-EG', {
+      style: 'currency',
+      currency: 'EGP',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'confirmed':
+        return 'bg-green-100 text-green-800';
+      case 'completed':
+        return 'bg-blue-100 text-blue-800';
+      case 'pending':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'cancelled':
+        return 'bg-red-100 text-red-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const getStatusIcon = (status: string) => {
+    switch (status) {
+      case 'confirmed':
+        return <CheckCircle className="h-4 w-4" />;
+      case 'completed':
+        return <CheckCircle className="h-4 w-4" />;
+      case 'pending':
+        return <Clock className="h-4 w-4" />;
+      case 'cancelled':
+        return <XCircle className="h-4 w-4" />;
+      default:
+        return <Clock className="h-4 w-4" />;
+    }
+  };
+
+  const totalCommission = deals.reduce((sum, deal) => sum + deal.commissionAmount, 0);
+  const pendingCommission = deals
+    .filter(deal => deal.status === 'pending' || deal.status === 'confirmed')
+    .reduce((sum, deal) => sum + deal.commissionAmount, 0);
+  const completedCommission = deals
+    .filter(deal => deal.status === 'completed')
+    .reduce((sum, deal) => sum + deal.commissionAmount, 0);
+
+  if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-6">
-            <h1 className="text-2xl font-bold text-gray-900">Deals</h1>
-            <Link
-              to="/deals/create"
-              className="flex items-center space-x-2 bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Create Deal</span>
-            </Link>
-          </div>
-
-          {/* Empty State */}
-          <div className="bg-white rounded-lg p-8">
-            <EmptyState
-              title="You haven't added any deals yet"
-              subtitle="Start by creating your first deal to keep everything organized and boost your commission."
-              actionText="Create Deal"
-              onAction={() => window.location.href = '/deals/create'}
-            />
-          </div>
-        </div>
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        
-        {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Deals</h1>
-          <Link
-            to="/deals/create"
-            className="flex items-center space-x-2 bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors"
-          >
-            <Plus className="w-4 h-4" />
-            <span>Create Deal</span>
-          </Link>
+    <div className="p-6 space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">My Deals</h1>
+          <p className="text-gray-600 mt-1">Manage your property deals and track commissions</p>
         </div>
-
-        {/* Search Bar */}
-        <div className="relative mb-6">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-          <input
-            type="text"
-            placeholder="Search deals..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-          />
-        </div>
-
-        {/* Filters */}
-        <div className="flex space-x-2 mb-6 overflow-x-auto">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap transition-colors ${
-                activeFilter === filter
-                  ? 'bg-gray-900 text-white'
-                  : 'bg-white text-gray-600 hover:bg-gray-100'
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-
-        {/* Deals List */}
-        {filteredDeals.length === 0 ? (
-          <div className="bg-white rounded-lg p-8 text-center">
-            <p className="text-gray-500 mb-4">No deals found matching your criteria.</p>
-            <button
-              onClick={() => {
-                setSearchQuery('');
-                setActiveFilter('All');
-              }}
-              className="text-blue-600 hover:text-blue-800 font-medium"
-            >
-              Clear filters
-            </button>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {filteredDeals.map((deal) => (
-              <Link key={deal.id} to={`/deals/${deal.id}`} className="block">
-                <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow cursor-pointer">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                      {deal.clientName}
-                    </h3>
-                    <p className="text-gray-600 text-sm">
-                      {deal.project} • {deal.developer}
-                    </p>
-                  </div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    deal.status === 'Contract' ? 'bg-green-100 text-green-800' :
-                    deal.status === 'CIL' ? 'bg-blue-100 text-blue-800' :
-                    deal.status === 'Reservation' ? 'bg-purple-100 text-purple-800' :
-                    'bg-orange-100 text-orange-800'
-                  }`}>
-                    {deal.status}
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                  <div>
-                    <p className="text-xs text-gray-500">Unit</p>
-                    <p className="font-medium">{deal.unitNumber}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500">Type</p>
-                    <p className="font-medium">{deal.unitType}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500">Area</p>
-                    <p className="font-medium">{deal.unitArea} m²</p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-xs text-gray-500">Contract Price</p>
-                    <p className="font-semibold text-lg text-green-600">
-                      {formatCurrencyEGP(deal.contractPrice)}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500">Down Payment</p>
-                    <p className="font-medium">
-                      {formatCurrencyEGP(deal.downPayment)}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-500">
-                  <span>Created: {new Date(deal.createdAt).toLocaleDateString()}</span>
-                  <span>Delivery: {new Date(deal.deliveryDate).toLocaleDateString()}</span>
-                </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
+        <button
+          onClick={() => setShowAddModal(true)}
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+        >
+          <Plus className="h-4 w-4" />
+          <span>Add New Deal</span>
+        </button>
       </div>
+
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Total Deals</p>
+              <p className="text-2xl font-bold text-gray-900">{deals.length}</p>
+            </div>
+            <div className="bg-blue-100 p-3 rounded-full">
+              <Building2 className="h-6 w-6 text-blue-600" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Total Commission</p>
+              <p className="text-2xl font-bold text-gray-900">{formatCurrency(totalCommission)}</p>
+            </div>
+            <div className="bg-green-100 p-3 rounded-full">
+              <DollarSign className="h-6 w-6 text-green-600" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Pending Commission</p>
+              <p className="text-2xl font-bold text-gray-900">{formatCurrency(pendingCommission)}</p>
+            </div>
+            <div className="bg-yellow-100 p-3 rounded-full">
+              <Clock className="h-6 w-6 text-yellow-600" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Completed Commission</p>
+              <p className="text-2xl font-bold text-gray-900">{formatCurrency(completedCommission)}</p>
+            </div>
+            <div className="bg-green-100 p-3 rounded-full">
+              <CheckCircle className="h-6 w-6 text-green-600" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Filters */}
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <input
+              type="text"
+              placeholder="Search deals..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
+          <select
+            value={selectedStatus}
+            onChange={(e) => setSelectedStatus(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+
+          <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-center space-x-2">
+            <Filter className="h-4 w-4" />
+            <span>More Filters</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Deals Table */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead className="bg-gray-50 border-b border-gray-200">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Client & Project
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Unit Details
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Price & Commission
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Status
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Date
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {filteredDeals.map((deal) => (
+                <tr key={deal.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div>
+                      <div className="text-sm font-medium text-gray-900">{deal.clientName}</div>
+                      <div className="text-sm text-gray-500">{deal.projectName}</div>
+                      <div className="text-xs text-gray-400">{deal.developer} • {deal.location}</div>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">{deal.unitType}</div>
+                    <div className="text-sm text-gray-500">Unit {deal.unitNumber}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm font-medium text-gray-900">{formatCurrency(deal.price)}</div>
+                    <div className="text-sm text-green-600 font-medium">
+                      +{formatCurrency(deal.commissionAmount)} ({deal.commissionRate}%)
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(deal.status)}`}>
+                      {getStatusIcon(deal.status)}
+                      <span className="ml-1">{deal.status}</span>
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {new Date(deal.date).toLocaleDateString()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => setSelectedDeal(deal)}
+                        className="text-blue-600 hover:text-blue-900"
+                      >
+                        <Eye className="h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={() => {
+                          setSelectedDeal(deal);
+                          setShowEditModal(true);
+                        }}
+                        className="text-gray-600 hover:text-gray-900"
+                      >
+                        <Edit className="h-4 w-4" />
+                      </button>
+                      <button className="text-red-600 hover:text-red-900">
+                        <Trash2 className="h-4 w-4" />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {filteredDeals.length === 0 && (
+        <div className="text-center py-12">
+          <Building2 className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+          <h3 className="text-lg font-medium text-gray-900 mb-2">No deals found</h3>
+          <p className="text-gray-500">Try adjusting your search criteria or add a new deal</p>
+        </div>
+      )}
+
+      {/* Deal Detail Modal */}
+      {selectedDeal && !showEditModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-gray-900">Deal Details</h2>
+                <button
+                  onClick={() => setSelectedDeal(null)}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  ✕
+                </button>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">Client Information</h3>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Name:</span>
+                        <span className="font-medium">{selectedDeal.clientName}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Phone:</span>
+                        <span className="font-medium">{selectedDeal.clientPhone}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Email:</span>
+                        <span className="font-medium">{selectedDeal.clientEmail}</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">Project Information</h3>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Project:</span>
+                        <span className="font-medium">{selectedDeal.projectName}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Developer:</span>
+                        <span className="font-medium">{selectedDeal.developer}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Location:</span>
+                        <span className="font-medium">{selectedDeal.location}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">Unit Details</h3>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Type:</span>
+                        <span className="font-medium">{selectedDeal.unitType}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Unit Number:</span>
+                        <span className="font-medium">{selectedDeal.unitNumber}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Price:</span>
+                        <span className="font-medium">{formatCurrency(selectedDeal.price)}</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">Commission</h3>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Rate:</span>
+                        <span className="font-medium">{selectedDeal.commissionRate}%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Amount:</span>
+                        <span className="font-medium text-green-600">{formatCurrency(selectedDeal.commissionAmount)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Status:</span>
+                        <span className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(selectedDeal.status)}`}>
+                          {selectedDeal.status}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {selectedDeal.notes && (
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">Notes</h3>
+                    <p className="text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">{selectedDeal.notes}</p>
+                  </div>
+                )}
+                
+                {selectedDeal.documents.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">Documents</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedDeal.documents.map((doc, index) => (
+                        <span key={index} className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+                          {doc}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                <div className="flex space-x-4">
+                  <button
+                    onClick={() => {
+                      setSelectedDeal(null);
+                      setShowEditModal(true);
+                    }}
+                    className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                  >
+                    Edit Deal
+                  </button>
+                  <button
+                    onClick={() => setSelectedDeal(null)}
+                    className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
-}
+};
+
+export default Deals;

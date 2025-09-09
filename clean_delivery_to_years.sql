@@ -29,3 +29,7 @@ SELECT
     COUNT(*) as total_properties,
     COUNT(ready_by) as properties_with_delivery
 FROM brdata_properties;
+
+
+
+

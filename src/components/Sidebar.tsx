@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useSidebar } from '../contexts/SidebarContext';
 import { UserMenu } from './UserMenu';
-import { Home, Rocket, Building, Calculator, FileText, UserPlus, FileCheck, Info, Briefcase, TrendingUp, MoreHorizontal } from 'lucide-react';
+import { Home, Rocket, Building, Calculator, FileText, UserPlus, FileCheck, Info, Briefcase, TrendingUp, MoreHorizontal, LayoutDashboard, Building2 } from 'lucide-react';
 
 export default function Sidebar() {
   const { isExpanded, setIsExpanded } = useSidebar();
@@ -12,9 +12,9 @@ export default function Sidebar() {
   };
 
   const baseNavLinks = [
-    { path: '/', label: 'Home', icon: Home },
-    { path: '/deals', label: 'Deals', icon: Briefcase },
-    { path: '/launches', label: 'New Launches', icon: Rocket },
+    { path: '/', label: 'Dashboard', icon: LayoutDashboard },
+    { path: '/deals', label: 'My Deals', icon: Briefcase },
+    { path: '/projects', label: 'Projects', icon: Building2 },
     { path: '/inventory', label: 'Inventory', icon: Building },
     { path: '/my-commissions', label: 'My Commission', icon: TrendingUp },
     { path: '/commissions', label: 'Commission Rates', icon: Calculator },
