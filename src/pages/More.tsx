@@ -137,7 +137,7 @@ export default function More() {
                     {user.name || 'Ahmed Sobhi'}
                   </h2>
                   <p className="text-gray-500">
-                    {user.phone || '01154282183'}
+                    {user?.user_metadata?.phone || '01154282183'}
                   </p>
                 </div>
                 

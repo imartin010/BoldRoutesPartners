@@ -97,3 +97,6 @@ SELECT COUNT(*) as total_properties FROM brdata_properties;
 
 
 
+
+
+

@@ -51,6 +51,23 @@ export async function submitApplication(payload: {
   return true;
 }
 
+export async function getUserDeals() {
+  // Check if user is authenticated
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    throw new Error('You must be signed in to view deals. Please sign in or create an account.');
+  }
+
+  // RLS policies will automatically filter to user's own deals
+  const { data, error } = await supabase
+    .from("closed_deals")
+    .select("*")
+    .order("created_at", { ascending: false });
+  
+  if (error) throw error;
+  return data;
+}
+
 export async function uploadDealFile(file: File) {
   // Check if user is authenticated
   const { data: { user } } = await supabase.auth.getUser();
@@ -84,6 +101,7 @@ export async function submitClosedDeal(payload: {
     dev_phone: payload.dev_phone,
     deal_value: payload.deal_value,
     attachments,
+    partner_id: user.id, // Automatically assign to current user
   };
   
   const { data, error } = await supabase.from("closed_deals").insert(dealData).select().single();

@@ -23,7 +23,7 @@ const inputVariants = cva(
 );
 
 interface InputProps
-  extends InputHTMLAttributes<HTMLInputElement>,
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
     VariantProps<typeof inputVariants> {
   error?: boolean;
 }

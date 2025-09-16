@@ -12,6 +12,7 @@ import ToastContainer from './components/ToastContainer';
 import ScrollToTop from './components/ScrollToTop';
 import LoadingSpinner from './components/LoadingSpinner';
 import { RequireAuth, RequireGuest } from './components/AuthGuard';
+import ProfileGuard from './components/ProfileGuard';
 import AuthLanding from './pages/AuthLanding';
 
 // Critical pages loaded immediately
@@ -79,7 +80,9 @@ function AppContent() {
                   {/* Protected application routes - only accessible when logged in */}
                   <Route path="/" element={
                     <RequireAuth>
-                      <Layout />
+                      <ProfileGuard>
+                        <Layout />
+                      </ProfileGuard>
                     </RequireAuth>
                   }>
                     <Route index element={<Dashboard />} />
@@ -105,22 +108,30 @@ function AppContent() {
                   {/* Protected standalone routes */}
                   <Route path="deals/create" element={
                     <RequireAuth>
-                      <CreateDeal />
+                      <ProfileGuard>
+                        <CreateDeal />
+                      </ProfileGuard>
                     </RequireAuth>
                   } />
                   <Route path="deals/:id" element={
                     <RequireAuth>
-                      <DealDetail />
+                      <ProfileGuard>
+                        <DealDetail />
+                      </ProfileGuard>
                     </RequireAuth>
                   } />
                   <Route path="deals/:id/edit" element={
                     <RequireAuth>
-                      <EditDeal />
+                      <ProfileGuard>
+                        <EditDeal />
+                      </ProfileGuard>
                     </RequireAuth>
                   } />
                   <Route path="admin" element={
                     <RequireAuth>
-                      <Admin />
+                      <ProfileGuard>
+                        <Admin />
+                      </ProfileGuard>
                     </RequireAuth>
                   } />
 

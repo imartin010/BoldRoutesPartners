@@ -37,7 +37,7 @@ export default function AuthLanding() {
         });
       } else {
         // Sign up with magic link
-        const { error } = await supabase.auth.signUp({
+        const { error } = await supabase.auth.signInWithOtp({
           email,
           options: {
             emailRedirectTo: `${window.location.origin}/dashboard`,
