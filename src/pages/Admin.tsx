@@ -17,8 +17,10 @@ export default function Admin() {
       if (error) { setIsAdmin(false); return; }
       setIsAdmin(prof?.role === "admin");
       if (prof?.role === "admin") {
-        setApps(await listApplications());
-        setDeals(await listDeals());
+        const appsData = await listApplications({});
+        const dealsData = await listDeals({});
+        setApps(appsData.rows);
+        setDeals(dealsData.rows);
       }
     })();
   }, []);

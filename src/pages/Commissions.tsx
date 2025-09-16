@@ -1,13 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDataStore } from '../store/data';
 import CurrencyInput from '../components/CurrencyInput';
 import { formatCurrencyEGP } from '../utils/format';
 import { Calculator, TrendingUp } from 'lucide-react';
 
 export default function Commissions() {
-  const { commissions } = useDataStore();
+  const { commissions, loadLiveCommissions } = useDataStore();
   const [selectedDeveloper, setSelectedDeveloper] = useState('');
   const [dealValue, setDealValue] = useState('');
+
+  // Load live commission data when component mounts
+  useEffect(() => {
+    loadLiveCommissions();
+  }, [loadLiveCommissions]);
 
   // Sort commissions alphabetically by developer name
   const sortedCommissions = [...commissions].sort((a, b) => 

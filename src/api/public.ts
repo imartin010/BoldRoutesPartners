@@ -84,6 +84,12 @@ export async function uploadDealFile(file: File) {
 export async function submitClosedDeal(payload: {
   developer_name: string; project_name: string; client_name: string; unit_code: string;
   dev_sales_name: string; dev_phone: string; deal_value: number; attachmentPaths: string[];
+  payment_plan?: {
+    downpaymentPercentage: number;
+    installmentYears: number;
+    installmentFrequency: 'monthly' | 'quarterly' | 'yearly';
+    notes?: string;
+  };
 }) {
   // Check if user is authenticated
   const { data: { user } } = await supabase.auth.getUser();
@@ -92,7 +98,9 @@ export async function submitClosedDeal(payload: {
   }
 
   const attachments = payload.attachmentPaths.map((p) => ({ path: p }));
-  const dealData = {
+  
+  // First, try with payment plan fields (if migration is applied)
+  let dealData = {
     developer_name: payload.developer_name,
     project_name: payload.project_name,
     client_name: payload.client_name,
@@ -102,9 +110,32 @@ export async function submitClosedDeal(payload: {
     deal_value: payload.deal_value,
     attachments,
     partner_id: user.id, // Automatically assign to current user
+    payment_plan: payload.payment_plan || null,
+    payment_status: payload.payment_plan ? 'pending' : null,
   };
   
-  const { data, error } = await supabase.from("closed_deals").insert(dealData).select().single();
+  let { data, error } = await supabase.from("closed_deals").insert(dealData).select().single();
+  
+  // If payment plan columns don't exist yet, try without them
+  if (error && error.message?.includes('column') && (error.message?.includes('payment_plan') || error.message?.includes('payment_status'))) {
+    console.warn('Payment plan columns not found. Submitting deal without payment tracking. Please apply the payment plan migration to enable this feature.');
+    
+    const basicDealData = {
+      developer_name: payload.developer_name,
+      project_name: payload.project_name,
+      client_name: payload.client_name,
+      unit_code: payload.unit_code,
+      dev_sales_name: payload.dev_sales_name,
+      dev_phone: payload.dev_phone,
+      deal_value: payload.deal_value,
+      attachments,
+    };
+    
+    const result = await supabase.from("closed_deals").insert(basicDealData).select().single();
+    data = result.data;
+    error = result.error;
+  }
+  
   if (error) throw error;
   
   // Send email notification as backup (in case database trigger fails)

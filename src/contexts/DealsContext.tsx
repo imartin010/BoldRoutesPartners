@@ -22,6 +22,14 @@ export interface Deal {
     type: string;
     url: string;
   }>;
+  paymentPlan?: {
+    downpaymentPercentage: number;
+    installmentYears: number;
+    installmentFrequency: 'monthly' | 'quarterly' | 'yearly';
+    notes?: string;
+  };
+  totalPaid?: number;
+  paymentStatus?: 'pending' | 'in_progress' | 'ready_to_claim' | 'claimed';
 }
 
 export interface DealFormData {

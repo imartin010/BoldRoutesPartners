@@ -6,9 +6,10 @@ import { useToastTriggers } from '../hooks/useToastTriggers';
 import CommissionTracking from '../components/deals/CommissionTracking';
 import ApprovalLog from '../components/deals/ApprovalLog';
 import ChangeDealStage from '../components/deals/ChangeDealStage';
+import PaymentTracker from '../components/deals/PaymentTracker';
 import { formatCurrencyEGP } from '../utils/format';
 
-type TabType = 'Main Info' | 'Attachments' | 'Commission' | 'Approval Log';
+type TabType = 'Main Info' | 'Attachments' | 'Commission' | 'Payment Plan' | 'Approval Log';
 
 export default function DealDetail() {
   const { id } = useParams<{ id: string }>();
@@ -37,7 +38,7 @@ export default function DealDetail() {
     );
   }
 
-  const tabs: TabType[] = ['Main Info', 'Attachments', 'Commission', 'Approval Log'];
+  const tabs: TabType[] = ['Main Info', 'Attachments', 'Commission', 'Payment Plan', 'Approval Log'];
 
   // Mock commission data
   const commission = {
@@ -364,6 +365,15 @@ export default function DealDetail() {
               dealId={deal.id}
               totalCommission={commission.totalCommission}
               percentage={commission.percentage}
+            />
+          )}
+          {activeTab === 'Payment Plan' && (
+            <PaymentTracker
+              dealId={deal.id}
+              dealValue={deal.contractPrice}
+              paymentPlan={deal.paymentPlan || undefined}
+              totalPaid={deal.totalPaid || 0}
+              paymentStatus={deal.paymentStatus || 'pending'}
             />
           )}
           {activeTab === 'Approval Log' && (

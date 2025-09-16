@@ -4,6 +4,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Admin Panel Utilities */
+.admin-input {
+  @apply w-full rounded-xl border border-neutral-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-black outline-none;
+}
+
+.admin-btn {
+  @apply rounded-xl border border-neutral-900 bg-neutral-900 px-4 py-2 text-white text-sm transition active:translate-y-px disabled:opacity-50;
+}
+
+.admin-btn-ghost {
+  @apply rounded-xl border border-neutral-300 bg-white px-3 py-2 text-sm;
+}
+
+.admin-card {
+  @apply rounded-2xl border border-neutral-200 bg-white p-3 shadow-sm;
+}
+
+.admin-tag {
+  @apply inline-flex items-center gap-1 rounded-full border border-neutral-300 px-2 py-0.5 text-xs;
+}
+
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-black;
+}
+
 /* CSS Custom Properties - Design Tokens */
 :root {
   /* Light theme (default) */

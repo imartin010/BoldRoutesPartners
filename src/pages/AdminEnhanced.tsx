@@ -58,12 +58,12 @@ export default function AdminEnhanced() {
     
     try {
       const [appsData, dealsData] = await Promise.all([
-        listApplications(),
-        listDeals()
+        listApplications({}),
+        listDeals({})
       ]);
       
       // Apply client-side filtering (in production, this should be server-side)
-      const filteredApps = appsData.filter(app => {
+      const filteredApps = appsData.rows.filter(app => {
         const matchesSearch = filters.applications.search === "" || 
           app.full_name.toLowerCase().includes(filters.applications.search.toLowerCase()) ||
           app.company_name.toLowerCase().includes(filters.applications.search.toLowerCase()) ||
@@ -74,7 +74,7 @@ export default function AdminEnhanced() {
         return matchesSearch && matchesStatus;
       });
       
-      const filteredDeals = dealsData.filter(deal => {
+      const filteredDeals = dealsData.rows.filter(deal => {
         const matchesSearch = filters.deals.search === "" ||
           deal.developer_name.toLowerCase().includes(filters.deals.search.toLowerCase()) ||
           deal.project_name.toLowerCase().includes(filters.deals.search.toLowerCase()) ||

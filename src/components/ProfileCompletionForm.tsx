@@ -9,6 +9,8 @@ interface ProfileData {
   company_name: string;
   company_manpower: string;
   address: string;
+  date_of_birth: string;
+  national_id: string;
   is_bold_routes_member: boolean;
   bold_routes_member_id: string;
   employee_position: string;
@@ -30,7 +32,11 @@ export default function ProfileCompletionForm({ onComplete }: ProfileCompletionF
     company_manpower: '',
     address: '',
     date_of_birth: '',
-    national_id: ''
+    national_id: '',
+    is_bold_routes_member: false,
+    bold_routes_member_id: '',
+    employee_position: '',
+    company_registration_status: ''
   });
 
   const handleInputChange = (field: keyof ProfileData, value: string) => {

@@ -127,3 +127,4 @@ export function useAuth(): AuthState {
     isAuthenticated: !!user && !!session,
   };
 }
+

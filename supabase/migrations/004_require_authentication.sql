@@ -172,3 +172,4 @@ GRANT EXECUTE ON FUNCTION handle_new_user() TO service_role;
 -- Check user authentication:
 -- SELECT is_authenticated(); -- Should return true when authenticated
 -- SELECT auth.uid(); -- Should return user's UUID when authenticated
+

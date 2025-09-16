@@ -5,6 +5,9 @@ import { enhancedDealSchema, ClientRateLimiter } from "@/utils/inputValidation";
 import { validateFiles, generateSecureFilename, formatFileSize } from "@/utils/fileValidation";
 import { uploadDealFile, submitClosedDeal } from "@/api/public";
 import { z } from "zod";
+import PaymentPlanForm, { PaymentPlan } from "../components/deals/PaymentPlanForm";
+import { useAuth } from "../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 type FormData = z.infer<typeof enhancedDealSchema>;
 
@@ -12,10 +15,15 @@ type FormData = z.infer<typeof enhancedDealSchema>;
 const rateLimiter = new ClientRateLimiter(3, 5 * 60 * 1000);
 
 export default function CloseDeal() {
+  const { isAuthenticated, loading: authLoading } = useAuth();
+  
+  // Development bypass flag - set to true for testing without auth
+  const BYPASS_AUTH_FOR_TESTING = false;
   const [fileError, setFileError] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
+  const [paymentPlan, setPaymentPlan] = useState<PaymentPlan | null>(null);
   
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset, watch, setValue } = useForm<FormData>({
     resolver: zodResolver(enhancedDealSchema)
@@ -85,6 +93,11 @@ export default function CloseDeal() {
         }
       }
 
+      // Validate payment plan is provided (will be temporarily optional until migration is applied)
+      if (!paymentPlan) {
+        console.warn("Payment plan not provided. This will become required after applying the payment plan migration.");
+      }
+
       await submitClosedDeal({
         developer_name: d.developer_name,
         project_name: d.project_name,
@@ -93,11 +106,13 @@ export default function CloseDeal() {
         dev_sales_name: d.dev_sales_name,
         dev_phone: d.dev_phone,
         deal_value: Number(d.deal_value),
-        attachmentPaths: paths
+        attachmentPaths: paths,
+        payment_plan: paymentPlan
       });
       
       setSubmitSuccess(true);
       setUploadProgress({});
+      setPaymentPlan(null);
       reset();
       
       // Reset success message after 5 seconds
@@ -112,6 +127,42 @@ export default function CloseDeal() {
       setUploadProgress({});
     }
   };
+
+  // Show loading state while checking authentication
+  if (authLoading) {
+    return (
+      <div className="mx-auto max-w-xl p-4">
+        <div className="flex items-center justify-center h-64">
+          <div className="animate-spin h-8 w-8 border-2 border-gray-300 border-t-blue-600 rounded-full"></div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show authentication required message
+  if (!isAuthenticated && !BYPASS_AUTH_FOR_TESTING) {
+    return (
+      <div className="mx-auto max-w-xl p-4">
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
+          <h2 className="text-xl font-semibold text-blue-900 mb-4">Authentication Required</h2>
+          <p className="text-blue-800 mb-6">
+            You need to be signed in to submit a deal. Please sign in or create an account to continue.
+          </p>
+          <div className="space-y-3">
+            <Link 
+              to="/auth" 
+              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors inline-block"
+            >
+              Sign In / Sign Up
+            </Link>
+            <p className="text-sm text-blue-600">
+              Don't have an account? Sign up to start submitting deals!
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto max-w-xl p-4">
@@ -170,6 +221,16 @@ export default function CloseDeal() {
             ))}
           </div>
         ) : null}
+        
+        {/* Payment Plan Section */}
+        <div className="border-t pt-6 mt-6">
+          <PaymentPlanForm
+            dealValue={watch("deal_value") ? Number(watch("deal_value")) : 0}
+            paymentPlan={paymentPlan}
+            onPaymentPlanChange={setPaymentPlan}
+            required={true}
+          />
+        </div>
         
         <button disabled={isSubmitting} className="btn w-full">
           {isSubmitting ? "Submitting Deal..." : "Submit Deal"}

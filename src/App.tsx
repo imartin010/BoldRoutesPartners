@@ -40,7 +40,18 @@ const Settings = lazy(() => import('./pages/Settings'));
 const LanguageSelection = lazy(() => import('./pages/LanguageSelection'));
 const MyCompany = lazy(() => import('./pages/MyCompany'));
 const Profile = lazy(() => import('./pages/Profile'));
-const Admin = lazy(() => import('./pages/AdminEnhanced'));
+// Admin pages
+const AdminLayout = lazy(() => import('./pages/admin/AdminLayout'));
+const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'));
+const AdminApplications = lazy(() => import('./pages/admin/Applications'));
+const AdminDeals = lazy(() => import('./pages/admin/Deals'));
+const AdminDevelopers = lazy(() => import('./pages/admin/Developers'));
+const AdminProjects = lazy(() => import('./pages/admin/Projects'));
+const AdminCommissions = lazy(() => import('./pages/admin/Commissions'));
+const AdminLaunches = lazy(() => import('./pages/admin/Launches'));
+const AdminInventory = lazy(() => import('./pages/admin/Inventory'));
+const AdminUsers = lazy(() => import('./pages/admin/Users'));
+const AdminSettings = lazy(() => import('./pages/admin/Settings'));
 
 function AppContent() {
   const { loadFromLocalStorage } = useDataStore();
@@ -127,13 +138,20 @@ function AppContent() {
                       </ProfileGuard>
                     </RequireAuth>
                   } />
-                  <Route path="admin" element={
-                    <RequireAuth>
-                      <ProfileGuard>
-                        <Admin />
-                      </ProfileGuard>
-                    </RequireAuth>
-                  } />
+                  {/* Admin routes */}
+                  <Route path="admin" element={<AdminLayout />}>
+                    <Route index element={<AdminDashboard />} />
+                    <Route path="dashboard" element={<AdminDashboard />} />
+                    <Route path="applications" element={<AdminApplications />} />
+                    <Route path="deals" element={<AdminDeals />} />
+                    <Route path="developers" element={<AdminDevelopers />} />
+                    <Route path="projects" element={<AdminProjects />} />
+                    <Route path="commissions" element={<AdminCommissions />} />
+                    <Route path="launches" element={<AdminLaunches />} />
+                    <Route path="inventory" element={<AdminInventory />} />
+                    <Route path="users" element={<AdminUsers />} />
+                    <Route path="settings" element={<AdminSettings />} />
+                  </Route>
 
                   {/* Fallback route - redirect to auth if not authenticated, home if authenticated */}
                   <Route path="*" element={

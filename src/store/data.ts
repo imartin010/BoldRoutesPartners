@@ -71,6 +71,7 @@ interface DataStore {
   loadFromLocalStorage: () => void;
   addPartnerApplication: (application: Omit<PartnerApplication, 'id' | 'createdAt'>) => void;
   addClosedDeal: (deal: Omit<ClosedDeal, 'id' | 'createdAt'>) => void;
+  loadLiveCommissions: () => Promise<void>;
   
   // Selectors
   getDeveloperById: (id: string) => Developer | undefined;
@@ -144,5 +145,45 @@ export const useDataStore = create<DataStore>((set, get) => ({
 
   getCommissionByDeveloperName: (name) => {
     return get().commissions.find(comm => comm.developerName === name);
+  },
+
+  loadLiveCommissions: async () => {
+    try {
+      // Import the admin API function
+      const { listCommissionRates } = await import('../api/admin');
+      
+      // Load commission rates from database
+      const dbRates = await listCommissionRates({ page: 1, pageSize: 1000 });
+      
+      // Start with base commissions from JSON
+      const baseCommissions = [...commissionsData] as Commission[];
+      
+      // Override with database rates where they exist
+      if (dbRates.rows && dbRates.rows.length > 0) {
+        const updatedCommissions = baseCommissions.map(jsonComm => {
+          // Look for a database override for this developer
+          const dbOverride = dbRates.rows.find(dbRate => 
+            dbRate.developers?.name?.toLowerCase() === jsonComm.developerName.toLowerCase() && 
+            !dbRate.project_id // Only general rates, not project-specific
+          );
+          
+          if (dbOverride) {
+            // Override the JSON rate with database rate
+            return {
+              ...jsonComm,
+              commissionPercent: dbOverride.percentage
+            };
+          }
+          
+          return jsonComm;
+        });
+        
+        set({ commissions: updatedCommissions });
+      }
+    } catch (error) {
+      console.error('Failed to load live commissions:', error);
+      // Fall back to JSON data if there's an error
+      set({ commissions: commissionsData as Commission[] });
+    }
   },
 }));

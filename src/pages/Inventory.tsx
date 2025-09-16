@@ -148,7 +148,11 @@ import { useState, useEffect } from 'react';
       
       switch (filterType) {
         case 'types':
-          newFilters.property_type = value;
+          if (value) {
+            newFilters.property_type = value;
+          } else {
+            delete newFilters.property_type;
+          }
           break;
         case 'rooms':
           if (value) {

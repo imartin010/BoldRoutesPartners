@@ -329,60 +329,8 @@ export async function getActiveProperties(
     console.log('=== FUNCTION STARTED ===');
     console.log('Fetching properties with filters:', filters);
     
-    let query = supabase
-       .from('brdata_properties')
-      .select(`
-         id, unit_id, unit_number, unit_area,
-        number_of_bedrooms, number_of_bathrooms, price_per_meter, price_in_egp,
-        currency, finishing, is_launch, image,
-        compound, area, developer, property_type,
-         payment_plans, ready_by
-      `, { count: 'exact' });
-
-    // Apply numeric filters (these work server-side)
-    if (filters.bedrooms) {
-      query = query.eq('number_of_bedrooms', filters.bedrooms);
-    }
-    
-    if (filters.bathrooms) {
-      query = query.eq('number_of_bathrooms', filters.bathrooms);
-    }
-    
-    if (filters.min_area) {
-      query = query.gte('unit_area', filters.min_area);
-    }
-    
-    if (filters.max_area) {
-      query = query.lte('unit_area', filters.max_area);
-    }
-    
-    if (filters.min_price) {
-      query = query.gte('price_in_egp', filters.min_price);
-    }
-    
-    if (filters.max_price) {
-      query = query.lte('price_in_egp', filters.max_price);
-    }
-    
-    if (filters.finishing) {
-      query = query.ilike('finishing', `%${filters.finishing}%`);
-    }
-    
-    if (filters.ready_by_year) {
-       // Filter by year - ready_by is a timestamp column
-       if (filters.ready_by_year === 'Ready') {
-         // For "Ready" properties, we'll handle this in client-side filtering
-         // since we can't easily query for "Ready" in timestamp
-       } else {
-         // Filter by year range using date boundaries
-         const year = parseInt(filters.ready_by_year);
-         const startDate = `${year}-01-01T00:00:00`;
-         const endDate = `${year + 1}-01-01T00:00:00`;
-         
-         query = query.gte('ready_by', startDate)
-           .lt('ready_by', endDate);
-       }
-     }
+    // Note: We'll apply all filters to the final baseQuery below
+    // This ensures they're properly applied to the actual data fetch
 
          // Check if we need to fetch more data for client-side filtering
      const hasTextFilters = Boolean(
@@ -397,13 +345,6 @@ export async function getActiveProperties(
     console.log('=== PAGINATION STRATEGY DEBUG ===');
     console.log('Has text filters:', hasTextFilters);
     console.log('Page:', page, 'PageSize:', pageSize);
-
-    // Fetch ALL properties - no limit to ensure we get everything
-    // This ensures we can search through the complete dataset
-    console.log('Fetching ALL properties with no row limit...');
-
-    // Order by id descending to get newest first, then we'll sort client-side
-    query = query.order('id', { ascending: false });
 
     // Get the total count first
     const { count: databaseTotalCount } = await supabase
@@ -466,8 +407,58 @@ export async function getActiveProperties(
       }
       
       if (filters.property_type && filters.property_type.trim()) {
+        console.log(`=== PROPERTY TYPE FILTER DEBUG ===`);
+        console.log(`Filter value: "${filters.property_type}"`);
+        console.log(`Applying filter: property_type->>name ILIKE %${filters.property_type.trim()}%`);
+        
+        // Try both case-insensitive and exact match approaches
         baseQuery = baseQuery.ilike('property_type->>name', `%${filters.property_type.trim()}%`);
         console.log(`Property type filter applied: "${filters.property_type.trim()}"`);
+      }
+
+      // Apply numeric filters (these were being lost in the previous implementation)
+      if (filters.bedrooms) {
+        baseQuery = baseQuery.eq('number_of_bedrooms', filters.bedrooms);
+      }
+      
+      if (filters.bathrooms) {
+        baseQuery = baseQuery.eq('number_of_bathrooms', filters.bathrooms);
+      }
+      
+      if (filters.min_area) {
+        baseQuery = baseQuery.gte('unit_area', filters.min_area);
+      }
+      
+      if (filters.max_area) {
+        baseQuery = baseQuery.lte('unit_area', filters.max_area);
+      }
+      
+      if (filters.min_price) {
+        baseQuery = baseQuery.gte('price_in_egp', filters.min_price);
+      }
+      
+      if (filters.max_price) {
+        baseQuery = baseQuery.lte('price_in_egp', filters.max_price);
+      }
+      
+      if (filters.finishing) {
+        baseQuery = baseQuery.ilike('finishing', `%${filters.finishing}%`);
+      }
+      
+      if (filters.ready_by_year) {
+        // Filter by year - ready_by is a timestamp column
+        if (filters.ready_by_year === 'Ready') {
+          // For "Ready" properties, we'll handle this in client-side filtering
+          // since we can't easily query for "Ready" in timestamp
+        } else {
+          // Filter by year range using date boundaries
+          const year = parseInt(filters.ready_by_year);
+          const startDate = `${year}-01-01T00:00:00`;
+          const endDate = `${year + 1}-01-01T00:00:00`;
+          
+          baseQuery = baseQuery.gte('ready_by', startDate)
+            .lt('ready_by', endDate);
+        }
       }
 
       // Now apply pagination to the filtered results
@@ -830,7 +821,12 @@ export async function getFilterOptions() {
       // Extract property type name
       if (prop.property_type) {
         const propertyTypeName = extractNameFromField(prop.property_type);
-        if (propertyTypeName) propertyTypes.add(propertyTypeName);
+        if (propertyTypeName) {
+          propertyTypes.add(propertyTypeName);
+          if (index < 10) { // Debug first 10 to see what types we have
+            console.log(`Property ${index + 1} type: "${propertyTypeName}"`);
+          }
+        }
       }
       
       // Extract numeric values
@@ -900,6 +896,11 @@ export async function getFilterOptions() {
     console.log('Developers found:', developersArray.length);
     console.log('Sample developers:', developersArray.slice(0, 10));
     console.log('Property Types found:', propertyTypesArray.length);
+    console.log('=== ALL PROPERTY TYPES DEBUG ===');
+    console.log('All property types:', propertyTypesArray);
+    console.log('Does "Townhouse" exist?', propertyTypesArray.includes('Townhouse'));
+    console.log('Does "townhouse" exist?', propertyTypesArray.includes('townhouse'));
+    console.log('Types containing "town":', propertyTypesArray.filter(t => t.toLowerCase().includes('town')));
     console.log('Bedroom options:', bedroomOptionsArray);
     console.log('Bathroom options:', bathroomOptionsArray);
     console.log('Finishing options:', finishingOptionsArray);
