@@ -80,97 +80,83 @@ const Dashboard: React.FC = () => {
     const loadData = async () => {
       setLoading(true);
       
-      // Mock data for now - replace with actual API calls
-      const mockProjects: Project[] = [
-        {
-          id: '1',
-          name: 'Mountain View Hyde Park',
-          developer: 'Mountain View',
-          location: 'New Cairo',
-          description: 'Luxury residential compound with modern amenities and green spaces',
-          image: '/api/placeholder/400/300',
-          startingPrice: 2500000,
-          unitsAvailable: 150,
-          deliveryDate: '2026',
-          commissionRate: 4.5,
-          features: ['Swimming Pool', 'Gym', 'Landscaped Gardens', 'Security'],
-          status: 'launching'
-        },
-        {
-          id: '2',
-          name: 'Aliva',
-          developer: 'Mountain View',
-          location: 'New Capital',
-          description: 'Contemporary living with stunning city views and premium finishes',
-          image: '/api/placeholder/400/300',
-          startingPrice: 1800000,
-          unitsAvailable: 200,
-          deliveryDate: '2025',
-          commissionRate: 4.5,
-          features: ['City Views', 'Modern Design', 'Smart Home', 'Parking'],
-          status: 'launching'
-        },
-        {
-          id: '3',
-          name: 'ZED West',
-          developer: 'ORA',
-          location: '6th October',
-          description: 'Integrated urban development with commercial and residential spaces',
-          image: '/api/placeholder/400/300',
-          startingPrice: 1200000,
-          unitsAvailable: 300,
-          deliveryDate: '2027',
-          commissionRate: 3.0,
-          features: ['Commercial Hub', 'Residential Units', 'Shopping Mall', 'Office Spaces'],
-          status: 'pre-launch'
-        }
-      ];
+      try {
+        // Load user-specific deals
+        const { getUserDeals } = await import('../api/public');
+        const userDeals = await getUserDeals();
+        
+        // Transform database deals to match our interface
+        const transformedDeals: Deal[] = userDeals.map((deal: any) => ({
+          id: deal.id,
+          projectName: deal.project_name,
+          developer: deal.developer_name,
+          clientName: deal.client_name,
+          unitType: '', // Not stored in current schema
+          price: deal.deal_value,
+          commissionRate: 0, // Not stored in current schema
+          commissionAmount: 0, // Not stored in current schema
+          status: deal.review_status === 'verified' ? 'confirmed' : 
+                 deal.review_status === 'rejected' ? 'completed' : 'pending',
+          date: new Date(deal.created_at).toISOString().split('T')[0],
+          location: '' // Not stored in current schema
+        }));
 
-      const mockDeals: Deal[] = [
-        {
-          id: '1',
-          projectName: 'Mountain View Hyde Park',
-          developer: 'Mountain View',
-          clientName: 'Ahmed Hassan',
-          unitType: '3 Bedroom Apartment',
-          price: 3200000,
-          commissionRate: 4.5,
-          commissionAmount: 144000,
-          status: 'confirmed',
-          date: '2024-01-15',
-          location: 'New Cairo'
-        },
-        {
-          id: '2',
-          projectName: 'Aliva',
-          developer: 'Mountain View',
-          clientName: 'Sarah Mohamed',
-          unitType: '2 Bedroom Apartment',
-          price: 2100000,
-          commissionRate: 4.5,
-          commissionAmount: 94500,
-          status: 'pending',
-          date: '2024-01-20',
-          location: 'New Capital'
-        },
-        {
-          id: '3',
-          projectName: 'ZED West',
-          developer: 'ORA',
-          clientName: 'Omar Ali',
-          unitType: '4 Bedroom Villa',
-          price: 4500000,
-          commissionRate: 3.0,
-          commissionAmount: 135000,
-          status: 'completed',
-          date: '2024-01-10',
-          location: '6th October'
-        }
-      ];
+        // Mock projects data (this could also be made user-specific if needed)
+        const mockProjects: Project[] = [
+          {
+            id: '1',
+            name: 'Mountain View Hyde Park',
+            developer: 'Mountain View',
+            location: 'New Cairo',
+            description: 'Luxury residential compound with modern amenities and green spaces',
+            image: '/api/placeholder/400/300',
+            startingPrice: 2500000,
+            unitsAvailable: 150,
+            deliveryDate: '2026',
+            commissionRate: 4.5,
+            features: ['Swimming Pool', 'Gym', 'Landscaped Gardens', 'Security'],
+            status: 'launching'
+          },
+          {
+            id: '2',
+            name: 'Aliva',
+            developer: 'Mountain View',
+            location: 'New Capital',
+            description: 'Contemporary living with stunning city views and premium finishes',
+            image: '/api/placeholder/400/300',
+            startingPrice: 1800000,
+            unitsAvailable: 200,
+            deliveryDate: '2025',
+            commissionRate: 4.5,
+            features: ['City Views', 'Modern Design', 'Smart Home', 'Parking'],
+            status: 'launching'
+          },
+          {
+            id: '3',
+            name: 'ZED West',
+            developer: 'ORA',
+            location: '6th October',
+            description: 'Integrated urban development with commercial and residential spaces',
+            image: '/api/placeholder/400/300',
+            startingPrice: 1200000,
+            unitsAvailable: 300,
+            deliveryDate: '2027',
+            commissionRate: 3.0,
+            features: ['Commercial Hub', 'Residential Units', 'Shopping Mall', 'Office Spaces'],
+            status: 'pre-launch'
+          }
+        ];
 
-      setProjects(mockProjects);
-      setDeals(mockDeals);
-      setLoading(false);
+        setProjects(mockProjects);
+        setDeals(transformedDeals);
+      } catch (error) {
+        console.error('Failed to load dashboard data:', error);
+        // Fallback to empty arrays if API fails
+        setProjects([]);
+        setDeals([]);
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadData();
@@ -371,9 +357,6 @@ const Dashboard: React.FC = () => {
                   
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-lg font-bold text-gray-900">
-                        From {formatCurrency(project.startingPrice)}
-                      </p>
                       <p className="text-sm text-green-600 font-medium">
                         {project.commissionRate}% commission
                       </p>
@@ -396,5 +379,8 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
+
+
+
 
 

@@ -1,31 +1,111 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Edit, Camera, User, Phone, Mail, MapPin, Calendar } from 'lucide-react';
 import { useAuthStore } from '../store/auth';
 import { useToastTriggers } from '../hooks/useToastTriggers';
+import { supabase } from '../lib/supabase';
+
+interface UserProfile {
+  full_name: string;
+  phone: string;
+  company_name: string;
+  company_manpower: string;
+  address: string;
+  date_of_birth: string;
+  national_id: string;
+  joined_date: string;
+}
 
 export default function Profile() {
   const { user } = useAuthStore();
-  const { showSuccess } = useToastTriggers();
+  const { showSuccess, showError } = useToastTriggers();
   const [isEditing, setIsEditing] = useState(false);
-  const [profileData, setProfileData] = useState({
-    name: user?.name || 'Ahmed Sobhi',
-    phone: user?.phone || '01154282183',
-    email: user?.email || 'ahmed.sobhi@bold-routes.com',
-    address: 'New Cairo, Cairo Governorate, Egypt',
-    dateOfBirth: '1990-05-15',
-    nationalId: '29005150123456',
-    joinedDate: '2022-03-15'
+  const [loading, setLoading] = useState(true);
+  const [profileData, setProfileData] = useState<UserProfile>({
+    full_name: '',
+    phone: '',
+    company_name: '',
+    company_manpower: '',
+    address: '',
+    date_of_birth: '',
+    national_id: '',
+    joined_date: ''
   });
 
-  const handleSave = () => {
-    setIsEditing(false);
-    showSuccess('Profile updated', 'Your profile information has been saved');
+  // Load user profile data
+  useEffect(() => {
+    const loadProfile = async () => {
+      if (!user) return;
+      
+      try {
+        const { data, error } = await supabase
+          .from('user_profiles')
+          .select('*')
+          .eq('user_id', user.id)
+          .single();
+
+        if (error) {
+          console.error('Error loading profile:', error);
+          showError('Failed to load profile', 'Please try again');
+          return;
+        }
+
+        if (data) {
+          setProfileData({
+            full_name: data.full_name || '',
+            phone: data.phone || '',
+            company_name: data.company_name || '',
+            company_manpower: data.company_manpower || '',
+            address: data.address || '',
+            date_of_birth: data.date_of_birth || '',
+            national_id: data.national_id || '',
+            joined_date: data.joined_date || ''
+          });
+        }
+      } catch (error) {
+        console.error('Profile load error:', error);
+        showError('Failed to load profile', 'Please try again');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProfile();
+  }, [user, showError]);
+
+  const handleSave = async () => {
+    if (!user) return;
+    
+    try {
+      const { error } = await supabase
+        .from('user_profiles')
+        .upsert({
+          user_id: user.id,
+          ...profileData,
+          updated_at: new Date().toISOString()
+        });
+
+      if (error) throw error;
+
+      setIsEditing(false);
+      showSuccess('Profile updated', 'Your profile information has been saved');
+    } catch (error) {
+      console.error('Profile save error:', error);
+      showError('Failed to save profile', 'Please try again');
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
     setProfileData(prev => ({ ...prev, [field]: value }));
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -57,7 +137,7 @@ export default function Profile() {
             <div className="relative inline-block">
               <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center">
                 <span className="text-2xl font-semibold text-blue-600">
-                  {profileData.name.split(' ').map(n => n[0]).join('')}
+                  {profileData.full_name.split(' ').map(n => n[0]).join('')}
                 </span>
               </div>
               {isEditing && (
@@ -67,7 +147,7 @@ export default function Profile() {
               )}
             </div>
             <h2 className="text-xl font-bold text-gray-900 mt-4 mb-1">
-              {profileData.name}
+              {profileData.full_name}
             </h2>
             <p className="text-gray-500">Partner</p>
           </div>
@@ -90,12 +170,12 @@ export default function Profile() {
                     {isEditing ? (
                       <input
                         type="text"
-                        value={profileData.name}
-                        onChange={(e) => handleInputChange('name', e.target.value)}
+                        value={profileData.full_name}
+                        onChange={(e) => handleInputChange('full_name', e.target.value)}
                         className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                       />
                     ) : (
-                      <p className="text-gray-900">{profileData.name}</p>
+                      <p className="text-gray-900">{profileData.full_name}</p>
                     )}
                   </div>
                 </div>
@@ -127,16 +207,7 @@ export default function Profile() {
                   </div>
                   <div className="flex-1">
                     <p className="text-sm text-gray-500 mb-1">Email Address</p>
-                    {isEditing ? (
-                      <input
-                        type="email"
-                        value={profileData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                      />
-                    ) : (
-                      <p className="text-gray-900">{profileData.email}</p>
-                    )}
+                    <p className="text-gray-900">{user?.email || 'Not available'}</p>
                   </div>
                 </div>
 
@@ -170,16 +241,59 @@ export default function Profile() {
                     {isEditing ? (
                       <input
                         type="date"
-                        value={profileData.dateOfBirth}
-                        onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
+                        value={profileData.date_of_birth}
+                        onChange={(e) => handleInputChange('date_of_birth', e.target.value)}
                         className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                       />
                     ) : (
                       <p className="text-gray-900">
-                        {new Date(profileData.dateOfBirth).toLocaleDateString()}
+                        {profileData.date_of_birth ? new Date(profileData.date_of_birth).toLocaleDateString() : 'Not provided'}
                       </p>
                     )}
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Company Information */}
+            <div>
+              <h3 className="text-lg lg:text-xl font-semibold text-gray-900 mb-4 lg:mb-6">
+                Company Information
+              </h3>
+              
+              <div className="space-y-4 lg:space-y-6">
+                <div>
+                  <p className="text-sm text-gray-500 mb-1">Company Name</p>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      value={profileData.company_name}
+                      onChange={(e) => handleInputChange('company_name', e.target.value)}
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                    />
+                  ) : (
+                    <p className="text-gray-900">{profileData.company_name || 'Not provided'}</p>
+                  )}
+                </div>
+                
+                <div>
+                  <p className="text-sm text-gray-500 mb-1">Number of Agents</p>
+                  {isEditing ? (
+                    <select
+                      value={profileData.company_manpower}
+                      onChange={(e) => handleInputChange('company_manpower', e.target.value)}
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                    >
+                      <option value="">Select number of agents</option>
+                      <option value="1-5">1-5 agents</option>
+                      <option value="6-10">6-10 agents</option>
+                      <option value="11-20">11-20 agents</option>
+                      <option value="21-50">21-50 agents</option>
+                      <option value="50+">50+ agents</option>
+                    </select>
+                  ) : (
+                    <p className="text-gray-900">{profileData.company_manpower || 'Not provided'}</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -193,13 +307,13 @@ export default function Profile() {
               <div className="space-y-4 lg:space-y-6">
                 <div>
                   <p className="text-sm text-gray-500 mb-1">National ID</p>
-                  <p className="text-gray-900">{profileData.nationalId}</p>
+                  <p className="text-gray-900">{profileData.national_id || 'Not provided'}</p>
                 </div>
                 
                 <div>
                   <p className="text-sm text-gray-500 mb-1">Member Since</p>
                   <p className="text-gray-900">
-                    {new Date(profileData.joinedDate).toLocaleDateString()}
+                    {profileData.joined_date ? new Date(profileData.joined_date).toLocaleDateString() : 'Not available'}
                   </p>
                 </div>
                 

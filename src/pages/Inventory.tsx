@@ -73,14 +73,14 @@ import { useState, useEffect } from 'react';
         const options = await getFilterOptions();
         if (!options.error) {
           setFilterOptions({
-            compounds: options.compounds || [],
-            areas: options.areas || [],
-            developers: options.developers || [],
-            propertyTypes: options.propertyTypes || [],
-            bedroomOptions: options.bedroomOptions || [],
-            bathroomOptions: options.bathroomOptions || [],
-            finishingOptions: options.finishingOptions || [],
-            readyByYearOptions: options.readyByYearOptions || [],
+            compounds: Array.from(options.compounds || []),
+            areas: Array.from(options.areas || []),
+            developers: Array.from(options.developers || []),
+            propertyTypes: Array.from(options.propertyTypes || []),
+            bedroomOptions: Array.from(options.bedroomOptions || []),
+            bathroomOptions: Array.from(options.bathroomOptions || []),
+            finishingOptions: Array.from(options.finishingOptions || []),
+            readyByYearOptions: Array.from(options.readyByYearOptions || []),
             developerCompounds: options.developerCompounds || {},
           });
         }

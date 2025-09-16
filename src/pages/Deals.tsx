@@ -52,107 +52,53 @@ const Deals: React.FC = () => {
     const loadDeals = async () => {
       setLoading(true);
       
-      // Mock data - replace with actual API calls
-      const mockDeals: Deal[] = [
-        {
-          id: '1',
-          projectName: 'Mountain View Hyde Park',
-          developer: 'Mountain View',
-          clientName: 'Ahmed Hassan',
-          clientPhone: '+20 123 456 7890',
-          clientEmail: 'ahmed.hassan@email.com',
-          unitType: '3 Bedroom Apartment',
-          unitNumber: 'A-1205',
-          price: 3200000,
-          commissionRate: 4.5,
-          commissionAmount: 144000,
-          status: 'confirmed',
-          date: '2024-01-15',
-          location: 'New Cairo',
-          notes: 'Client interested in high floor units with city view',
-          documents: ['contract.pdf', 'payment_plan.pdf']
-        },
-        {
-          id: '2',
-          projectName: 'Aliva',
-          developer: 'Mountain View',
-          clientName: 'Sarah Mohamed',
-          clientPhone: '+20 987 654 3210',
-          clientEmail: 'sarah.mohamed@email.com',
-          unitType: '2 Bedroom Apartment',
-          unitNumber: 'B-0803',
-          price: 2100000,
-          commissionRate: 4.5,
-          commissionAmount: 94500,
-          status: 'pending',
-          date: '2024-01-20',
-          location: 'New Capital',
-          notes: 'First-time buyer, needs guidance on payment plans',
-          documents: ['brochure.pdf']
-        },
-        {
-          id: '3',
-          projectName: 'ZED West',
-          developer: 'ORA',
-          clientName: 'Omar Ali',
-          clientPhone: '+20 555 123 4567',
-          clientEmail: 'omar.ali@email.com',
-          unitType: '4 Bedroom Villa',
-          unitNumber: 'V-0015',
-          price: 4500000,
-          commissionRate: 3.0,
-          commissionAmount: 135000,
-          status: 'completed',
-          date: '2024-01-10',
-          location: '6th October',
-          notes: 'Investment property, client very satisfied',
-          documents: ['contract.pdf', 'payment_plan.pdf', 'handover_documents.pdf']
-        },
-        {
-          id: '4',
-          projectName: 'Silversands',
-          developer: 'ORA',
-          clientName: 'Fatma Ibrahim',
-          clientPhone: '+20 111 222 3333',
-          clientEmail: 'fatma.ibrahim@email.com',
-          unitType: '2 Bedroom Chalet',
-          unitNumber: 'C-0208',
-          price: 2800000,
-          commissionRate: 2.5,
-          commissionAmount: 70000,
-          status: 'cancelled',
-          date: '2024-01-05',
-          location: 'North Coast',
-          notes: 'Client changed mind due to location',
-          documents: []
-        },
-        {
-          id: '5',
-          projectName: 'Bloomfields',
-          developer: 'TATWEER MISR',
-          clientName: 'Mohamed Farouk',
-          clientPhone: '+20 444 555 6666',
-          clientEmail: 'mohamed.farouk@email.com',
-          unitType: '3 Bedroom Townhouse',
-          unitNumber: 'T-0105',
-          price: 1800000,
-          commissionRate: 4.0,
-          commissionAmount: 72000,
-          status: 'pending',
-          date: '2024-01-25',
-          location: 'New Capital',
-          notes: 'Family with 2 kids, looking for ground floor unit',
-          documents: ['brochure.pdf', 'floor_plan.pdf']
-        }
-      ];
-
-      setDeals(mockDeals);
-      setFilteredDeals(mockDeals);
-      setLoading(false);
+      try {
+        // Import the API function
+        const { getUserDeals } = await import('../api/public');
+        const userDeals = await getUserDeals();
+        
+        // Transform database deals to match our interface
+        const transformedDeals: Deal[] = userDeals.map((deal: any) => ({
+          id: deal.id,
+          projectName: deal.project_name,
+          developer: deal.developer_name,
+          clientName: deal.client_name,
+          clientPhone: deal.dev_phone,
+          clientEmail: '', // Not stored in current schema
+          unitType: '', // Not stored in current schema
+          unitNumber: deal.unit_code,
+          price: deal.deal_value,
+          commissionRate: 0, // Not stored in current schema
+          commissionAmount: 0, // Not stored in current schema
+          status: deal.review_status === 'verified' ? 'confirmed' : 
+                 deal.review_status === 'rejected' ? 'cancelled' : 'pending',
+          date: new Date(deal.created_at).toISOString().split('T')[0],
+          location: '', // Not stored in current schema
+          notes: '', // Not stored in current schema
+          documents: deal.attachments?.map((att: any) => att.path) || []
+        }));
+        
+        setDeals(transformedDeals);
+        setFilteredDeals(transformedDeals);
+      } catch (error) {
+        console.error('Failed to load deals:', error);
+        // Fallback to empty array if API fails
+        setDeals([]);
+        setFilteredDeals([]);
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadDeals();
   }, []);
+
+  // Mock data for fallback (commented out - not used anymore)
+  /*
+  const mockDeals: Deal[] = [
+    // ... mock data would go here if needed for fallback
+  ];
+  */
 
   // Filter deals
   useEffect(() => {

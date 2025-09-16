@@ -30,7 +30,13 @@ export default function Apply() {
         return;
       }
 
-      await submitApplication(d);
+      await submitApplication({
+        full_name: d.full_name,
+        phone: d.phone,
+        company_name: d.company_name,
+        agents_count: d.agents_count,
+        has_papers: d.has_papers,
+      });
       setSubmitSuccess(true);
       reset();
       

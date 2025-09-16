@@ -1,7 +1,17 @@
 import { create } from 'zustand';
 
 interface User {
+  id: string;
   name: string;
+  email?: string;
+  phone?: string;
+  companyName?: string;
+  companyManpower?: string;
+  isVerified?: boolean;
+  user_metadata?: {
+    full_name?: string;
+    phone?: string;
+  };
 }
 
 interface AuthStore {
