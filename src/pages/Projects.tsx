@@ -35,7 +35,7 @@ interface Project {
   developer: string;
   location: string;
   description: string;
-  image: string;
+  image: string | null;
   startingPrice: number;
   unitsAvailable: number;
   deliveryDate: string;
@@ -194,8 +194,20 @@ const Projects: React.FC = () => {
             })));
           });
           
-          setProjects(realProjects);
-          setFilteredProjects(realProjects);
+          // Filter out projects without database images
+          const projectsWithImages = realProjects.filter(project => 
+            project.image && 
+            !project.image.includes('data:image/svg') && 
+            !project.image.includes('picsum.photos')
+          );
+          
+          console.log('=== FILTERED PROJECTS ===');
+          console.log('Total projects:', realProjects.length);
+          console.log('Projects with database images:', projectsWithImages.length);
+          console.log('Projects without images (hidden):', realProjects.length - projectsWithImages.length);
+          
+          setProjects(projectsWithImages);
+          setFilteredProjects(projectsWithImages);
         } else {
           console.error('Direct Supabase call failed:', directError);
           setProjects([]);
@@ -433,7 +445,7 @@ const Projects: React.FC = () => {
         developer: projectData.developer,
         location: projectData.area,
         description: `Premium residential project with ${projectData.totalUnits} available units. Multiple property types including ${propertyTypesArray.slice(0, 3).join(', ')}.`,
-        image: projectImage || generatePlaceholderImage(projectData.compound, projectData.developer),
+        image: projectImage || null, // Don't set placeholder, let it be filtered out
         startingPrice: minPrice,
         unitsAvailable: projectData.totalUnits,
         deliveryDate: readyYears.length > 0 ? readyYears.join(', ') : 'TBD',
@@ -583,12 +595,12 @@ const Projects: React.FC = () => {
               <div>
                 <div className="relative">
                   <img
-                    src={project.image}
+                    src={project.image || ''}
                     alt={project.name}
                     className="w-full h-48 object-cover rounded-t-xl"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = generatePlaceholderImage(project.name, project.developer);
+                      target.style.display = 'none';
                     }}
                   />
                   <div className="absolute top-4 left-4">
@@ -658,12 +670,12 @@ const Projects: React.FC = () => {
             ) : (
               <div className="flex w-full">
                 <img
-                  src={project.image}
+                  src={project.image || ''}
                   alt={project.name}
                   className="w-48 h-32 object-cover rounded-l-xl"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = generatePlaceholderImage(project.name, project.developer);
+                    target.style.display = 'none';
                   }}
                 />
                 <div className="flex-1 p-6">
