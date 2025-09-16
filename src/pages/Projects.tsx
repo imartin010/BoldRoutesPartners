@@ -148,11 +148,30 @@ const Projects: React.FC = () => {
           console.log('=== PROJECT CONVERSION DEBUG ===');
           console.log('Raw properties processed:', processedProperties.length);
           console.log('Real projects created:', realProjects.length);
-          console.log('Sample projects:', realProjects.slice(0, 5).map(p => ({
+          console.log('Sample projects with images:', realProjects.slice(0, 5).map(p => ({
             name: p.name,
             units: p.unitsAvailable,
             developer: p.developer,
-            location: p.location
+            location: p.location,
+            image: p.image
+          })));
+          
+          // Debug image data
+          console.log('=== IMAGE DEBUG ===');
+          const propertiesWithImages = processedProperties.filter(p => p.image);
+          console.log('Properties with images:', propertiesWithImages.length);
+          console.log('Sample images:', propertiesWithImages.slice(0, 3).map(p => ({
+            compound: p.compound?.name || p.compound,
+            image: p.image
+          })));
+          
+          // Debug specific projects that might be missing images
+          const projectsWithoutImages = realProjects.filter(p => !p.image || p.image === '/api/placeholder/400/300');
+          console.log('Projects without images:', projectsWithoutImages.length);
+          console.log('Sample projects without images:', projectsWithoutImages.slice(0, 3).map(p => ({
+            name: p.name,
+            developer: p.developer,
+            propertiesCount: p.unitsAvailable
           })));
           
           setProjects(realProjects);
@@ -261,6 +280,13 @@ const Projects: React.FC = () => {
     return `${(price / 1000).toFixed(0)}K EGP`;
   };
 
+  // Generate a placeholder image URL based on project name
+  const generatePlaceholderImage = (projectName: string, developer: string) => {
+    // Use a service like picsum.photos with a seed based on project name
+    const seed = projectName.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return `https://picsum.photos/400/300?random=${seed}`;
+  };
+
   // Convert inventory properties to project format
   const convertInventoryToProjects = (properties: Property[]): Project[] => {
     const projectMap = new Map<string, {
@@ -308,8 +334,12 @@ const Projects: React.FC = () => {
       project.totalUnits++;
       
       // Capture the first available image for this project
-      if (!project.image && property.image) {
-        project.image = property.image;
+      if (!project.image && property.image && property.image.trim() !== '') {
+        // Validate that the image URL looks reasonable
+        const imageUrl = property.image.trim();
+        if (imageUrl && (imageUrl.startsWith('http') || imageUrl.startsWith('/') || imageUrl.startsWith('data:'))) {
+          project.image = imageUrl;
+        }
       }
       
       if (property.price_in_egp) {
@@ -332,6 +362,18 @@ const Projects: React.FC = () => {
       const minPrice = prices[0] || 0;
       const maxPrice = prices[prices.length - 1] || 0;
       const avgPrice = prices.length > 0 ? Math.round(prices.reduce((a: number, b: number) => a + b, 0) / prices.length) : 0;
+      
+      // If no image was found, try to find one from any property in this project
+      let projectImage = projectData.image;
+      if (!projectImage) {
+        const propertyWithImage = projectData.properties.find(p => p.image && p.image.trim() !== '');
+        if (propertyWithImage) {
+          const imageUrl = propertyWithImage.image.trim();
+          if (imageUrl && (imageUrl.startsWith('http') || imageUrl.startsWith('/') || imageUrl.startsWith('data:'))) {
+            projectImage = imageUrl;
+          }
+        }
+      }
       
       // Determine commission rate based on developer (you can customize this logic)
       let commissionRate = 3.5; // default
@@ -366,7 +408,7 @@ const Projects: React.FC = () => {
         developer: projectData.developer,
         location: projectData.area,
         description: `Premium residential project with ${projectData.totalUnits} available units. Multiple property types including ${propertyTypesArray.slice(0, 3).join(', ')}.`,
-        image: projectData.image || '/api/placeholder/400/300',
+        image: projectImage || generatePlaceholderImage(projectData.compound, projectData.developer),
         startingPrice: minPrice,
         unitsAvailable: projectData.totalUnits,
         deliveryDate: readyYears.length > 0 ? readyYears.join(', ') : 'TBD',
@@ -521,7 +563,7 @@ const Projects: React.FC = () => {
                     className="w-full h-48 object-cover rounded-t-xl"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/api/placeholder/400/300';
+                      target.src = generatePlaceholderImage(project.name, project.developer);
                     }}
                   />
                   <div className="absolute top-4 left-4">
@@ -596,7 +638,7 @@ const Projects: React.FC = () => {
                   className="w-48 h-32 object-cover rounded-l-xl"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = '/api/placeholder/400/300';
+                    target.src = generatePlaceholderImage(project.name, project.developer);
                   }}
                 />
                 <div className="flex-1 p-6">
