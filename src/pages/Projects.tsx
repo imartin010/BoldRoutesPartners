@@ -158,21 +158,41 @@ const Projects: React.FC = () => {
           
           // Debug image data
           console.log('=== IMAGE DEBUG ===');
-          const propertiesWithImages = processedProperties.filter(p => p.image);
+          const propertiesWithImages = processedProperties.filter(p => p.image && p.image.trim() !== '');
           console.log('Properties with images:', propertiesWithImages.length);
-          console.log('Sample images:', propertiesWithImages.slice(0, 3).map(p => ({
+          console.log('Sample images:', propertiesWithImages.slice(0, 5).map(p => ({
             compound: p.compound?.name || p.compound,
-            image: p.image
+            image: p.image,
+            imageType: typeof p.image,
+            imageLength: p.image?.length
           })));
           
           // Debug specific projects that might be missing images
-          const projectsWithoutImages = realProjects.filter(p => !p.image || p.image === '/api/placeholder/400/300');
-          console.log('Projects without images:', projectsWithoutImages.length);
-          console.log('Sample projects without images:', projectsWithoutImages.slice(0, 3).map(p => ({
+          const projectsWithoutImages = realProjects.filter(p => !p.image || p.image.includes('picsum.photos'));
+          console.log('Projects without database images:', projectsWithoutImages.length);
+          console.log('Sample projects without database images:', projectsWithoutImages.slice(0, 3).map(p => ({
             name: p.name,
             developer: p.developer,
-            propertiesCount: p.unitsAvailable
+            propertiesCount: p.unitsAvailable,
+            currentImage: p.image
           })));
+          
+          // Debug specific compounds that are missing images
+          const missingImageCompounds = ['Mountain View 3', 'Stone Park'];
+          missingImageCompounds.forEach(compoundName => {
+            const compoundProperties = processedProperties.filter(p => 
+              (p.compound?.name || p.compound) === compoundName
+            );
+            console.log(`=== ${compoundName} DEBUG ===`);
+            console.log('Properties found:', compoundProperties.length);
+            console.log('Properties with images:', compoundProperties.filter(p => p.image && p.image.trim() !== '').length);
+            console.log('Sample properties:', compoundProperties.slice(0, 3).map(p => ({
+              id: p.id,
+              compound: p.compound?.name || p.compound,
+              image: p.image,
+              hasImage: !!(p.image && p.image.trim() !== '')
+            })));
+          });
           
           setProjects(realProjects);
           setFilteredProjects(realProjects);
@@ -280,11 +300,10 @@ const Projects: React.FC = () => {
     return `${(price / 1000).toFixed(0)}K EGP`;
   };
 
-  // Generate a placeholder image URL based on project name
+  // Generate a simple placeholder for projects without database images
   const generatePlaceholderImage = (projectName: string, developer: string) => {
-    // Use a service like picsum.photos with a seed based on project name
-    const seed = projectName.toLowerCase().replace(/[^a-z0-9]/g, '');
-    return `https://picsum.photos/400/300?random=${seed}`;
+    // Return a simple data URI placeholder instead of stock photos
+    return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNzUgMTI1SDIyNVYxNzVIMTc1VjEyNVoiIGZpbGw9IiNEMUQ1REIiLz4KPHBhdGggZD0iTTE5NSAxNDVIMjA1VjE1NUgxOTVWMjA1WiIgZmlsbD0iI0QxRDVEQiIvPgo8dGV4dCB4PSIyMDAiIHk9IjI0MCIgZmlsbD0iIzlDQTNBRiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5ObyBJbWFnZTwvdGV4dD4KPC9zdmc+';
   };
 
   // Convert inventory properties to project format
@@ -335,10 +354,11 @@ const Projects: React.FC = () => {
       
       // Capture the first available image for this project
       if (!project.image && property.image && property.image.trim() !== '') {
-        // Validate that the image URL looks reasonable
         const imageUrl = property.image.trim();
-        if (imageUrl && (imageUrl.startsWith('http') || imageUrl.startsWith('/') || imageUrl.startsWith('data:'))) {
+        // Accept any non-empty image URL from the database (be more permissive)
+        if (imageUrl && imageUrl !== 'null' && imageUrl !== 'None' && imageUrl !== '') {
           project.image = imageUrl;
+          console.log(`Captured image for ${compoundName}:`, imageUrl);
         }
       }
       
@@ -366,11 +386,16 @@ const Projects: React.FC = () => {
       // If no image was found, try to find one from any property in this project
       let projectImage = projectData.image;
       if (!projectImage) {
-        const propertyWithImage = projectData.properties.find(p => p.image && p.image.trim() !== '');
-        if (propertyWithImage) {
-          const imageUrl = propertyWithImage.image.trim();
-          if (imageUrl && (imageUrl.startsWith('http') || imageUrl.startsWith('/') || imageUrl.startsWith('data:'))) {
-            projectImage = imageUrl;
+        // Search through all properties in this project for any valid image
+        for (const property of projectData.properties) {
+          if (property.image && property.image.trim() !== '') {
+            const imageUrl = property.image.trim();
+            // Accept any non-empty image URL from the database
+            if (imageUrl && imageUrl !== 'null' && imageUrl !== 'None' && imageUrl !== '') {
+              projectImage = imageUrl;
+              console.log(`Found image for ${projectData.compound}:`, imageUrl);
+              break; // Use the first valid image found
+            }
           }
         }
       }
