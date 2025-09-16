@@ -11,7 +11,7 @@ interface AuthState {
 
 // 🧪 TESTING MODE: Auto-login with gmrolz account
 // TODO: Remove this when ready to restore real authentication
-const TESTING_MODE = true;
+const TESTING_MODE = false;
 const TEST_USER: Partial<User> = {
   id: 'test-gmrolz-user-id',
   email: 'gmrolz@testing.com',
