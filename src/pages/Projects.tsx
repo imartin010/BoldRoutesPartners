@@ -272,6 +272,7 @@ const Projects: React.FC = () => {
       propertyTypes: Set<string>;
       readyByYears: Set<string>;
       totalUnits: number;
+      image: string | null;
     }>();
     
     properties.forEach(property => {
@@ -297,13 +298,19 @@ const Projects: React.FC = () => {
           prices: [],
           propertyTypes: new Set<string>(),
           readyByYears: new Set<string>(),
-          totalUnits: 0
+          totalUnits: 0,
+          image: null
         });
       }
       
       const project = projectMap.get(compoundName)!;
       project.properties.push(property);
       project.totalUnits++;
+      
+      // Capture the first available image for this project
+      if (!project.image && property.image) {
+        project.image = property.image;
+      }
       
       if (property.price_in_egp) {
         project.prices.push(property.price_in_egp);
@@ -359,7 +366,7 @@ const Projects: React.FC = () => {
         developer: projectData.developer,
         location: projectData.area,
         description: `Premium residential project with ${projectData.totalUnits} available units. Multiple property types including ${propertyTypesArray.slice(0, 3).join(', ')}.`,
-        image: '/api/placeholder/400/300',
+        image: projectData.image || '/api/placeholder/400/300',
         startingPrice: minPrice,
         unitsAvailable: projectData.totalUnits,
         deliveryDate: readyYears.length > 0 ? readyYears.join(', ') : 'TBD',
@@ -512,6 +519,10 @@ const Projects: React.FC = () => {
                     src={project.image}
                     alt={project.name}
                     className="w-full h-48 object-cover rounded-t-xl"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/api/placeholder/400/300';
+                    }}
                   />
                   <div className="absolute top-4 left-4">
                     <div className="flex space-x-2">
@@ -583,6 +594,10 @@ const Projects: React.FC = () => {
                   src={project.image}
                   alt={project.name}
                   className="w-48 h-32 object-cover rounded-l-xl"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/api/placeholder/400/300';
+                  }}
                 />
                 <div className="flex-1 p-6">
                   <div className="flex items-start justify-between mb-3">
