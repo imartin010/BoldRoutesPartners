@@ -14,6 +14,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import { RequireAuth, RequireGuest } from './components/AuthGuard';
 import ProfileGuard from './components/ProfileGuard';
 import AuthLanding from './pages/AuthLanding';
+import AuthCallback from './pages/AuthCallback';
 
 // Critical pages loaded immediately
 import Home from './pages/Home';
@@ -87,6 +88,9 @@ function AppContent() {
                       <AuthLanding />
                     </RequireGuest>
                   } />
+                  
+                  {/* Auth callback route - handles magic link redirects */}
+                  <Route path="/auth/callback" element={<AuthCallback />} />
 
                   {/* Protected application routes - only accessible when logged in */}
                   <Route path="/" element={
